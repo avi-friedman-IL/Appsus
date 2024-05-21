@@ -1,6 +1,8 @@
 
-var keepsDB = []
-const KEEPS_KEY = 'keeps'
+// var notesDB = []
+import { storageService } from "../../../services/storage.service.js"
+const NOTES_KEY = 'notesDB'
+
 
 const notes = [
     {
@@ -9,7 +11,7 @@ const notes = [
         type: 'NoteTxt',
         isPinned: true,
         style: {
-            backgroundColor: '#00d'
+            backgroundColor: 'rgb(173,173,215)'
         },
         info: {
             txt: 'Fullstack Me Baby!'
@@ -24,7 +26,7 @@ const notes = [
             title: 'Bobi and Me'
         },
         style: {
-            backgroundColor: '#00d'
+            backgroundColor: 'rgb(173,173,215)'
         }
     },
     {
@@ -41,9 +43,27 @@ const notes = [
     }
 ]
 
+export const notesService = {
+    getNotes,
+    deleteNote,
+}
+
+window.bs = notesService
+
+function getNotes() {
+    return storageService.loadFromStorage(NOTES_KEY)
+}
+
 function createNote() { }
 
-function deleteNote() { }
+function deleteNote(noteId) {
+    return storageService.remove(NOTES_KEY, noteId)
+}
 
 function updateNote() {
 }
+
+function createNotes() {
+    storageService.saveToStorage(NOTES_KEY, notes)
+}
+createNotes()
