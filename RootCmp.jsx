@@ -5,8 +5,8 @@ import { AppHeader } from "./cmps/AppHeader.jsx";
 import { About } from "./views/About.jsx";
 import { Home } from "./views/Home.jsx";
 import { MailIndex } from "./apps/mail/views/MailIndex.jsx";
-// import { NoteIndex } from "./apps/note/views/NoteIndex.jsx"
-import { NoteIndex } from "./apps/note/cmps/NoteIndex.jsx";
+import { NoteIndex } from "./apps/note/views/NoteIndex.jsx";
+// import { NoteIndex } from "./apps/note/cmps/NoteIndex.jsx";
 
 export function App() {
   return (
