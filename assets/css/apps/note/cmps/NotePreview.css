@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
+.note-card {
+    border: 1px solid black;
+    width: fit-content;
+    height: fit-content;
+    padding: 3em;
+}
+
+.icons img {
+    width: 2em;
+}
