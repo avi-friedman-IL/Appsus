@@ -1,1 +1,8 @@
  /* note index */
+ * {
+     box-sizing: border-box;
+ }
+
+ .add-form img {
+     width: 2em;
+ }

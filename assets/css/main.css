@@ -12,7 +12,7 @@
 /* Views */
 @import './views/home.css';
 
-/* @import './apps/note/views/NoteIndex.css'; */
+@import './apps/note/views/NoteIndex.css';
 
 /* @import './apps/mail/views/MailIndex.css'; */
 
@@ -20,5 +20,6 @@
 
 @import './cmps/UserMsg.css';
 @import './cmps/AppHeader.css';
+@import './apps/note/cmps/NotePreview.css'
 
 /* @import './apps/mail/cmps/MailList.css'; */
