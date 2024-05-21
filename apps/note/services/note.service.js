@@ -1,7 +1,3 @@
-// note service
-import { utilService } from '../../email/services/util-service.js'
-import { storageService } from '../../../services/storage.service.js'
-
 
 var keepsDB = []
 const KEEPS_KEY = 'keeps'
@@ -50,5 +46,4 @@ function createNote() { }
 function deleteNote() { }
 
 function updateNote() {
-
 }
