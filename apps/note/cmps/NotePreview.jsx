@@ -5,7 +5,6 @@ export function NotePreview({ note }) {
       <p>{note.info.title ? note.info.title : ""}</p>
 
       <ul>
-        <span>To Do: </span>
         {note.info.todos
           ? note.info.todos.map((todo, index) => (
               <li key={index}>{todo.txt}</li>
