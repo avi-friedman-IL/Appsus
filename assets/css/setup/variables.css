@@ -1,3 +1,8 @@
 :root {
-    --main-bg-color: lightblue;
+    --mail-sidebar-bg-color:#eaf1fb;
+    --mail-li-bg-color: #c4c7c5;
+    --mail-input-bg-color: #a8c7fa;
+
+    --mail-font-family-1: Arial, Helvetica, sans-serif;
+    --mail-font-family-2: Roboto
 }
