@@ -8,14 +8,6 @@ export function EditNote() {
   const [note, setNote] = useState({ info: { title: "" } });
   const [color, setColor] = useState("");
 
-  // const [note, setNote] = useState({
-  //   id: "",
-  //   type: "",
-  //   isPinned: false,
-  //   style: { backgroundColor: "" },
-  //   info: { title: "", todos: [], url:'' },
-  // });
-
   const { noteId } = useParams();
   const navigate = useNavigate();
 
@@ -23,23 +15,6 @@ export function EditNote() {
     if (!noteId) return;
     notesService.getNoteById(noteId).then(setNote);
   }, [noteId]);
-
-  // useEffect(() => {
-  //   notesService.getNoteById(noteId).then((note) => {
-  //     const noteToEdit = {
-  //       id: note.id,
-  //       type: note.type,
-  //       isPinned: note.isPinned,
-  //       style: { backgroundColor: note.style.backgroundColor },
-  //       info: {
-  //         title: note.info.title,
-  //         todos: note.info.todos,
-  //         url: note.info.url,
-  //       },
-  //     };
-  //     setNoteToEdit(noteToEdit);
-  //   });
-  // }, [noteId]);
 
   function handleChange(ev) {
     const { name, value } = ev.target;
