@@ -1,1 +1,37 @@
  /* mail list */
+ .mail-list {
+    font-family: var(--mail-font-family-1);
+    /* letter-spacing: 1px; */
+
+    background: var(--mail-li-bg-color);
+    color: rgb(72, 72, 72);
+ }
+
+ .mail-list li {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+ }
+
+ .mail-list .mail-preview {
+    display: grid;
+    grid-auto-flow: column;
+    justify-items: center;
+    align-items: center;
+    gap: 15px;
+    padding: 1em;
+    font-size: 1.2em;
+ }
+
+ .mail-list .mail-preview h2,
+ span {
+    font-weight: bold;
+    color: black;
+ }
+
+ .mail-list .remove-mail {
+    width: max-content;
+    border: 0;
+    cursor: pointer;
+    background-color: inherit;
+ }
