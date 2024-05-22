@@ -9,6 +9,17 @@
     padding: 3em;
 }
 
-.icons img {
-    width: 2em;
+.note-card .icons {
+    display: flex;
+    /* opacity: 0;
+    transition: 0.3s; */
+}
+
+/* .note-card:hover .icons {
+    opacity: 1;
+} */
+
+
+.note-card .icons .btn {
+    margin: 1em;
 }

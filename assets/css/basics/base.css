@@ -27,6 +27,10 @@ img {
     object-fit: cover;
 }
 
+<<<<<<< HEAD
 ul {
+=======
+li {
+>>>>>>> f-keep-app
     list-style: none;
 }

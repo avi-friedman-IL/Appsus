@@ -1,10 +1,8 @@
 
-// var notesDB = []
-import { storageService } from "../../../services/storage.service.js"
-const NOTES_KEY = 'notesDB'
+import { storageService } from "../../../services/async-storage.service.js"
 
 
-const notes = [
+const notesInitial = [
     {
         id: 'n101',
         createdAt: 1112222,
@@ -43,27 +41,42 @@ const notes = [
     }
 ]
 
+const NOTES_KEY = 'notesDB'
+const notes = storageService.loadFromStorage(NOTES_KEY) || []
+createNotes()
+
 export const notesService = {
     getNotes,
-    deleteNote,
+    removeNote,
+    addNote,
 }
 
 window.bs = notesService
 
+// function getNotes() {
+//     return storageService.loadFromStorage(NOTES_KEY)
+// }
+
 function getNotes() {
-    return storageService.loadFromStorage(NOTES_KEY)
+    return new Promise((resolve) => {
+        resolve(storageService.loadFromStorage(NOTES_KEY))
+    })
 }
 
-function createNote() { }
-
-function deleteNote(noteId) {
+function removeNote(noteId) {
     return storageService.remove(NOTES_KEY, noteId)
+}
+
+function addNote(note) {
+    return storageService.post(NOTES_KEY, note)
 }
 
 function updateNote() {
 }
 
 function createNotes() {
-    storageService.saveToStorage(NOTES_KEY, notes)
+    if (!notes.length) {
+        storageService.saveToStorage(NOTES_KEY, notesInitial)
+    }
+    // storageService.saveToStorage(NOTES_KEY, notesInitial)
 }
-createNotes()
