@@ -4,7 +4,9 @@
     --mail-input-bg-color: #a8c7fa;
 
     --mail-font-family-1: Arial, Helvetica, sans-serif;
-    --mail-font-family-2: Roboto --main-bg-color: lightblue;
+    --mail-font-family-2: Roboto;
+    --main-bg-color: lightblue;
+
     --initial-keep-color: #feefc3;
     --second-keep-color: rgb(190, 187, 187);
 }
