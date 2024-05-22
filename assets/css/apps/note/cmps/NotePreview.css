@@ -12,3 +12,7 @@
 .icons img {
     width: 2em;
 }
+
+.btn {
+    cursor: pointer;
+}

@@ -3,6 +3,21 @@
      box-sizing: border-box;
  }
 
- .add-form img {
-     width: 2em;
+ .add-form {
+     border: 1px solid black;
+     width: fit-content;
+ }
+
+ .add-form input[type='text'] {
+     border: none;
+     outline: none;
+ }
+
+ .add-form input[type="text"]:focus {
+     outline: none;
+ }
+
+ .add-form .btn {
+     border: transparent;
+     background-color: transparent;
  }
