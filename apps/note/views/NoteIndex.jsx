@@ -3,7 +3,13 @@ import { notesService } from "../services/note.service.js";
 import { NoteList } from "../cmps/NoteList.jsx";
 
 export function NoteIndex() {
-  const [notes, setNotes] = useState(notesService.getNotes());
+  const [notes, setNotes] = useState([]);
+
+  useEffect(() => {
+    notesService.getNotes().then((fetchedNotes) => {
+      setNotes(fetchedNotes);
+    });
+  }, []);
 
   function handleRemoveNote(noteId) {
     notesService.removeNote(noteId).then(() => {
@@ -11,13 +17,15 @@ export function NoteIndex() {
     });
   }
 
-  function addNote(note) {
-    setNotes((prevNotes) => [...prevNotes, note]);
+  function handleAddNote(note) {
+    notesService.addNote(note).then(() => {
+      setNotes((prevNotes) => [...prevNotes, note]);
+    });
   }
 
   return (
     <section>
-      <Form onAddNote={addNote} />
+      <Form onAddNote={handleAddNote} />
       <NoteList notes={notes} onRemoveNote={handleRemoveNote} />
     </section>
   );
