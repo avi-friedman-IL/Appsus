@@ -22,19 +22,6 @@ function getNotes() {
     })
 }
 
-// function getNotes() {
-//     return new Promise((resolve, reject) => {
-//         const notes = utilService.loadFromStorage(NOTES_KEY);
-//         if (notes) resolve(notes);
-//         else reject('No notes found');
-//     });
-// }
-
-// function getNotes() {
-//     const getNotes = utilService.loadFromStorage(NOTES_KEY)
-//     return getNotes
-// }
-
 function getNoteById(noteId) {
     const notes = utilService.loadFromStorage(NOTES_KEY)
     const note = notes.find((note) => note.id === noteId)

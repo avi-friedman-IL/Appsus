@@ -6,8 +6,6 @@ import { Form } from "../cmps/Form.jsx";
 export function NoteIndex() {
   const [notes, setNotes] = useState([]);
 
-  // console.log(notesService.getNotes());
-
   useEffect(() => {
     notesService.getNotes().then((fetchedNotes) => {
       setNotes(fetchedNotes);
