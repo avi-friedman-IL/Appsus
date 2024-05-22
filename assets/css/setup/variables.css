@@ -1,11 +1,15 @@
 :root {
-    --mail-sidebar-bg-color: #eaf1fb;
-    --mail-li-bg-color: #f2f6fc;
-    --mail-input-bg-color: #a8c7fa;
-
+    --main-bgc: lightblue;
+    
+    --mail-sidebar-bgc: #eaf1fb;
+    --mail-search-bgc: #eaf1fb;
+    --mail-li-bgc: #f2f6fc;
+    
+    
+    --mail-li-color: #202124;
+    
     --mail-font-family-1: Arial, Helvetica, sans-serif;
     --mail-font-family-2: 'Roboto', sans-serif;
-    --main-bg-color: lightblue;
 
     --keep-sidebar-active-bgc: #feefc3;
     --keep-sidebar-hover-bgc: #f1f3f4;

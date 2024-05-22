@@ -1,9 +1,7 @@
  /* mail list */
  .mail-list {
     font-family: var(--mail-font-family-1);
-    /* letter-spacing: 1px; */
 
-    background: var(--mail-li-bg-color);
     color: rgb(72, 72, 72);
  }
 
@@ -11,6 +9,7 @@
     display: grid;
     grid-auto-flow: column;
     align-items: center;
+    color: var(--mail-li-color);
  }
 
  .mail-list .mail-preview {
@@ -26,7 +25,6 @@
  .mail-list .mail-preview h2,
  span {
     font-weight: bold;
-    color: black;
  }
 
  .mail-list .remove-mail {
