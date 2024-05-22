@@ -1,61 +1,18 @@
 
 import { storageService } from "../../../services/async-storage.service.js"
 
-
-const notesInitial = [
-    {
-        id: 'n101',
-        createdAt: 1112222,
-        type: 'NoteTxt',
-        isPinned: true,
-        style: {
-            backgroundColor: 'rgb(173,173,215)'
-        },
-        info: {
-            txt: 'Fullstack Me Baby!'
-        }
-    },
-    {
-        id: 'n102',
-        type: 'NoteImg',
-        isPinned: false,
-        info: {
-            url: 'http://some-img/me',
-            title: 'Bobi and Me'
-        },
-        style: {
-            backgroundColor: 'rgb(173,173,215)'
-        }
-    },
-    {
-        id: 'n103',
-        type: 'NoteTodos',
-        isPinned: false,
-        info: {
-            title: 'Get my stuff together',
-            todos: [
-                { txt: 'Driving license', doneAt: null },
-                { txt: 'Coding power', doneAt: 187111111 }
-            ]
-        }
-    }
-]
-
 const NOTES_KEY = 'notesDB'
-const notes = storageService.loadFromStorage(NOTES_KEY) || []
-createNotes()
+_createNotes()
 
 export const notesService = {
     getNotes,
     removeNote,
-    addNote,
+    saveNote,
+    getEmptyNote,
+    getNoteById,
 }
 
 window.bs = notesService
-
-// function getNotes() {
-//     return storageService.loadFromStorage(NOTES_KEY)
-// }
 
 function getNotes() {
     return new Promise((resolve) => {
@@ -63,20 +20,78 @@ function getNotes() {
     })
 }
 
+function getNoteById(noteId) {
+    const notes = storageService.loadFromStorage(NOTES_KEY)
+    const note = notes.find((note) => note.id === noteId)
+    return Promise.resolve(note)
+}
+
 function removeNote(noteId) {
     return storageService.remove(NOTES_KEY, noteId)
 }
 
-function addNote(note) {
+function saveNote(note) {
     return storageService.post(NOTES_KEY, note)
 }
 
 function updateNote() {
 }
 
-function createNotes() {
-    if (!notes.length) {
-        storageService.saveToStorage(NOTES_KEY, notesInitial)
+function getEmptyNote(createdAt = '', type = '', isPinned = '', backgroundColor = '', txt = '') {
+    return {
+        createdAt,
+        type,
+        isPinned,
+        style: {
+            backgroundColor,
+        },
+        info: {
+            txt,
+        }
     }
-    // storageService.saveToStorage(NOTES_KEY, notesInitial)
+}
+
+function _createNotes() {
+    let notes = storageService.loadFromStorage(NOTES_KEY)
+
+    if (!notes || !notes.length) {
+        notes = {
+            id: 'n101',
+            createdAt: 1112222,
+            type: 'NoteTxt',
+            isPinned: true,
+            style: {
+                backgroundColor: 'rgb(173,173,215)'
+            },
+            info: {
+                txt: 'Fullstack Me Baby!'
+            }
+        },
+        {
+            id: 'n102',
+            type: 'NoteImg',
+            isPinned: false,
+            info: {
+                url: 'http://some-img/me',
+                title: 'Bobi and Me'
+            },
+            style: {
+                backgroundColor: 'rgb(173,173,215)'
+            }
+        },
+        {
+            id: 'n103',
+            type: 'NoteTodos',
+            isPinned: false,
+            info: {
+                title: 'Get my stuff together',
+                todos: [
+                    { txt: 'Driving license', doneAt: null },
+                    { txt: 'Coding power', doneAt: 187111111 }
+                ]
+            }
+        }
+    }
+
+    // return notes
 }
