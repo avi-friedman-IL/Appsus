@@ -27,11 +27,7 @@ img {
     object-fit: cover;
 }
 
-<<<<<<< HEAD
-ul {
-=======
-li {
->>>>>>> f-keep-app
+ul li {
     list-style: none;
     color: rgb(65, 63, 63);
 }

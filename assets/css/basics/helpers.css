@@ -22,7 +22,6 @@
     display: grid;
 }
 
-<<<<<<< HEAD
 /* fonts */
 @font-face {
     font-family: roboto;
@@ -44,8 +43,6 @@
     content: '\f2ed';
 }
 
-=======
 .btn {
     cursor: pointer;
 }
->>>>>>> f-keep-app
