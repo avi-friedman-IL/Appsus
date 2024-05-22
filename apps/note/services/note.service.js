@@ -39,17 +39,14 @@ function saveNote(note) {
 function updateNote() {
 }
 
-function getEmptyNote(createdAt = '', type = '', isPinned = '', backgroundColor = '', txt = '') {
+function getEmptyNote() {
     return {
-        createdAt,
-        type,
-        isPinned,
-        style: {
-            backgroundColor,
-        },
-        info: {
-            txt,
-        }
+        id: "",
+        createdAt: '',
+        type: "",
+        isPinned: false,
+        style: { backgroundColor: "" },
+        info: { title: "", todos: [], url: '' },
     }
 }
 
