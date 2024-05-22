@@ -59,6 +59,10 @@ function getFilterFromSearchParams(searchParams) {
 
 function get(mailId) {
     return storageService.get(MAIL_KEY, mailId)
+        .then(mail => {
+            mail = _setNextPrevMailId(mail)
+            return mail
+        })
 }
 
 function remove(mailId) {
@@ -71,4 +75,15 @@ function save(mail) {
     } else {
         return storageService.post(MAIL_KEY, mail)
     }
+}
+
+function _setNextPrevMailId(mail) {
+    return storageService.query(MAIL_KEY).then((mails) => {
+        const mailIdx = mails.findIndex((currMail) => currMail.id === mail.id)
+        const nextMail = mails[mailIdx + 1] ? mails[mailIdx + 1] : mails[0]
+        const prevMail = mails[mailIdx - 1] ? mails[mailIdx - 1] : mails[mails.length - 1]
+        mail.nextMailId = nextMail.id
+        mail.prevMailId = prevMail.id
+        return mail
+    })
 }

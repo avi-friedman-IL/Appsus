@@ -22,8 +22,7 @@
     font-size: 1.2em;
  }
 
- .mail-list .mail-preview h2,
- span {
+ .mail-list .mail-preview {
     font-weight: bold;
  }
 
