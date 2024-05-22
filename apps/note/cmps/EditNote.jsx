@@ -16,27 +16,57 @@ export function EditNote() {
     notesService.getNoteById(noteId).then(setNote);
   }, [noteId]);
 
+  // function handleChange(ev) {
+  //   const { name, value } = ev.target;
+
+  //   setNote((prevNote) => ({
+  //     ...prevNote,
+  //     info: {
+  //       ...prevNote.info,
+  //       [name]: value,
+  //     },
+  //     style: {
+  //       backgroundColor: value,
+  //     },
+  //   }));
+  //   console.log(note);
+  // }
+
   function handleChange(ev) {
     const { name, value } = ev.target;
-    setNote((prevNote) => ({
-      ...prevNote,
-      info: {
-        ...prevNote.info,
-        [name]: value,
-      },
-    }));
-    console.log(note);
+    if (name === "title") {
+      setNote((prevNote) => ({
+        ...prevNote,
+        info: {
+          ...prevNote.info,
+          [name]: value,
+        },
+      }));
+    } else if (name === "backgroundColor") {
+      setNote((prevNote) => ({
+        ...prevNote,
+        style: {
+          ...prevNote.style,
+          backgroundColor: value,
+        },
+      }));
+    }
   }
 
   function saveNote(ev) {
     ev.preventDefault();
+    const noteToSave = {
+      ...note,
+      info: { ...note.info, title: note.info.title },
+      style: { ...note.style },
+    };
     notesService
-      .saveNote(note)
+      .saveNote(noteToSave)
       .then(() => onGoBack())
       .catch((err) => {
         console.log("Error:", err);
       });
-    console.log(note);
+    console.log(noteToSave);
   }
 
   function onGoBack() {
@@ -55,6 +85,19 @@ export function EditNote() {
             onChange={handleChange}
           />
         </label>
+        <label>
+          style background color:
+          <input
+            type="color"
+            placeholder="edit"
+            name="backgroundColor"
+            onChange={handleChange}
+          />
+        </label>
+        <button type="submit">Save</button>
+        <button type="button" onClick={onGoBack}>
+          Go Back
+        </button>
       </form>
     </section>
   );

@@ -33,10 +33,23 @@ function removeNote(noteId) {
 }
 
 function saveNote(note) {
-    return storageService.post(NOTES_KEY, note)
+    let savedNote
+    if (note.id) saveNote = updateNote(note)
+    else savedNote = addNote(note)
+    return Promise.resolve(savedNote)
+}
+function addNote(note) {
+    let notes = utilService.loadFromStorage(NOTES_KEY)
+    notes = [...notes, note]
+    utilService.saveToStorage(NOTES_KEY, notes)
+    return note
 }
 
-function updateNote() {
+function updateNote(note) {
+    let notes = utilService.loadFromStorage(NOTES_KEY)
+    notes = notes.map(n => n.id === note.id ? note : n)
+    utilService.saveToStorage(NOTES_KEY, notes)
+    return notes
 }
 
 function getEmptyNote() {
