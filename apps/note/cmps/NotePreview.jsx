@@ -1,4 +1,4 @@
-export function NotePreview({ note }) {
+export function NotePreview({ note, onRemoveNote }) {
   return (
     <div className="note-card" style={note.style}>
       <p>{note.info.txt ? note.info.txt : ""}</p>
@@ -13,10 +13,12 @@ export function NotePreview({ note }) {
       </ul>
 
       <div className="icons">
-        <span>✖️</span>
-        <span>
-          <img src="../assets/img/delete_24dp_FILL0_wght400_GRAD0_opsz24.png" />
-        </span>
+        <div className="btn remove-btn" onClick={() => onRemoveNote(note.id)}>
+          <i className="fa-regular fa-trash-can"></i>
+        </div>
+        <div className="btn pin-btn">
+          <i className="fa-solid fa-thumbtack"></i>
+        </div>
       </div>
     </div>
   );
