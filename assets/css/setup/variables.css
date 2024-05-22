@@ -4,9 +4,13 @@
     --mail-input-bg-color: #a8c7fa;
 
     --mail-font-family-1: Arial, Helvetica, sans-serif;
-    --mail-font-family-2: Roboto;
+    --mail-font-family-2: 'Roboto', sans-serif;
     --main-bg-color: lightblue;
 
-    --initial-keep-color: #feefc3;
-    --second-keep-color: rgb(190, 187, 187);
+    --keep-sidebar-active-bgc: #feefc3;
+    --keep-sidebar-hover-bgc: #f1f3f4;
+    --keep-bgc-1: #fff;
+    --keep-bgc-2: #e8eaed;
+    --keep-text-color-1: #000;
+    --keep-text-color-2: #5f6368;
 }
