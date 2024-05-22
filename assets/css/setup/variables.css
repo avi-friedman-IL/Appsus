@@ -10,7 +10,8 @@
     --keep-sidebar-active-bgc: #feefc3;
     --keep-sidebar-hover-bgc: #f1f3f4;
     --keep-bgc-1: #fff;
-    --keep-bgc-2: #e8eaed;
+    --keep-bgc-2: rgba(0, 0, 0, 0.1);
     --keep-text-color-1: #000;
     --keep-text-color-2: #5f6368;
+
 }
