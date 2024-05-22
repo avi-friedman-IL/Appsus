@@ -1,5 +1,7 @@
 
 import { storageService } from "../../../services/async-storage.service.js"
+import { utilService } from "../../../services/util.service.js"
+
 
 const NOTES_KEY = 'notesDB'
 _createNotes()
@@ -16,12 +18,12 @@ window.bs = notesService
 
 function getNotes() {
     return new Promise((resolve) => {
-        resolve(storageService.loadFromStorage(NOTES_KEY))
+        resolve(utilService.loadFromStorage(NOTES_KEY))
     })
 }
 
 function getNoteById(noteId) {
-    const notes = storageService.loadFromStorage(NOTES_KEY)
+    const notes = utilService.loadFromStorage(NOTES_KEY)
     const note = notes.find((note) => note.id === noteId)
     return Promise.resolve(note)
 }
@@ -52,7 +54,7 @@ function getEmptyNote(createdAt = '', type = '', isPinned = '', backgroundColor 
 }
 
 function _createNotes() {
-    let notes = storageService.loadFromStorage(NOTES_KEY)
+    let notes = utilService.loadFromStorage(NOTES_KEY)
 
     if (!notes || !notes.length) {
         notes = {
@@ -91,6 +93,7 @@ function _createNotes() {
                 ]
             }
         }
+        utilService.saveToStorage(NOTES_KEY, notes)
     }
 
     return notes
