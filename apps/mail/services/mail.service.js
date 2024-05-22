@@ -14,7 +14,7 @@ export const mailService = {
 function _createEmails() {
     let emails = utilService.loadFromStorage(MAIL_KEY)
 
-    if (emails || !emails.length) {
+    if (!emails || !emails.length) {
         emails = []
         const fromTos = ['momo@momo.com', 'user@appsus.com']
         for (let i = 0; i < 20; i++) {
