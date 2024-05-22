@@ -42,24 +42,25 @@ const notesInitial = [
 ]
 
 const NOTES_KEY = 'notesDB'
-const notes = storageService.loadFromStorage(NOTES_KEY) || createNotes()
-
+const notes = storageService.loadFromStorage(NOTES_KEY) || []
+createNotes()
 
 export const notesService = {
     getNotes,
     removeNote,
-    saveNote,
     addNote,
 }
 
 window.bs = notesService
 
-function getNotes() {
-    return storageService.loadFromStorage(NOTES_KEY)
-}
+// function getNotes() {
+//     return storageService.loadFromStorage(NOTES_KEY)
+// }
 
-function saveNote(note) {
-    return storageService.post(NOTES_KEY, note)
+function getNotes() {
+    return new Promise((resolve) => {
+        resolve(storageService.loadFromStorage(NOTES_KEY))
+    })
 }
 
 function removeNote(noteId) {
@@ -67,12 +68,15 @@ function removeNote(noteId) {
 }
 
 function addNote(note) {
-    storageService.post(NOTES_KEY, note)
+    return storageService.post(NOTES_KEY, note)
 }
 
 function updateNote() {
 }
 
 function createNotes() {
-    storageService.saveToStorage(NOTES_KEY, notes)
+    if (!notes.length) {
+        storageService.saveToStorage(NOTES_KEY, notesInitial)
+    }
+    // storageService.saveToStorage(NOTES_KEY, notesInitial)
 }
