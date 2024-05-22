@@ -93,5 +93,5 @@ function _createNotes() {
         }
     }
 
-    // return notes
+    return notes
 }
