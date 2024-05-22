@@ -34,22 +34,26 @@ export function EditNote() {
 
   function handleChange(ev) {
     const { name, value } = ev.target;
-    if (name === "title") {
-      setNote((prevNote) => ({
-        ...prevNote,
-        info: {
-          ...prevNote.info,
-          [name]: value,
-        },
-      }));
-    } else if (name === "backgroundColor") {
-      setNote((prevNote) => ({
-        ...prevNote,
-        style: {
-          ...prevNote.style,
-          backgroundColor: value,
-        },
-      }));
+    switch (name) {
+      case "title":
+        setNote((prevNote) => ({
+          ...prevNote,
+          info: {
+            ...prevNote.info,
+            [name]: value,
+          },
+        }));
+        break;
+
+      case "backgroundColor":
+        setNote((prevNote) => ({
+          ...prevNote,
+          style: {
+            ...prevNote.style,
+            backgroundColor: value,
+          },
+        }));
+        break;
     }
   }
 
