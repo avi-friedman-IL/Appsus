@@ -1,0 +1,7 @@
+.mail-filter input {
+    padding: 1.2em;
+    border: 0;
+    border-radius: 3em;
+    font-size: 1.2em;
+    background-color: var(--mail-li-bg-color);
+}
