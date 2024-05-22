@@ -1,1 +1,11 @@
  /* mail index  */
+ .mail-index {
+    display: grid;
+ }
+
+ .folder-and-list {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: start;
+    padding: 1em;
+ }

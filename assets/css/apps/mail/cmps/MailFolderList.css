@@ -1,0 +1,8 @@
+.mail-folder-list {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    gap: 10px;
+
+    background-color: var(--mail-sidebar-bgc);
+}

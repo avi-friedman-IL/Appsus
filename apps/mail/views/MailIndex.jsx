@@ -3,6 +3,7 @@ const { Link, useSearchParams } = ReactRouterDOM
 
 
 import { MailFilter } from "../cmps/MailFilter.jsx"
+import { MailFolderList } from "../cmps/MailFolderList.jsx"
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService } from "../services/mail.service.js"
 
@@ -15,9 +16,9 @@ export function MailIndex() {
 
     function removeMail(mailId) {
         mailService.remove(mailId)
-        .then(() => {
-            setMails(prevMails => prevMails.filter(mail => mail.id !== mailId))
-        })
+            .then(() => {
+                setMails(prevMails => prevMails.filter(mail => mail.id !== mailId))
+            })
     }
 
     useEffect(() => {
@@ -27,12 +28,15 @@ export function MailIndex() {
     }, [filterBy])
 
     function onSetFilterBy(newFilter) {
-        setFilterBy({...newFilter})
+        setFilterBy({ ...newFilter })
     }
 
     return <section className="mail-index">
-        {<MailFilter filterBy={filterBy} onFilter={onSetFilterBy}/>}
-        {<MailList mails={mails} onRemove={removeMail}/>}
+        {<MailFilter filterBy={filterBy} onFilter={onSetFilterBy} />}
+        <div className="folder-and-list">
+            {<MailFolderList />}
+            {<MailList mails={mails} onRemove={removeMail} />}
+        </div>
     </section>
 }
 
