@@ -22,6 +22,19 @@ function getNotes() {
     })
 }
 
+// function getNotes() {
+//     return new Promise((resolve, reject) => {
+//         const notes = utilService.loadFromStorage(NOTES_KEY);
+//         if (notes) resolve(notes);
+//         else reject('No notes found');
+//     });
+// }
+
+// function getNotes() {
+//     const getNotes = utilService.loadFromStorage(NOTES_KEY)
+//     return getNotes
+// }
+
 function getNoteById(noteId) {
     const notes = utilService.loadFromStorage(NOTES_KEY)
     const note = notes.find((note) => note.id === noteId)
@@ -57,44 +70,45 @@ function _createNotes() {
     let notes = utilService.loadFromStorage(NOTES_KEY)
 
     if (!notes || !notes.length) {
-        notes = {
-            id: 'n101',
-            createdAt: 1112222,
-            type: 'NoteTxt',
-            isPinned: true,
-            style: {
-                backgroundColor: 'rgb(173,173,215)'
+        notes = [
+            {
+                id: 'n101',
+                createdAt: 1112222,
+                type: 'NoteTxt',
+                isPinned: true,
+                style: {
+                    backgroundColor: 'rgb(173,173,215)'
+                },
+                info: {
+                    txt: 'Fullstack Me Baby!'
+                }
             },
-            info: {
-                txt: 'Fullstack Me Baby!'
-            }
-        },
-        {
-            id: 'n102',
-            type: 'NoteImg',
-            isPinned: false,
-            info: {
-                url: 'http://some-img/me',
-                title: 'Bobi and Me'
+            {
+                id: 'n102',
+                type: 'NoteImg',
+                isPinned: false,
+                info: {
+                    url: 'http://some-img/me',
+                    title: 'Bobi and Me'
+                },
+                style: {
+                    backgroundColor: 'rgb(173,173,215)'
+                }
             },
-            style: {
-                backgroundColor: 'rgb(173,173,215)'
+            {
+                id: 'n103',
+                type: 'NoteTodos',
+                isPinned: false,
+                info: {
+                    title: 'Get my stuff together',
+                    todos: [
+                        { txt: 'Driving license', doneAt: null },
+                        { txt: 'Coding power', doneAt: 187111111 }
+                    ]
+                }
             }
-        },
-        {
-            id: 'n103',
-            type: 'NoteTodos',
-            isPinned: false,
-            info: {
-                title: 'Get my stuff together',
-                todos: [
-                    { txt: 'Driving license', doneAt: null },
-                    { txt: 'Coding power', doneAt: 187111111 }
-                ]
-            }
-        }
+        ]
         utilService.saveToStorage(NOTES_KEY, notes)
     }
-
     return notes
 }
