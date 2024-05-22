@@ -1,16 +1,18 @@
- /* note index */
  * {
      box-sizing: border-box;
  }
 
  .add-form {
-     border: 1px solid black;
+     border: 1px solid var(--keep-bgc-2);
+     box-shadow: 5px 5px 5px var(--keep-bgc-2);
      width: fit-content;
+     border-radius: 10px;
  }
 
  .add-form input[type='text'] {
      border: none;
      outline: none;
+     padding: 1em;
  }
 
  .add-form input[type="text"]:focus {
@@ -18,6 +20,10 @@
  }
 
  .add-form .btn {
+     width: 3em;
+     height: 3em;
      border: transparent;
      background-color: transparent;
+     padding: 1em;
+     border-radius: 50%;
  }
