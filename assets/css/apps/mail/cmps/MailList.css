@@ -41,15 +41,19 @@
     background-color: var(--mail-li-bgc);
     font-weight: normal;
  }
- 
+
  .mail-list {
     background-color: white;
  }
 
- .mail-list span {
-    font-weight: bold;
+ .mail-list h2 {
+    font-weight: 600;
  }
  
+ .mail-list span {
+    font-weight: 600;
+ }
+
  .mail-list li.read h2 {
     font-weight: normal;
  }
