@@ -22,19 +22,6 @@ function getNotes() {
     })
 }
 
-// function getNotes() {
-//     return new Promise((resolve, reject) => {
-//         const notes = utilService.loadFromStorage(NOTES_KEY);
-//         if (notes) resolve(notes);
-//         else reject('No notes found');
-//     });
-// }
-
-// function getNotes() {
-//     const getNotes = utilService.loadFromStorage(NOTES_KEY)
-//     return getNotes
-// }
-
 function getNoteById(noteId) {
     const notes = utilService.loadFromStorage(NOTES_KEY)
     const note = notes.find((note) => note.id === noteId)
@@ -46,23 +33,33 @@ function removeNote(noteId) {
 }
 
 function saveNote(note) {
-    return storageService.post(NOTES_KEY, note)
+    let savedNote
+    if (note.id) saveNote = updateNote(note)
+    else savedNote = addNote(note)
+    return Promise.resolve(savedNote)
+}
+function addNote(note) {
+    let notes = utilService.loadFromStorage(NOTES_KEY)
+    notes = [...notes, note]
+    utilService.saveToStorage(NOTES_KEY, notes)
+    return note
 }
 
-function updateNote() {
+function updateNote(note) {
+    let notes = utilService.loadFromStorage(NOTES_KEY)
+    notes = notes.map(n => n.id === note.id ? note : n)
+    utilService.saveToStorage(NOTES_KEY, notes)
+    return notes
 }
 
-function getEmptyNote(createdAt = '', type = '', isPinned = '', backgroundColor = '', txt = '') {
+function getEmptyNote() {
     return {
-        createdAt,
-        type,
-        isPinned,
-        style: {
-            backgroundColor,
-        },
-        info: {
-            txt,
-        }
+        id: "",
+        createdAt: '',
+        type: "",
+        isPinned: false,
+        style: { backgroundColor: "" },
+        info: { title: "", todos: [], url: '' },
     }
 }
 
