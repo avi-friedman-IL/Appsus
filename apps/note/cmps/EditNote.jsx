@@ -6,31 +6,18 @@ import { notesService } from "../services/note.service.js";
 
 export function EditNote() {
   const [note, setNote] = useState({ info: { title: "" } });
-  const [color, setColor] = useState("");
+  const [bgColor, setBgColor] = useState("#FFC0CB");
 
   const { noteId } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!noteId) return;
-    notesService.getNoteById(noteId).then(setNote);
+    notesService
+      .getNoteById(noteId)
+      .then(setNote)
+      .then((note) => setBgColor(note.style.backgroundColor));
   }, [noteId]);
-
-  // function handleChange(ev) {
-  //   const { name, value } = ev.target;
-
-  //   setNote((prevNote) => ({
-  //     ...prevNote,
-  //     info: {
-  //       ...prevNote.info,
-  //       [name]: value,
-  //     },
-  //     style: {
-  //       backgroundColor: value,
-  //     },
-  //   }));
-  //   console.log(note);
-  // }
 
   function handleChange(ev) {
     const { name, value } = ev.target;
@@ -95,6 +82,7 @@ export function EditNote() {
             type="color"
             placeholder="edit"
             name="backgroundColor"
+            value={bgColor}
             onChange={handleChange}
           />
         </label>
