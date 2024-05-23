@@ -9,6 +9,8 @@ _createNotes()
 export const notesService = {
     getNotes,
     removeNote,
+    addNote,
+    updateNote,
     saveNote,
     getEmptyNote,
     getNoteById,
@@ -23,8 +25,11 @@ function getNotes() {
 }
 
 function getNoteById(noteId) {
-    const notes = utilService.loadFromStorage(NOTES_KEY)
-    const note = notes.find((note) => note.id === noteId)
+    // const notes = utilService.loadFromStorage(NOTES_KEY)
+    // const note = notes.find((note) => note.id === noteId)
+    // return Promise.resolve(note)
+    const note = storageService.get(NOTES_KEY, noteId)
+    // return note
     return Promise.resolve(note)
 }
 
@@ -34,13 +39,21 @@ function removeNote(noteId) {
 
 function saveNote(note) {
     let savedNote
-    if (note.id) saveNote = updateNote(note)
+    if (note.id) savedNote = updateNote(note)
     else savedNote = addNote(note)
     return Promise.resolve(savedNote)
+    // if (note.id) {
+    //     return storageService.put(NOTES_KEY, note)
+    // } else {
+    //     note['id'] = ''
+    //     return storageService.post(NOTES_KEY, note)
+    // }
 }
+
 function addNote(note) {
     let notes = utilService.loadFromStorage(NOTES_KEY)
     notes = [...notes, note]
+    note['id'] = utilService.makeId()
     utilService.saveToStorage(NOTES_KEY, notes)
     return note
 }
@@ -59,7 +72,7 @@ function getEmptyNote() {
         type: "",
         isPinned: false,
         style: { backgroundColor: "" },
-        info: { title: "", todos: [], url: '' },
+        info: { txt: '', title: "", todos: [], url: '' },
     }
 }
 
@@ -77,16 +90,23 @@ function _createNotes() {
                     backgroundColor: 'rgb(173,173,215)'
                 },
                 info: {
-                    txt: 'Fullstack Me Baby!'
-                }
+                    title: '',
+                    txt: 'Fullstack Me Baby!',
+                    url: '',
+                    todos: [],
+                },
+                style: { backgroundColor: '' }
             },
             {
                 id: 'n102',
+                createdAt: 1112223,
                 type: 'NoteImg',
                 isPinned: false,
                 info: {
+                    title: 'Bobi and Me',
+                    txt: '',
                     url: 'http://some-img/me',
-                    title: 'Bobi and Me'
+                    todos: [],
                 },
                 style: {
                     backgroundColor: 'rgb(173,173,215)'
@@ -94,16 +114,25 @@ function _createNotes() {
             },
             {
                 id: 'n103',
+                createdAt: 1112224,
                 type: 'NoteTodos',
                 isPinned: false,
                 info: {
-                    title: 'Get my stuff together',
+                    title: 'Get my stuff together and lets go',
+                    txt: '',
+                    url: '',
                     todos: [
                         { txt: 'Driving license', doneAt: null },
-                        { txt: 'Coding power', doneAt: 187111111 }
-                    ]
-                }
-            }
+                        { txt: 'Coding power', doneAt: 187111111 },
+                        { txt: 'Coding power', doneAt: 187111111 },
+                        { txt: 'Coding power', doneAt: 187111111 },
+                        { txt: 'Coding power', doneAt: 187111111 },
+                        { txt: 'Coding power', doneAt: 187111111 },
+                        { txt: 'Coding power', doneAt: 187111111 },
+                    ],
+                },
+                style: { backgroundColor: '' }
+            },
         ]
         utilService.saveToStorage(NOTES_KEY, notes)
     }

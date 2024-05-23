@@ -4,7 +4,7 @@
    display: grid;
    grid-template-columns: 20% 1fr;
    gap: 10px;
-
+   letter-spacing: .75px;
    background-color: var(--mail-index-bgc);
  }
 

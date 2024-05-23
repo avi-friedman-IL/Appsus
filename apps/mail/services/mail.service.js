@@ -20,7 +20,7 @@ function _createEmails() {
         for (let i = 0; i < 20; i++) {
             const email = {
                 id: utilService.makeId(),
-                subject: 'Miss you!',
+                subject: utilService.makeLorem(5),
                 body: utilService.makeLorem(40),
                 isRead: Math.random() > 0.7,
                 sentAt: 1551133930594,
