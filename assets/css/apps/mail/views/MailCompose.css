@@ -1,0 +1,7 @@
+.mail-compose {
+    width: max-content;
+    display: grid;
+    position: absolute;
+    bottom: 1em;
+    z-index: 1;
+}

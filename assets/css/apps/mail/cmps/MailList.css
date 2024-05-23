@@ -18,8 +18,8 @@
  }
 
  .mail-list li:hover {
-    box-shadow:rgb(218, 220, 224) 1px 0px 0px 0px inset,
-       rgb(218, 220, 224) -1px 0px 0px 0px inset,
+    box-shadow: rgb(218, 220, 224) 1px -1px 0px 0px inset,
+       rgb(218, 220, 224) -1px -1px 0px 0px inset,
        rgba(60, 64, 67, 0.3) 0px 1px 0px 0px,
        rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
  }
@@ -57,7 +57,8 @@
     border: 0;
     cursor: pointer;
     background-color: inherit;
-   }
-   .mail-list li:hover .remove-mail {
-      display: block;
-   }
+ }
+
+ .mail-list li:hover .remove-mail {
+    display: block;
+ }

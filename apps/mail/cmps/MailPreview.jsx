@@ -7,7 +7,7 @@ export function MailPreview({ mail }) {
 
 
             <h2>{mail.from}</h2>
-            <p><span>{mail.subject} - </span>{mail.body.substring(0, 40)}</p>
+            <p><span>{mail.subject} - </span>{mail.body.substring(0, 80)}</p>
         </section>
     )
 }

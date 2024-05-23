@@ -43,8 +43,13 @@ function query(filterBy = {}) {
                 const regExp = new RegExp(filterBy.txt, 'i')
                 emails = emails.filter(email => regExp.test(email.from) || regExp.test(email.subject) || regExp.test(email.body))
             }
-            if (filterBy.sentAt) {
-                emails = emails.filter(email => email.sentAt >= filterBy.sentAt)
+            if (filterBy.status) {
+                if (filterBy.status === 'Index') {
+                    emails = emails
+                }
+                if (filterBy.status === 'Sent') {
+                    emails = emails.filter(email => email.from === 'momo@momo.com')
+                }
             }
 
             return emails
@@ -54,6 +59,7 @@ function query(filterBy = {}) {
 function getFilterFromSearchParams(searchParams) {
     return {
         txt: searchParams.get('txt') || '',
+        status: searchParams.get('status') || '',
     }
 }
 

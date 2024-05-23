@@ -1,7 +1,9 @@
 header {
-
+    position: sticky;
+    top: 0;
     background: lightcyan;
     border-bottom: 2px solid white;
+    z-index: 1;
 }
 
 .app-header {

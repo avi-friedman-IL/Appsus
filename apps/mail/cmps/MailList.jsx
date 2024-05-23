@@ -12,4 +12,5 @@ export function MailList({ mails, onRemove }) {
             </li>
         )}
     </ul>
+
 }

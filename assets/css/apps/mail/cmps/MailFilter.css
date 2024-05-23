@@ -1,8 +1,22 @@
-.mail-filter input {
+.mail-filter{
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 2em 1fr;
+    align-items: center;
     width: 50%;
-    padding: 1em;
+    border: 0;
+    background-color: var(--mail-search-bgc);
+    border-radius: 3em;
+}
+
+.mail-filter input{
+    padding-inline-start: 1em;
     border: 0;
     border-radius: 3em;
     font-size: 14px;
-    background-color: var(--mail-search-bgc);
+    background-color: inherit;
+}
+
+.mail-filter>*{
+    padding-inline-start: 1em;
 }

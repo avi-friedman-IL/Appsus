@@ -26,8 +26,22 @@
     font-family: fa;
 }
 
+.fa.fa-search-mail::before {
+    content: '\f002';
+}
+.fa.fa-compose-btn-mail::before {
+    content: '\f304';
+}
 .fa.fa-remove-mail::before {
     content: '\f2ed';
+}
+
+.fa.fa-index-mail::before {
+   content: '\f0e0';
+}
+
+.fa.fa-sent-mail::before {
+   content: '\f1d8';
 }
 
 .btn {
