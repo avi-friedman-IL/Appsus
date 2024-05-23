@@ -12,3 +12,12 @@
     font-family: Product-sans;
     src: url(/assets/fonts/Product\ Sans\ Regular.ttf);
 }
+
+/* font awsome */
+@font-face {
+    font-family: fa;
+    src: url(/assets/fonts/fa-brands-400.ttf);
+    src: url(/assets/fonts/fa-solid-900.ttf);
+}
+
+

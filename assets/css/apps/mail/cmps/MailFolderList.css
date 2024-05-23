@@ -1,8 +1,20 @@
 .mail-folder-list {
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    gap: 10px;
+    /* text-align: center; */
+    background-color: var(--mail-index-bgc);
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-    background-color: var(--mail-sidebar-bgc);
+.mail-folder-list>* {
+    padding: 10px;
+    border-radius: 3em;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.mail-folder-list>*:hover {
+    background-color: var(--mail-sidebar-hover-bgc);
+}
+
+.mail-folder-list>*.select {
+    background-color: var(--mail-sidebar-select-bgc);
 }

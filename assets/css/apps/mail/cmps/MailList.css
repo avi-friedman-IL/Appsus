@@ -1,34 +1,63 @@
  /* mail list */
  .mail-list {
-    font-family: var(--mail-font-family-1);
-
-    color: rgb(72, 72, 72);
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
  }
 
  .mail-list li {
     display: grid;
     grid-auto-flow: column;
     align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 12px;
     color: var(--mail-li-color);
+    box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+    cursor: pointer;
  }
 
- .mail-list .mail-preview {
+ .mail-list li:hover {
+    box-shadow:rgb(218, 220, 224) 1px 0px 0px 0px inset,
+       rgb(218, 220, 224) -1px 0px 0px 0px inset,
+       rgba(60, 64, 67, 0.3) 0px 1px 0px 0px,
+       rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+ }
+
+ .mail-list li section {
     display: grid;
     grid-auto-flow: column;
-    justify-items: center;
     align-items: center;
-    gap: 15px;
-    padding: 1em;
-    font-size: 1.2em;
+    gap: 20px;
  }
 
- .mail-list .mail-preview {
+ .mail-list li section>* {
+    color: #202124;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+ }
+
+ .mail-list li.read {
+    background-color: var(--mail-li-bgc);
+    font-weight: normal;
+ }
+
+ .mail-list li.read h2 {
+    font-weight: normal;
+ }
+
+ .mail-list {
     font-weight: bold;
+    background-color: white;
  }
 
  .mail-list .remove-mail {
+    display: none;
     width: max-content;
     border: 0;
     cursor: pointer;
     background-color: inherit;
- }
+   }
+   .mail-list li:hover .remove-mail {
+      display: block;
+   }

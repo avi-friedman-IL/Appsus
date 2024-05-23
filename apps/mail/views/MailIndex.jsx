@@ -33,10 +33,10 @@ export function MailIndex() {
 
     return <section className="mail-index">
         {<MailFilter filterBy={filterBy} onFilter={onSetFilterBy} />}
-        <div className="folder-and-list">
+        {/* <div className="folder-and-list"> */}
             {<MailFolderList />}
             {<MailList mails={mails} onRemove={removeMail} />}
-        </div>
+        {/* </div> */}
     </section>
 }
 

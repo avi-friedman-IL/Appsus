@@ -1,9 +1,12 @@
 :root {
     --main-bgc: lightblue;
     
-    --mail-sidebar-bgc: #f6f8fc;
+    --mail-index-bgc: #f6f8fc;
     --mail-search-bgc: #eaf1fb;
     --mail-li-bgc: #f2f6fc;
+
+    --mail-sidebar-hover-bgc:#dadce0;
+    --mail-sidebar-select-bgc:#d3e3fd;
     
     
     --mail-li-color: #202124;
