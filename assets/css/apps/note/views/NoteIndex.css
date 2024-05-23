@@ -2,28 +2,16 @@
      box-sizing: border-box;
  }
 
- .add-form {
-     border: 1px solid var(--keep-bgc-2);
-     box-shadow: 5px 5px 5px var(--keep-bgc-2);
-     width: fit-content;
-     border-radius: 10px;
+ .keep-index {
+     display: grid;
+     grid-template-columns: 0.5fr 3fr;
+     column-gap: 3em;
  }
 
- .add-form input[type='text'] {
-     border: none;
-     outline: none;
-     padding: 1em;
+ .keep-index .notes-add-input {
+     grid-column: 2/3;
  }
 
- .add-form input[type="text"]:focus {
-     outline: none;
- }
-
- .add-form .btn {
-     width: 3em;
-     height: 3em;
-     border: transparent;
-     background-color: transparent;
-     padding: 1em;
-     border-radius: 50%;
+ .keep-index .note-list {
+     grid-column: 2/3;
  }
