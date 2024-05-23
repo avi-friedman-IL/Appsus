@@ -17,6 +17,10 @@
     background-color: inherit;
 }
 
+.mail-filter input:focus-visible{
+    outline: none;
+}
+
 .mail-filter>*{
     padding-inline-start: 1em;
 }
