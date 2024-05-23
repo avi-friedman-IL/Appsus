@@ -9,6 +9,8 @@ _createNotes()
 export const notesService = {
     getNotes,
     removeNote,
+    addNote,
+    updateNote,
     saveNote,
     getEmptyNote,
     getNoteById,
@@ -33,11 +35,18 @@ function removeNote(noteId) {
 }
 
 function saveNote(note) {
-    let savedNote
-    if (note.id) saveNote = updateNote(note)
-    else savedNote = addNote(note)
-    return Promise.resolve(savedNote)
+    // let savedNote
+    // if (note.id) savedNote = updateNote(note)
+    // else savedNote = addNote(note)
+    // return Promise.resolve(savedNote)
+    if (note.id) {
+        return storageService.put(NOTES_KEY, note)
+    } else {
+        note['id'] = utilService.makeId()
+        return storageService.post(NOTES_KEY, note)
+    }
 }
+
 function addNote(note) {
     let notes = utilService.loadFromStorage(NOTES_KEY)
     notes = [...notes, note]

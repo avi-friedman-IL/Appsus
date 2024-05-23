@@ -13,10 +13,8 @@ export function EditNote() {
 
   useEffect(() => {
     if (!noteId) return;
-    notesService
-      .getNoteById(noteId)
-      .then(setNote)
-      .then((note) => setBgColor(note.style.backgroundColor));
+    notesService.getNoteById(noteId).then(setNote);
+    // .then((note) => setBgColor(note.style.backgroundColor));
   }, [noteId]);
 
   function handleChange(ev) {

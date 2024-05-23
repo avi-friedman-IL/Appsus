@@ -1,6 +1,7 @@
 const { useState, useEffect } = React;
 
 import { utilService } from "../../../services/util.service.js";
+import { notesService } from "../services/note.service.js";
 
 export function Form({ onAddNote }) {
   const [infoTxt, setInfoTxt] = useState("");
@@ -11,18 +12,18 @@ export function Form({ onAddNote }) {
     if (!infoTxt) return;
 
     const newNote = {
-      id: utilService.makeId(),
+      // id: utilService.makeId(),
       createdAt: Date.now(),
       type: "NoteTxt",
       isPinned: false,
       style: {
-        backgroundColor: "rgb(173,173,215)",
+        backgroundColor: "var(--keep-bgc-1)",
       },
       info: {
         txt: infoTxt,
       },
     };
-
+    // console.log(newNote);
     onAddNote(newNote);
     setInfoTxt("");
   }
