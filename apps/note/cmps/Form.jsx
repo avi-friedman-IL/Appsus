@@ -29,8 +29,8 @@ export function Form({ onAddNote }) {
   }
 
   return (
-    <form className="add-form" onSubmit={handleSubmit}>
-      <div>
+    <section className="notes-add-input">
+      <form className="add-form" onSubmit={handleSubmit}>
         <input
           id="add-note"
           type="text"
@@ -62,7 +62,7 @@ export function Form({ onAddNote }) {
         <button type="button" className="btn list-btn">
           <i className="fa-solid fa-list-ul"></i>
         </button>
-      </div>
-    </form>
+      </form>
+    </section>
   );
 }

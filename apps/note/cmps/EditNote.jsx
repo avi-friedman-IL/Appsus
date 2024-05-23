@@ -5,16 +5,17 @@ import { utilService } from "../../../services/util.service.js";
 import { notesService } from "../services/note.service.js";
 
 export function EditNote() {
-  const [note, setNote] = useState({ info: { title: "" } });
-  const [bgColor, setBgColor] = useState("#FFC0CB");
+  const [note, setNote] = useState({
+    info: { title: "", txt: "" },
+    style: { backgroundColor: "" },
+  });
 
   const { noteId } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!noteId) return;
-    notesService.getNoteById(noteId).then(setNote);
-    // .then((note) => setBgColor(note.style.backgroundColor));
+    notesService.getNoteById(noteId).then((getNote) => setNote(getNote));
   }, [noteId]);
 
   function handleChange(ev) {
@@ -55,7 +56,6 @@ export function EditNote() {
       .catch((err) => {
         console.log("Error:", err);
       });
-    console.log(noteToSave);
   }
 
   function onGoBack() {
@@ -66,7 +66,7 @@ export function EditNote() {
     <section className="edit-section">
       <form onSubmit={saveNote}>
         <label>
-          Info title:
+          Edit title:
           <input
             type="text"
             placeholder="edit"
@@ -75,12 +75,11 @@ export function EditNote() {
           />
         </label>
         <label>
-          style background color:
+          Edit background color:
           <input
             type="color"
             placeholder="edit"
             name="backgroundColor"
-            value={bgColor}
             onChange={handleChange}
           />
         </label>
