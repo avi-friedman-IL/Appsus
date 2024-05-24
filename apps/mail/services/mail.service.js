@@ -10,6 +10,7 @@ export const mailService = {
     remove,
     save,
     getFilterFromSearchParams,
+    getEmptyMail,
 }
 function _createEmails() {
     let emails = utilService.loadFromStorage(MAIL_KEY)
@@ -54,6 +55,14 @@ function query(filterBy = {}) {
 
             return emails
         })
+}
+
+function getEmptyMail(subject = '', body = '', isRead = false, sentAt = 0, removedAt = 0, from = 'momo@momo.com', to = '') {
+    return { subject, body, isRead, sentAt, removedAt, from, to }
+}
+
+function saveComposeMail() {
+
 }
 
 function getFilterFromSearchParams(searchParams) {

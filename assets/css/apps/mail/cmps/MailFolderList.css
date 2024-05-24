@@ -1,4 +1,5 @@
 .mail-folder-list {
+    padding-inline-start: 1em;
     position: sticky;
     top: 36px;
     left: 0;

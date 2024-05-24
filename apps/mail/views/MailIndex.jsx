@@ -34,12 +34,12 @@ export function MailIndex() {
     }
 
     function onCompose() {
-        setIsCompose(true)
+        setIsCompose(isCompose => !isCompose)
     }
 
     return <section className="mail-index">
       <button className="compose-btn" onClick={onCompose}><span className="fa fa-compose-btn-mail"></span>Compose</button>
-      {isCompose && <MailCompose />}
+      {isCompose && <MailCompose close={onCompose}/>}
         {<MailFilter filterBy={filterBy} onFilter={onSetFilterBy} />}
         
         {/* <section className="mail-folder-list">
