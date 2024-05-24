@@ -19,8 +19,8 @@ form.mail-compose {
     color: #041e49;
 }
 
-.mail-compose input.body{
-    grid-row: 4/8;
+.mail-compose input.mail-body{
+    height: 15em;
 }
 
 
@@ -32,6 +32,10 @@ form.mail-compose {
 }
 
 .mail-compose article{
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr max-content;
+    justify-content: space-between;
     background-color: white;
 }
 
@@ -45,6 +49,13 @@ form.mail-compose {
     color: white;
     cursor: pointer;
     z-index: 2;
+}
+
+.mail-compose .remove-mail{
+    padding-inline-end: 1em;
+    border: 0;
+    background-color: inherit;
+    cursor: pointer;
 }
 
 .mail-compose input:focus-visible {

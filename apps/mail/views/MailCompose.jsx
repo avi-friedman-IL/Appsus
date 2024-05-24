@@ -7,13 +7,13 @@ export function MailCompose({ close }) {
 
     const [mail, setMail] = useState(mailService.getEmptyMail)
 
-    useEffect(() => {
-
-    }, [])
-
     function onSave(ev) {
         ev.preventDefault()
         mailService.save(mail)
+        close()
+    }
+
+    function removeMail() {
         close()
     }
 
@@ -28,8 +28,11 @@ export function MailCompose({ close }) {
         <h2>New Message</h2>
         <input className="to" onChange={handleChange} name="to" type="email" />
         <input className="subject" onChange={handleChange} name="subject" type="text" />
-        <input className="body" onChange={handleChange} name="body" type="text" />
-        <article><button className="send">Send</button></article>
+        <input className="mail-body" onChange={handleChange} name="body" type="text" />
+        <article>
+            <button className="send">Send</button>
+            <button className="fa fa-remove-mail remove-mail" onClick={removeMail}></button>
+        </article>
     </form>
 
 }
