@@ -2,7 +2,7 @@ const { useState, useEffect } = React;
 import { notesService } from "../services/note.service.js";
 import { KeepSidebar } from "../cmps/KeepSidebar.jsx";
 import { NoteList } from "../cmps/NoteList.jsx";
-import { Form } from "../cmps/Form.jsx";
+import { AddForm } from "../cmps/AddForm.jsx";
 
 export function NoteIndex() {
   const [notes, setNotes] = useState([]);
@@ -28,7 +28,7 @@ export function NoteIndex() {
   return (
     <section className="keep-index">
       <KeepSidebar />
-      <Form onAddNote={handleAddNote} />
+      <AddForm onAddNote={handleAddNote} />
       <NoteList notes={notes} onRemoveNote={handleRemoveNote} />
     </section>
   );

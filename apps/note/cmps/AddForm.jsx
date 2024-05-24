@@ -3,7 +3,7 @@ const { useState, useEffect } = React;
 import { utilService } from "../../../services/util.service.js";
 import { notesService } from "../services/note.service.js";
 
-export function Form({ onAddNote }) {
+export function AddForm({ onAddNote }) {
   const [infoTxt, setInfoTxt] = useState("");
 
   function handleSubmit(ev) {
