@@ -38,17 +38,9 @@ export function MailIndex() {
     }
 
     return <section className="mail-index">
-      <button className="compose-btn" onClick={onCompose}><span className="fa fa-compose-btn-mail"></span>Compose</button>
-      {isCompose && <MailCompose close={onCompose}/>}
+        <button className="compose-btn" onClick={onCompose}><span className="fa fa-compose-btn-mail"></span>Compose</button>
+        {isCompose && <MailCompose close={onCompose} />}
         {<MailFilter filterBy={filterBy} onFilter={onSetFilterBy} />}
-        
-        {/* <section className="mail-folder-list">
-            <h2 className={folderSelect === 'Index' ? 'select' : ''} onClick={onSelectFolder}>Index</h2>
-            <h2 className={folderSelect === 'Starred' ? 'select' : ''} onClick={onSelectFolder}>Starred</h2>
-            <h2 className={folderSelect === 'Sent' ? 'select' : ''} onClick={onSelectFolder}>Sent</h2>
-            <h2 className={folderSelect === 'Draft' ? 'select' : ''} onClick={onSelectFolder}>Draft</h2>
-        </section> */}
-
         {<MailFolderList filterBy={filterBy} onFilter={onSetFilterBy} />}
         {<MailList mails={mails} onRemove={removeMail} />}
 

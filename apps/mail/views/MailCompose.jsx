@@ -25,7 +25,7 @@ export function MailCompose({ close }) {
     }
 
     return <form className="mail-compose" onSubmit={onSave}>
-        <h2>Nev Message</h2>
+        <h2>New Message</h2>
         <input className="to" onChange={handleChange} name="to" type="email" />
         <input className="subject" onChange={handleChange} name="subject" type="text" />
         <input className="body" onChange={handleChange} name="body" type="text" />
