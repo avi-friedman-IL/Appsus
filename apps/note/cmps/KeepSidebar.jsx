@@ -13,7 +13,7 @@ export function KeepSidebar() {
 
       <div className="keep-sidebar-item edit-notes">
         <i className="fa-solid fa-pen"></i>
-        <span>Edit Notes</span>
+        <span>Edit</span>
       </div>
 
       <div className="keep-sidebar-item notes-archive">

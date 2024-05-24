@@ -1,4 +1,4 @@
-const { useState, useEffect } = React;
+const { useState, useEffect, useRef } = React;
 
 import { utilService } from "../../../services/util.service.js";
 import { notesService } from "../services/note.service.js";
@@ -7,7 +7,8 @@ export function AddForm({ onAddNote }) {
   const [isOpen, setIsOpen] = useState(false);
   const [infoTxt, setInfoTxt] = useState("");
 
-  function handleToggle() {
+  function handleToggle(ev) {
+    ev.preventDefault();
     setIsOpen((isOpen) => !isOpen);
   }
 
@@ -28,18 +29,17 @@ export function AddForm({ onAddNote }) {
         txt: infoTxt,
       },
     };
-    // console.log(newNote);
     onAddNote(newNote);
     setInfoTxt("");
+    setIsOpen(false);
   }
 
   return (
     <section className="notes-add-input">
       <form
-        autocomplete="off"
+        autoComplete="off"
         className={`add-form ${isOpen ? "open" : "closed"}`}
         onSubmit={handleSubmit}
-        onClick={handleToggle}
       >
         <input
           id="add-note"
@@ -47,7 +47,9 @@ export function AddForm({ onAddNote }) {
           placeholder="Add a note"
           value={infoTxt}
           onChange={(ev) => setInfoTxt(ev.target.value)}
+          onClick={handleToggle}
         />
+
         {isOpen && (
           <div className="content-box">
             <button type="submit" className="btn submit-btn">

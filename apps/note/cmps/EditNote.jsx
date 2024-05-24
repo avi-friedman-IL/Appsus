@@ -71,6 +71,7 @@ export function EditNote() {
             type="text"
             placeholder="edit"
             name="title"
+            value={note.info.title}
             onChange={handleChange}
           />
         </label>
@@ -80,6 +81,7 @@ export function EditNote() {
             type="color"
             placeholder="edit"
             name="backgroundColor"
+            value={note.style.backgroundColor}
             onChange={handleChange}
           />
         </label>
