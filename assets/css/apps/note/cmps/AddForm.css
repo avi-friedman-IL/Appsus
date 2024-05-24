@@ -4,17 +4,19 @@
 
 .notes-add-input {
     display: flex;
-    justify-content: center;
-    padding-block-start: 1em;
+    flex-direction: column;
+    align-items: center;
+    margin-block-start: 1em;
     height: 4em;
 }
 
 .notes-add-input .add-form {
-    display: flex;
-    align-items: center;
+    /* display: flex; */
+    /* align-items: center; */
+    /* padding-block-start: 2em; */
     border: 1px solid var(--keep-bgc-2);
     box-shadow: 5px 5px 5px var(--keep-bgc-2);
-    width: fit-content;
+    width: 30em;
     border-radius: 10px;
 }
 

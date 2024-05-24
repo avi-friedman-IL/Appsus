@@ -4,7 +4,12 @@ import { utilService } from "../../../services/util.service.js";
 import { notesService } from "../services/note.service.js";
 
 export function AddForm({ onAddNote }) {
+  const [isOpen, setIsOpen] = useState(false);
   const [infoTxt, setInfoTxt] = useState("");
+
+  function handleToggle() {
+    setIsOpen((isOpen) => !isOpen);
+  }
 
   function handleSubmit(ev) {
     ev.preventDefault();
@@ -30,7 +35,12 @@ export function AddForm({ onAddNote }) {
 
   return (
     <section className="notes-add-input">
-      <form className="add-form" onSubmit={handleSubmit}>
+      <form
+        autocomplete="off"
+        className={`add-form ${isOpen ? "open" : "closed"}`}
+        onSubmit={handleSubmit}
+        onClick={handleToggle}
+      >
         <input
           id="add-note"
           type="text"
@@ -38,30 +48,33 @@ export function AddForm({ onAddNote }) {
           value={infoTxt}
           onChange={(ev) => setInfoTxt(ev.target.value)}
         />
+        {isOpen && (
+          <div className="content-box">
+            <button type="submit" className="btn submit-btn">
+              <i className="fa-solid fa-plus"></i>
+            </button>
 
-        <button type="submit" className="btn submit-btn">
-          <i className="fa-solid fa-plus"></i>
-        </button>
+            <button type="button" className="btn font-btn">
+              <i className="fa-solid fa-font"></i>
+            </button>
 
-        <button type="button" className="btn font-btn">
-          <i className="fa-solid fa-font"></i>
-        </button>
+            <button type="button" className="btn img-btn">
+              <i className="fa-solid fa-image"></i>
+            </button>
 
-        <button type="button" className="btn img-btn">
-          <i className="fa-solid fa-image"></i>
-        </button>
+            <button type="button" className="btn video-btn">
+              <i className="fa-brands fa-youtube"></i>
+            </button>
 
-        <button type="button" className="btn video-btn">
-          <i className="fa-brands fa-youtube"></i>
-        </button>
+            <button type="button" className="btn audio-btn">
+              <i className="fa-solid fa-volume-high"></i>
+            </button>
 
-        <button type="button" className="btn audio-btn">
-          <i className="fa-solid fa-volume-high"></i>
-        </button>
-
-        <button type="button" className="btn list-btn">
-          <i className="fa-solid fa-list-ul"></i>
-        </button>
+            <button type="button" className="btn list-btn">
+              <i className="fa-solid fa-list-ul"></i>
+            </button>
+          </div>
+        )}
       </form>
     </section>
   );
