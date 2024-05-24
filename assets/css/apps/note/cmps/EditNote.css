@@ -5,3 +5,8 @@
 .edit-section label {
     display: block;
 }
+
+.edit-section input[type='color'] {
+    background-color: transparent;
+    border: none;
+}
