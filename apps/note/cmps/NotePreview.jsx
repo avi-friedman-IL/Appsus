@@ -57,14 +57,11 @@ export function NotePreview({ note, onRemoveNote }) {
 
       {note.info.url.audio ? (
         <audio controls>
-          <source
-            src={note.info.url.audio}
-            // type={getAudioType(note.info.url.audio)}
-          />
+          <source src={note.info.url.audio} />
         </audio>
       ) : null}
 
-      {note.info.title ? <p> {note.info.title} </p> : null}
+      {note.info.title ? <p className="title"> {note.info.title} </p> : null}
 
       {note.info.txt ? <p> {note.info.txt} </p> : null}
 

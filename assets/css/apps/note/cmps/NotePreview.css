@@ -44,6 +44,12 @@
     margin-block-end: 1em;
 }
 
+.note-card .title {
+    text-transform: uppercase;
+    font-family: Roboto-bold;
+    color: var(--keep-text-color-2);
+}
+
 .note-card .todo-list {
     margin-block-start: 1em;
 }

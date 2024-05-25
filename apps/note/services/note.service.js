@@ -140,7 +140,7 @@ function _createNotes() {
                     font: '',
                 },
                 info: {
-                    title: 'Get my stuff together and lets go',
+                    title: 'Get my stuff together',
                     txt: '',
                     url: {
                         image: '',
