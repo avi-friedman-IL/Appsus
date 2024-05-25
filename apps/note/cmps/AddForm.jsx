@@ -18,7 +18,6 @@ export function AddForm({ onAddNote }) {
     if (!infoTxt) return;
 
     const newNote = {
-      // id: utilService.makeId(),
       createdAt: Date.now(),
       type: "NoteTxt",
       isPinned: false,
@@ -26,7 +25,10 @@ export function AddForm({ onAddNote }) {
         backgroundColor: "var(--keep-bgc-1)",
       },
       info: {
-        txt: infoTxt,
+        title: infoTxt,
+        txt: "",
+        todos: [],
+        url: "",
       },
     };
     onAddNote(newNote);
