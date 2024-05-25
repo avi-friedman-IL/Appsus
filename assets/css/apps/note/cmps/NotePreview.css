@@ -3,9 +3,7 @@
 }
 
 .note-card {
-    min-width: 15em;
     max-width: 20em;
-    /* width: fit-content; */
     height: fit-content;
     padding: 1em;
     margin-block-end: 1em;
@@ -50,12 +48,18 @@
     color: var(--keep-text-color-2);
 }
 
+.note-card .txt {
+    font-family: Roboto-regular;
+
+}
+
 .note-card .todo-list {
     margin-block-start: 1em;
 }
 
 .note-card .todo-list li {
     list-style: circle;
+    font-family: Product-sans;
 }
 
 .note-card .icons {

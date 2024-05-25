@@ -15,3 +15,10 @@
  .keep-index .note-list {
      grid-column: 2/3;
  }
+
+ /* @media (max-width:740px) {
+     .keep-index .note-list {
+         margin-left: 0;
+
+     }
+ } */

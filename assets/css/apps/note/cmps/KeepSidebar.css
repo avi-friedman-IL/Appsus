@@ -50,3 +50,37 @@
 .keep-sidebar:hover .keep-sidebar-item span {
     opacity: 1;
 }
+
+@media(max-width:750px) {
+
+    /* ADD FORM */
+    .notes-add-input .add-form {
+        max-width: 60%;
+    }
+
+    /* KEEP SIDEBAR */
+    .keep-sidebar:hover .keep-sidebar-item span {
+        opacity: 0;
+    }
+
+    .keep-sidebar:hover .keep-sidebar-item {
+        width: 3em;
+        border-radius: 50%;
+    }
+
+    /* KEEP INDEX */
+    .keep-index .note-list {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0;
+
+    }
+
+    .note-card {
+        max-width: 15em;
+    }
+
+    .note-card img {
+        height: 50%;
+    }
+}
