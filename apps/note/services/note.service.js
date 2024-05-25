@@ -83,12 +83,17 @@ function _createNotes() {
                 type: 'NoteTxt',
                 isPinned: true,
                 style: {
-                    backgroundColor: "#e2f6d3"
+                    backgroundColor: "#e2f6d3",
+                    font: '',
                 },
                 info: {
                     title: '',
                     txt: 'Fullstack Me Baby!',
-                    url: 'https://www.dogster.com/wp-content/uploads/2024/02/pug-dog-standing-on-grass-at-the-park_MVolodymyr_Shutterstock.jpg',
+                    url: {
+                        image: 'https://www.dogster.com/wp-content/uploads/2024/02/pug-dog-standing-on-grass-at-the-park_MVolodymyr_Shutterstock.jpg',
+                        video: '',
+                        audio: '',
+                    },
                     todos: [],
                 },
             },
@@ -98,12 +103,17 @@ function _createNotes() {
                 type: 'NoteImg',
                 isPinned: false,
                 style: {
-                    backgroundColor: ''
+                    backgroundColor: '',
+                    font: '',
                 },
                 info: {
                     title: 'Bobi and Me',
                     txt: '',
-                    url: '',
+                    url: {
+                        image: '',
+                        video: '',
+                        audio: 'https://www.computerhope.com/jargon/m/example.mp3',
+                    },
                     todos: [],
                 },
 
@@ -114,15 +124,19 @@ function _createNotes() {
                 type: 'NoteTodos',
                 isPinned: false,
                 style: {
-                    backgroundColor: ''
+                    backgroundColor: '',
+                    font: '',
                 },
                 info: {
                     title: 'Get my stuff together and lets go',
                     txt: '',
-                    url: '',
+                    url: {
+                        image: '',
+                        video: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+                        audio: '',
+                    },
                     todos: [
                         { txt: 'Driving license', doneAt: null },
-                        { txt: 'Coding power', doneAt: 187111111 },
                         { txt: 'Coding power', doneAt: 187111111 },
                     ],
                 },
@@ -133,12 +147,17 @@ function _createNotes() {
                 type: 'NoteImg',
                 isPinned: false,
                 style: {
-                    backgroundColor: '#F1948A'
+                    backgroundColor: '#F1948A',
+                    font: '',
                 },
                 info: {
                     title: 'Bobi and Me',
                     txt: '',
-                    url: 'https://image.petmd.com/files/styles/978x550/public/2022-10/pug-dog-breed.jpeg?w=1080&q=75',
+                    url: {
+                        image: 'https://image.petmd.com/files/styles/978x550/public/2022-10/pug-dog-breed.jpeg?w=1080&q=75',
+                        video: '',
+                        audio: '',
+                    },
                     todos: [],
                 },
 

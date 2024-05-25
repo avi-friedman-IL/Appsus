@@ -52,12 +52,39 @@ export function EditNote() {
         }));
         break;
 
-      case "url":
+      case "image":
         setNote((prevNote) => ({
           ...prevNote,
           info: {
             ...prevNote.info,
-            [name]: value,
+            url: {
+              ...prevNote.info.url,
+              [name]: value,
+            },
+          },
+        }));
+        break;
+      case "video":
+        setNote((prevNote) => ({
+          ...prevNote,
+          info: {
+            ...prevNote.info,
+            url: {
+              ...prevNote.info.url,
+              [name]: value,
+            },
+          },
+        }));
+        break;
+      case "audio":
+        setNote((prevNote) => ({
+          ...prevNote,
+          info: {
+            ...prevNote.info,
+            url: {
+              ...prevNote.info.url,
+              [name]: value,
+            },
           },
         }));
         break;
@@ -130,12 +157,32 @@ export function EditNote() {
         </label>
 
         <label>
-          Edit URL:
+          Edit Image URL:
           <input
             type="text"
             placeholder="edit"
-            name="url"
-            value={note.info.url}
+            name="image"
+            value={note.info.url.image}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Edit Video URL:
+          <input
+            type="text"
+            placeholder="edit"
+            name="video"
+            value={note.info.url.video}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Edit Audio URL:
+          <input
+            type="text"
+            placeholder="edit"
+            name="audio"
+            value={note.info.url.audio}
             onChange={handleChange}
           />
         </label>

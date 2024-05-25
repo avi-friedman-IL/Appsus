@@ -27,8 +27,28 @@ export function NotePreview({ note, onRemoveNote }) {
 
   return (
     <li className="note-card" style={{ backgroundColor: noteBgc }}>
-      {note.info.url ? <img src={`${note.info.url}`} /> : null}
+      {note.info.url.image ? <img src={note.info.url.image} /> : null}
+
+      <section className="video">
+        {note.info.url.video ? (
+          <iframe
+            src={note.info.url.video}
+            width="250"
+            height="150"
+            title="video"
+            allowFullScreen
+          ></iframe>
+        ) : null}
+      </section>
+
+      {note.info.url.audio ? (
+        <audio controls>
+          <source src={note.info.url.audio} />
+        </audio>
+      ) : null}
+
       {note.info.title ? <p> {note.info.title} </p> : null}
+
       {note.info.txt ? <p> {note.info.txt} </p> : null}
 
       {note.info.todos ? (

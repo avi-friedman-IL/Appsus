@@ -4,6 +4,8 @@
 
 .note-card {
     min-width: 15em;
+    max-width: 20em;
+    /* width: fit-content; */
     height: fit-content;
     padding: 1em;
     margin-block-end: 1em;
@@ -21,6 +23,23 @@
 }
 
 .note-card img {
+    width: 100%;
+    margin-block-end: 1em;
+    border-radius: 10px;
+}
+
+.note-card .video {
+    display: flex;
+    justify-content: center;
+    margin-block-end: 1em;
+}
+
+.note-card iframe[title='video'] {
+    border: none;
+    border-radius: 10px;
+}
+
+.note-card audio {
     width: 100%;
     margin-block-end: 1em;
 }
@@ -73,7 +92,7 @@
 }
 
 .note-card .color-item {
-    border: whitesmoke 1px solid;
+    border: var(--keep-bgc-1) 1px solid;
     border-radius: 50%;
     /* padding: 5px; */
     margin: 5px;
