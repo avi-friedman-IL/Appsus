@@ -1,32 +1,23 @@
-export function ColorInput({ name, onSetFooterStyle, backgroundColor }) {
-  console.log("backgroundColor:", backgroundColor);
-
+export function ColorInput({ onSetBgc }) {
   const colors = [
-    "#F44236",
-    "#9C27B0",
-    "#3F51B5",
-    "#2196F3",
-    "#4caf50",
-    "#101010",
+    "var(--keep-note-bgs-1)",
+    "var(--keep-note-bgs-2)",
+    "var(--keep-note-bgs-3)",
+    "var(--keep-note-bgs-4)",
+    "var(--keep-note-bgs-5)",
+    "var(--keep-note-bgs-6)",
   ];
 
-  function onSetColor(color) {
-    const newStyle = { backgroundColor: color };
-    onSetFooterStyle(newStyle);
-  }
-
   return (
-    <section className="color-input">
-      <div className="items-container">
-        {colors.map((color) => (
-          <div
-            key={color}
-            className={`item ${backgroundColor === color ? "chosen" : ""}`}
-            style={{ backgroundColor: color }}
-            onClick={() => onSetColor(color)}
-          ></div>
-        ))}
-      </div>
-    </section>
+    <div className="color-container">
+      {colors.map((color) => (
+        <div
+          key={color}
+          className={`color-item`}
+          style={{ backgroundColor: color }}
+          onClick={() => onSetBgc(color)}
+        ></div>
+      ))}
+    </div>
   );
 }

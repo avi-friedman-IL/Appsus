@@ -1,16 +1,16 @@
 :root {
     --main-bgc: lightblue;
-    
+
     --mail-index-bgc: #f6f8fc;
     --mail-search-bgc: #eaf1fb;
     --mail-li-bgc: #f2f6fc;
 
-    --mail-sidebar-hover-bgc:#dadce0;
-    --mail-sidebar-select-bgc:#d3e3fd;
-    
-    
+    --mail-sidebar-hover-bgc: #dadce0;
+    --mail-sidebar-select-bgc: #d3e3fd;
+
+
     --mail-li-color: #202124;
-    
+
     --mail-font-family-1: Arial, Helvetica, sans-serif;
     --mail-font-family-2: 'Roboto', sans-serif;
 
@@ -20,5 +20,10 @@
     --keep-bgc-2: rgba(0, 0, 0, 0.1);
     --keep-text-color-1: #000;
     --keep-text-color-2: #5f6368;
-
+    --keep-note-bgs-1: #faafa8;
+    --keep-note-bgs-2: #f39f76;
+    --keep-note-bgs-3: #e2f6d3;
+    --keep-note-bgs-4: #d4e4ed;
+    --keep-note-bgs-5: #d3bfdb;
+    --keep-note-bgs-6: #f6e2dd;
 }
