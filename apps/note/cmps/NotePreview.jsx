@@ -1,18 +1,45 @@
 const { Link } = ReactRouterDOM;
+const { useState, useEffect } = React;
+
+import { notesService } from "../services/note.service.js";
+import { ColorInput } from "./ColorInput.jsx";
 
 export function NotePreview({ note, onRemoveNote }) {
-  return (
-    <React.Fragment>
-      <p>{note.info.txt ? note.info.txt : ""}</p>
-      <p>{note.info.title ? note.info.title : ""}</p>
+  const [noteBgc, setNoteBgc] = useState(note.style.backgroundColor);
 
-      <ul className="todo-list">
-        {note.info.todos
-          ? note.info.todos.map((todo, index) => (
-              <li key={index}>{todo.txt}</li>
-            ))
-          : ""}
-      </ul>
+  function handleNoteBgcChange(color) {
+    setNoteBgc(color);
+
+    const noteToSave = {
+      ...note,
+      style: {
+        ...note.style,
+        backgroundColor: color,
+      },
+    };
+
+    saveNote(noteToSave);
+  }
+
+  function saveNote(noteToSave) {
+    notesService.saveNote(noteToSave);
+  }
+
+  return (
+    <li className="note-card" style={{ backgroundColor: noteBgc }}>
+      {note.info.url ? <img src={`${note.info.url}`} /> : null}
+      {note.info.title ? <p> {note.info.title} </p> : null}
+      {note.info.txt ? <p> {note.info.txt} </p> : null}
+
+      {note.info.todos ? (
+        <ul className="todo-list">
+          {note.info.todos.map((todo, index) => (
+            <li key={index}>{todo.txt}</li>
+          ))}
+        </ul>
+      ) : (
+        ""
+      )}
 
       <div className="icons">
         <div className="btn pin-btn">
@@ -29,6 +56,7 @@ export function NotePreview({ note, onRemoveNote }) {
           <i className="fa-regular fa-trash-can"></i>
         </div>
       </div>
-    </React.Fragment>
+      <ColorInput onSetBgc={handleNoteBgcChange} />
+    </li>
   );
 }

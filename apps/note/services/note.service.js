@@ -67,10 +67,6 @@ function updateNote(note) {
 
 function getEmptyNote() {
     return {
-        id: "",
-        createdAt: '',
-        type: "",
-        isPinned: false,
         style: { backgroundColor: "" },
         info: { txt: '', title: "", todos: [], url: '' },
     }
@@ -87,36 +83,39 @@ function _createNotes() {
                 type: 'NoteTxt',
                 isPinned: true,
                 style: {
-                    backgroundColor: 'rgb(173,173,215)'
+                    backgroundColor: "#e2f6d3"
                 },
                 info: {
                     title: '',
                     txt: 'Fullstack Me Baby!',
-                    url: '',
+                    url: 'https://www.dogster.com/wp-content/uploads/2024/02/pug-dog-standing-on-grass-at-the-park_MVolodymyr_Shutterstock.jpg',
                     todos: [],
                 },
-                style: { backgroundColor: '' }
             },
             {
                 id: 'n102',
                 createdAt: 1112223,
                 type: 'NoteImg',
                 isPinned: false,
+                style: {
+                    backgroundColor: ''
+                },
                 info: {
                     title: 'Bobi and Me',
                     txt: '',
-                    url: 'http://some-img/me',
+                    url: '',
                     todos: [],
                 },
-                style: {
-                    backgroundColor: 'rgb(173,173,215)'
-                }
+
             },
             {
                 id: 'n103',
                 createdAt: 1112224,
                 type: 'NoteTodos',
                 isPinned: false,
+                style: {
+                    backgroundColor: ''
+                },
                 info: {
                     title: 'Get my stuff together and lets go',
                     txt: '',
@@ -125,13 +124,24 @@ function _createNotes() {
                         { txt: 'Driving license', doneAt: null },
                         { txt: 'Coding power', doneAt: 187111111 },
                         { txt: 'Coding power', doneAt: 187111111 },
-                        { txt: 'Coding power', doneAt: 187111111 },
-                        { txt: 'Coding power', doneAt: 187111111 },
-                        { txt: 'Coding power', doneAt: 187111111 },
-                        { txt: 'Coding power', doneAt: 187111111 },
                     ],
                 },
-                style: { backgroundColor: '' }
+            },
+            {
+                id: 'n104',
+                createdAt: 1112225,
+                type: 'NoteImg',
+                isPinned: false,
+                style: {
+                    backgroundColor: '#F1948A'
+                },
+                info: {
+                    title: 'Bobi and Me',
+                    txt: '',
+                    url: 'https://image.petmd.com/files/styles/978x550/public/2022-10/pug-dog-breed.jpeg?w=1080&q=75',
+                    todos: [],
+                },
+
             },
         ]
         utilService.saveToStorage(NOTES_KEY, notes)
