@@ -8,6 +8,7 @@ export const utilService = {
     padNum,
     getDayName,
     getMonthName,
+    debounce,
 }
 
 function saveToStorage(key, val) {
@@ -70,4 +71,14 @@ function getMonthName(date) {
         "July", "August", "September", "October", "November", "December"
     ]
     return monthNames[date.getMonth()]
+}
+
+function debounce(callback, wait) {
+    let timeoutId = null;
+    return (...args) => {
+        window.clearTimeout(timeoutId);
+        timeoutId = window.setTimeout(() => {
+            callback(...args);
+        }, wait);
+    };
 }

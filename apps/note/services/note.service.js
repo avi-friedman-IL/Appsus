@@ -7,6 +7,8 @@ const NOTES_KEY = 'notesDB'
 _createNotes()
 
 export const notesService = {
+    query,
+    getDefaultFilter,
     getNotes,
     removeNote,
     addNote,
@@ -18,6 +20,26 @@ export const notesService = {
 
 window.bs = notesService
 
+function query(filterBy = {}) {
+    return storageService.query(NOTES_KEY)
+        .then(notes => {
+            if (filterBy.title) {
+                const regExp = new RegExp(filterBy.title, 'i')
+                notes = notes.filter(note => regExp.test(note.info.title))
+            }
+            if (filterBy.txt) {
+                const regExp = new RegExp(filterBy.txt, 'i')
+                notes = notes.filter(note => regExp.test(note.info.txt))
+            }
+            return notes
+        })
+}
+
+function getDefaultFilter(filterBy = { title: '' }) {
+    return { title: filterBy.title }
+}
+
+
 function getNotes() {
     return new Promise((resolve) => {
         resolve(utilService.loadFromStorage(NOTES_KEY))
@@ -25,11 +47,7 @@ function getNotes() {
 }
 
 function getNoteById(noteId) {
-    // const notes = utilService.loadFromStorage(NOTES_KEY)
-    // const note = notes.find((note) => note.id === noteId)
-    // return Promise.resolve(note)
     const note = storageService.get(NOTES_KEY, noteId)
-    // return note
     return Promise.resolve(note)
 }
 
@@ -42,12 +60,6 @@ function saveNote(note) {
     if (note.id) savedNote = updateNote(note)
     else savedNote = addNote(note)
     return Promise.resolve(savedNote)
-    // if (note.id) {
-    //     return storageService.put(NOTES_KEY, note)
-    // } else {
-    //     note['id'] = ''
-    //     return storageService.post(NOTES_KEY, note)
-    // }
 }
 
 function addNote(note) {
@@ -87,7 +99,7 @@ function _createNotes() {
                     font: '',
                 },
                 info: {
-                    title: '',
+                    title: 'Cute dog',
                     txt: 'Fullstack Me Baby!',
                     url: {
                         image: 'https://www.dogster.com/wp-content/uploads/2024/02/pug-dog-standing-on-grass-at-the-park_MVolodymyr_Shutterstock.jpg',
@@ -133,7 +145,7 @@ function _createNotes() {
                     url: {
                         image: '',
                         video: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-                        audio: '',
+                        audio: 'https://file-examples.com/storage/feb1e052e36650dbb948d02/2017/11/file_example_WAV_2MG.wav',
                     },
                     todos: [
                         { txt: 'Driving license', doneAt: null },

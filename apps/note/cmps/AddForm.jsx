@@ -3,19 +3,35 @@ const { useState, useEffect, useRef } = React;
 import { utilService } from "../../../services/util.service.js";
 import { notesService } from "../services/note.service.js";
 
-export function AddForm({ onAddNote }) {
+export function AddForm({ onAddNote, filterBy, onFilterBy }) {
   const [isOpen, setIsOpen] = useState(false);
   const [infoTxt, setInfoTxt] = useState("");
+
+  const [isOnFilter, setIsOnFilter] = useState(false);
+  const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy });
+  const onSetFilterDebounce = useRef(utilService.debounce(onFilterBy, 500));
+
+  useEffect(() => {
+    onSetFilterDebounce.current(filterByToEdit);
+  }, [filterByToEdit]);
+
+  function handleFilterTxtChange(value) {
+    setFilterByToEdit((prevFilter) => ({ ...prevFilter, ["title"]: value }));
+  }
 
   function handleToggle(ev) {
     ev.preventDefault();
     setIsOpen((isOpen) => !isOpen);
   }
 
+  function handleFilterToggle() {
+    setIsOnFilter((prevIsOnFilter) => !prevIsOnFilter);
+  }
+
   function handleSubmit(ev) {
     ev.preventDefault();
 
-    if (!infoTxt) return;
+    if (!infoTxt || isOnFilter) return;
 
     const newNote = {
       createdAt: Date.now(),
@@ -46,14 +62,26 @@ export function AddForm({ onAddNote }) {
         <input
           id="add-note"
           type="text"
-          placeholder="Add a note"
-          value={infoTxt}
-          onChange={(ev) => setInfoTxt(ev.target.value)}
+          placeholder={isOnFilter ? "Filter notes" : "Add a note"}
+          value={!isOnFilter ? infoTxt : filterByToEdit.title}
+          onChange={
+            !isOnFilter
+              ? (ev) => setInfoTxt(ev.target.value)
+              : (ev) => handleFilterTxtChange(ev.target.value)
+          }
           onClick={handleToggle}
         />
 
         {isOpen && (
           <div className="content-box">
+            <button
+              type="button"
+              className="btn serach-btn"
+              onClick={handleFilterToggle}
+            >
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </button>
+
             <button type="submit" className="btn submit-btn">
               <i className="fa-solid fa-plus"></i>
             </button>

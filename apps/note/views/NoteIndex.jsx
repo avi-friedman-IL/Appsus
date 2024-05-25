@@ -6,10 +6,19 @@ import { AddForm } from "../cmps/AddForm.jsx";
 
 export function NoteIndex() {
   const [notes, setNotes] = useState([]);
+  const [filterBy, setFilterBy] = useState(notesService.getDefaultFilter());
 
   useEffect(() => {
-    notesService.getNotes().then((fetchedNotes) => {
-      setNotes(fetchedNotes);
+    notesService.query(filterBy).then((notes) => setNotes(notes));
+  }, [filterBy]);
+
+  function onSetFilterBy(newFilter) {
+    setFilterBy(newFilter);
+  }
+
+  useEffect(() => {
+    notesService.getNotes().then((notes) => {
+      setNotes(notes);
     });
   }, []);
 
@@ -28,7 +37,11 @@ export function NoteIndex() {
   return (
     <section className="keep-index">
       <KeepSidebar />
-      <AddForm onAddNote={handleAddNote} />
+      <AddForm
+        onAddNote={handleAddNote}
+        filterBy={filterBy}
+        onFilterBy={onSetFilterBy}
+      />
       <NoteList notes={notes} onRemoveNote={handleRemoveNote} />
     </section>
   );
