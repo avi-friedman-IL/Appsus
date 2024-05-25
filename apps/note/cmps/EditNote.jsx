@@ -74,6 +74,7 @@ export function EditNote() {
               [name]: value,
             },
           },
+          type: [...note.type, "NoteVideo"],
         }));
         break;
       case "audio":
@@ -207,9 +208,28 @@ export function EditNote() {
   );
 }
 
-// id: "",
-// createdAt: '',
-// type: "",
-// isPinned: false,
-// style: { backgroundColor: "" },
-// info: { txt: '', title: "", todos: [], url: '' },
+//                 id: 'n103',
+//                 createdAt: 1112224,
+//                 type: ['NoteTodos','NoteVideo'],
+//                 isPinned: false,
+//                 style: {
+//                     backgroundColor: '',
+//                     font: '',
+//                 },
+//                 info: {
+//                     title: 'Get my stuff together',
+//                     txt: '',
+//                     url: {
+//                         image: '',
+//                         video: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+//                         audio: '',
+//                     },
+//                     todos: [
+//                         { txt: 'Driving license', doneAt: null },
+//                         { txt: 'Coding power', doneAt: 187111111 },
+//                     ],
+//                 },
+// ...note,
+// type:[ ...note.type, 'NoteVideo']
+//
+//

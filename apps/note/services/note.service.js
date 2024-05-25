@@ -92,7 +92,7 @@ function _createNotes() {
             {
                 id: 'n101',
                 createdAt: 1112222,
-                type: 'NoteTxt',
+                type: ['NoteTxt', 'NoteImage'],
                 isPinned: true,
                 style: {
                     backgroundColor: "#e2f6d3",
@@ -112,7 +112,7 @@ function _createNotes() {
             {
                 id: 'n102',
                 createdAt: 1112223,
-                type: 'NoteImg',
+                type: ['NoteAudio'],
                 isPinned: false,
                 style: {
                     backgroundColor: '',
@@ -133,7 +133,7 @@ function _createNotes() {
             {
                 id: 'n103',
                 createdAt: 1112224,
-                type: 'NoteTodos',
+                type: ['NoteTodos', 'NoteVideo'],
                 isPinned: false,
                 style: {
                     backgroundColor: '',
@@ -145,7 +145,7 @@ function _createNotes() {
                     url: {
                         image: '',
                         video: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-                        audio: 'https://file-examples.com/storage/feb1e052e36650dbb948d02/2017/11/file_example_WAV_2MG.wav',
+                        audio: '',
                     },
                     todos: [
                         { txt: 'Driving license', doneAt: null },
