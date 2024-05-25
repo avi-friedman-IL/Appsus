@@ -6,6 +6,7 @@ export function ColorInput({ onSetBgc }) {
     "var(--keep-note-bgs-4)",
     "var(--keep-note-bgs-5)",
     "var(--keep-note-bgs-6)",
+    "var(--keep-bgc-1)",
   ];
 
   return (
