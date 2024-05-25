@@ -14,6 +14,7 @@ export function MailIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
     const [filterBy, setFilterBy] = useState(mailService.getFilterFromSearchParams(searchParams))
     const [isCompose, setIsCompose] = useState(false)
+    const [isUnread, setIsUnread] = useState()
 
 
     function removeMail(mailId) {
@@ -22,6 +23,15 @@ export function MailIndex() {
                 setMails(prevMails => prevMails.filter(mail => mail.id !== mailId))
             })
     }
+
+    useEffect(() => {
+        mailService.query()
+            .then(mails => {
+                const isUnread = mails.filter(mail => !mail.isRead)
+                const countIsUnread = isUnread.length
+                setIsUnread(countIsUnread)
+            })
+    }, [isUnread])
 
     useEffect(() => {
         setSearchParams(filterBy)
@@ -41,7 +51,7 @@ export function MailIndex() {
         <button className="compose-btn" onClick={onCompose}><span className="fa fa-compose-btn-mail"></span>Compose</button>
         {isCompose && <MailCompose close={onCompose} />}
         {<MailFilter filterBy={filterBy} onFilter={onSetFilterBy} />}
-        {<MailFolderList filterBy={filterBy} onFilter={onSetFilterBy} />}
+        {<MailFolderList filterBy={filterBy} onFilter={onSetFilterBy} unread={isUnread} />}
         {<MailList mails={mails} onRemove={removeMail} />}
 
     </section>

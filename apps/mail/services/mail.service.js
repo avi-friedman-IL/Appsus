@@ -61,10 +61,6 @@ function getEmptyMail(subject = '', body = '', isRead = false, sentAt = 0, remov
     return { subject, body, isRead, sentAt, removedAt, from, to }
 }
 
-function saveComposeMail() {
-
-}
-
 function getFilterFromSearchParams(searchParams) {
     return {
         txt: searchParams.get('txt') || '',

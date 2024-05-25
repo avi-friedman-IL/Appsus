@@ -4,6 +4,7 @@ import { MailPreview } from "./MailPreview.jsx";
 
 export function MailList({ mails, onRemove }) {
     return <ul className="mail-list">
+        <article className="mail-list-header"></article>
         {mails.map(mail =>
             <li className={mail.isRead ? 'read' : ''} key={mail.id}><Link to={`/mail/${mail.id}`}>
                 {<MailPreview mail={mail} />}

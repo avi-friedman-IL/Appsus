@@ -44,6 +44,16 @@
    content: '\f1d8';
 }
 
+.fa.fa-back::before{
+    content: '\f060';
+}
+.fa.fa-prev::before{
+    content: '\f104';
+}
+.fa.fa-next::before{
+    content: '\f105';
+}
+
 .btn {
     cursor: pointer;
 }

@@ -3,7 +3,7 @@ const { useParams, useNavigate } = ReactRouter
 
 const { Link } = ReactRouterDOM
 
-import {mailService} from '../services/mail.service.js'
+import { mailService } from '../services/mail.service.js'
 
 export function MailDetails() {
     const [mail, setMail] = useState([])
@@ -18,18 +18,20 @@ export function MailDetails() {
                 setMail(mail)
                 mailService.save(mail)
             })
-    },[params.mailId])
-    
+    }, [params.mailId])
+
     return <section className="mail-details">
         <section className="actions">
-            <Link to={`/mail/${mail.nextMailId}`}><button className="fa fa-next action">prev</button></Link>
-            <Link to={`/mail/${mail.prevMailId}`}><button className="fa fa-prev action">next</button></Link>
-            <Link to="/mail"><button className="fa fa-close action">back</button></Link>
+            <Link to="/mail"><button className="fa fa-back action"></button></Link>
+            <div>
+                <Link to={`/mail/${mail.prevMailId}`}><button className="fa fa-prev action"></button></Link>
+                <Link to={`/mail/${mail.nextMailId}`}><button className="fa fa-next action"></button></Link>
+            </div>
         </section>
-        
-        <h1>{mail.subject}</h1>
-        <h2>from: {mail.from}</h2>
-        <h2>to: {mail.to}</h2>
-        <p>{mail.body}</p>
+
+        <h1 className="subject">{mail.subject}</h1>
+        <p className="from">{mail.from}</p>
+        <p className="to">to {mail.to}</p>
+        <p className="body">{mail.body}</p>
     </section>
 }
