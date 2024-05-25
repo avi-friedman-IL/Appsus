@@ -52,6 +52,9 @@
 }
 
 @media(max-width:750px) {
+    * {
+        overflow-x: hidden;
+    }
 
     /* ADD FORM */
     .notes-add-input .add-form {
@@ -59,6 +62,7 @@
     }
 
     /* KEEP SIDEBAR */
+
     .keep-sidebar:hover .keep-sidebar-item span {
         opacity: 0;
     }
@@ -69,18 +73,24 @@
     }
 
     /* KEEP INDEX */
-    .keep-index .note-list {
-        display: flex;
-        flex-direction: column;
-        margin-left: 0;
-
+    .note-list {
+        columns: 2 5em;
+        gap: 1em;
+        padding: 1em;
+        padding-inline-end: 3em;
+        margin-left: 5em;
     }
 
-    .note-card {
-        max-width: 15em;
+    .note-card:hover .color-container {
+        /* width: 100%; */
+        margin: 0;
+        padding: 0;
     }
 
-    .note-card img {
-        height: 50%;
+    .note-card .color-item {
+        height: 1em;
+        width: 1em;
+        margin: 2px;
+
     }
 }
