@@ -30,8 +30,13 @@ export function MailDetails() {
         </section>
 
         <h1 className="subject">{mail.subject}</h1>
-        <p className="from">{mail.from}</p>
-        <p className="to">to {mail.to}</p>
+        <div className="sub-title">
+            <div className="">
+                <p className="from">{mail.from}</p>
+                <p className="to">to {mail.to}</p>
+            </div>
+            <p className="date">{mail.sentAt}</p>
+        </div>
         <p className="body">{mail.body}</p>
     </section>
 }
