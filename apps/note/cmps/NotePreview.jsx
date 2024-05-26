@@ -10,7 +10,7 @@ export function NotePreview({ note, onRemoveNote }) {
   function handleNoteBgcChange(color) {
     setNoteBgc(color);
 
-    const noteToSave = {
+    const updatedNote = {
       ...note,
       style: {
         ...note.style,
@@ -18,11 +18,11 @@ export function NotePreview({ note, onRemoveNote }) {
       },
     };
 
-    saveNote(noteToSave);
+    saveNote(updatedNote);
   }
 
-  function saveNote(noteToSave) {
-    notesService.saveNote(noteToSave);
+  function saveNote(updatedNote) {
+    notesService.saveNote(updatedNote);
   }
 
   return (
