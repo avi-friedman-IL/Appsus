@@ -31,19 +31,6 @@
        rgb(23 24 26 / 16%) 0px 1px 3px 1px;
  }
 
- .mail-list li section {
-    display: grid;
-    grid-auto-flow: column;
-    align-items: center;
-    gap: 20px;
- }
-
- .mail-list li section>* {
-    color: #202124;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
- }
-
  .mail-list li.read {
     background-color: var(--mail-li-bgc);
     font-weight: normal;
@@ -80,4 +67,8 @@
 
  .mail-list li:hover .remove-mail {
     display: block;
+ }
+
+ .mail-list .sent-at{
+   font-size: 12px;
  }
