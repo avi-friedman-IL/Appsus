@@ -1,17 +1,14 @@
- /* mail list */
- .mail-list {
+ ul.mail-list {
     margin: 0;
-    padding: 0;
+    padding: 1em;
+    height: 80vh;
+    border-radius: 15px;
     font-family: roboto, Arial, Helvetica, sans-serif;
-    /* position: sticky; */
-    overflow: scroll;
+    overflow-y: scroll;
  }
 
- .mail-list .mail-list-header{
-   top: 3em;
- }
-
- .mail-list ul {
+ .mail-list .mail-list-header {
+    top: 3em;
  }
 
  .mail-list li {

@@ -1,11 +1,10 @@
- /* mail index  */
  .mail-index {
-   max-height: 85vh;
    display: grid;
    grid-template-columns: 20% 1fr;
    gap: 10px;
    letter-spacing: .50px;
    background-color: var(--mail-index-bgc);
+   overflow: hidden;
  }
 
  .folder-and-list {
@@ -21,10 +20,10 @@
  }
 
  .compose-btn {
-  margin-inline-start: 1em;
-  display: grid;
-  grid-auto-flow: column;
-  gap: 10px;
+   margin-inline-start: 1em;
+   display: grid;
+   grid-auto-flow: column;
+   gap: 10px;
    width: 50%;
    padding: 1.5em;
    border-radius: 1em;
@@ -33,7 +32,7 @@
    background-color: #c2e7ff;
    color: #001d35;
    cursor: pointer;
-   
+
  }
 
  .compose-btn:hover {
