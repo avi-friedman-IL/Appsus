@@ -3,8 +3,10 @@
 }
 
 .note-card {
-    width: fit-content;
-    max-width: 20em;
+    width: 100%;
+    /* width: fit-content; */
+    /* max-width: 20em; */
+    /* max-width: 20em; */
     height: fit-content;
     padding: 1em;
     margin-block-end: 1em;
@@ -83,7 +85,6 @@
     border-radius: 50%;
     width: 3em;
     height: 3em;
-
 }
 
 .note-card .icons .btn:hover {
