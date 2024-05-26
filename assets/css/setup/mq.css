@@ -66,6 +66,9 @@
     /* KEEP NOTE PREVIEW */
     .note-card .icons {
         justify-content: center;
+    }
+
+    .note-card .icons .btn {
         opacity: 1;
     }
 
