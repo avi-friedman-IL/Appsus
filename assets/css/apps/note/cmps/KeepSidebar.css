@@ -14,15 +14,21 @@
 .keep-sidebar .keep-sidebar-item {
     display: flex;
     align-items: center;
-    padding-inline-start: 1em;
     height: 3em;
     width: 3em;
     border-radius: 50%;
     cursor: pointer;
 }
 
+.keep-sidebar:hover .keep-sidebar-item {
+    border-radius: 0 20px 20px 0;
+    width: 15em;
+    transition: ease-out 0.1s;
+}
+
 .keep-sidebar .keep-sidebar-item i {
     font-size: 1.4em;
+    margin-inline: auto;
 }
 
 .keep-sidebar .keep-sidebar-item.active {
@@ -41,12 +47,6 @@
     transition: 0.1s;
 }
 
-.keep-sidebar:hover .keep-sidebar-item {
-    border-radius: 0 20px 20px 0;
-    width: 15em;
-    transition: ease-out 0.1s;
-}
-
 .keep-sidebar:hover .keep-sidebar-item span {
     opacity: 1;
 }
@@ -58,24 +58,52 @@
 
     /* ADD FORM */
     .notes-add-input .add-form {
-        max-width: 60%;
+        max-width: 80%;
+        height: 2em;
+        overflow: hidden;
+    }
+
+    .notes-add-input .add-form .btn {
+        font-size: 0.5em;
+        overflow: hidden;
     }
 
     /* KEEP SIDEBAR */
+    .keep-sidebar {
+        width: fit-content;
+        margin: 0;
+    }
+
+    .keep-sidebar .keep-sidebar-item {
+        height: 2em;
+        width: 2em;
+        margin: 1em;
+        border-radius: 50%;
+    }
+
+    .keep-sidebar:hover .keep-sidebar-item {
+        width: 2em;
+        border-radius: 50%;
+    }
+
+    .keep-sidebar .keep-sidebar-item i {
+        font-size: 1em;
+    }
 
     .keep-sidebar:hover .keep-sidebar-item span {
         opacity: 0;
     }
 
-    .keep-sidebar:hover .keep-sidebar-item {
-        width: 3em;
-        border-radius: 50%;
-    }
+
 
     /* KEEP INDEX */
+    .keep-index {
+        column-gap: 1em;
+    }
+
     .note-list {
-        columns: 2 5em;
-        gap: 1em;
+        columns: 2 10em;
+        gap: 5px;
         padding: 1em;
         padding-inline-end: 3em;
         margin-left: 5em;
