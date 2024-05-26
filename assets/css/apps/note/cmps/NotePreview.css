@@ -3,6 +3,7 @@
 }
 
 .note-card {
+    width: fit-content;
     max-width: 20em;
     height: fit-content;
     padding: 1em;
