@@ -1,6 +1,7 @@
 const { Link } = ReactRouterDOM
 
 import { utilService } from "../../../services/util.service.js";
+import { utilService } from "../../../services/util.service.js";
 import { MailPreview } from "./MailPreview.jsx";
 
 export function MailList({ mails, onRemove }) {
