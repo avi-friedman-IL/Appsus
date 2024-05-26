@@ -59,9 +59,7 @@ export function NotePreview({ note, onRemoveNote }) {
             <li key={index}>{todo.txt}</li>
           ))}
         </ul>
-      ) : (
-        ""
-      )}
+      ) : null}
 
       <div className="icons">
         <div className="btn pin-btn">
