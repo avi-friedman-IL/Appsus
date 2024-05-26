@@ -5,6 +5,7 @@
  .keep-index {
      display: grid;
      grid-template-columns: 0.5fr 3fr;
+     grid-template-rows: repeat(3, auto);
      column-gap: 3em;
  }
 
@@ -12,8 +13,23 @@
      grid-column: 2/3;
  }
 
+ .keep-index .all-lists {
+     grid-column: 2/4;
+ }
+
+ .keep-index .pinned-notes {
+     grid-column: 2/3;
+     grid-row: 2/3;
+
+ }
+
+ .keep-index .pinned-notes h2 {
+     text-align: center;
+ }
+
  .keep-index .note-list {
      grid-column: 2/3;
+     grid-row: 3/4;
  }
 
  /* @media (max-width:740px) {

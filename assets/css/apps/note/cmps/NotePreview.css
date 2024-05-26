@@ -69,14 +69,14 @@
 .note-card .icons {
     display: flex;
     color: var(--keep-text-color-1);
-    opacity: 0;
-    transition: 0.5s;
+    /* opacity: 0; */
 }
 
-.note-card:hover .icons {
+
+.note-card .icons .pin-btn.pinned {
+    color: pink;
     opacity: 1;
 }
-
 
 .note-card .icons .btn {
     display: flex;
@@ -85,7 +85,14 @@
     border-radius: 50%;
     width: 3em;
     height: 3em;
+    opacity: 0;
+    transition: 0.5s;
 }
+
+.note-card:hover .icons .btn {
+    opacity: 1;
+}
+
 
 .note-card .icons .btn:hover {
     background-color: var(--keep-bgc-2);
@@ -107,14 +114,11 @@
 .note-card .color-item {
     border: var(--keep-bgc-1) 1px solid;
     border-radius: 50%;
-    /* padding: 5px; */
-    margin: 5px;
+    margin: 3px;
     height: 1.5em;
     width: 1.5em;
     cursor: pointer;
 }
-
-
 
 .note-card .color-item:hover {
     transform: scale(1.1);

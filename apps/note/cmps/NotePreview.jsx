@@ -4,7 +4,12 @@ const { useState, useEffect } = React;
 import { notesService } from "../services/note.service.js";
 import { ColorInput } from "./ColorInput.jsx";
 
-export function NotePreview({ note, onRemoveNote }) {
+export function NotePreview({
+  note,
+  onRemoveNote,
+  onTogglePinned,
+  onSaveNote,
+}) {
   const [noteBgc, setNoteBgc] = useState(note.style.backgroundColor || "#fff");
 
   function handleNoteBgcChange(color) {
@@ -17,13 +22,13 @@ export function NotePreview({ note, onRemoveNote }) {
         backgroundColor: color,
       },
     };
-
-    saveNote(updatedNote);
+    onSaveNote(updatedNote);
+    // saveNote(updatedNote);
   }
 
-  function saveNote(updatedNote) {
-    notesService.saveNote(updatedNote);
-  }
+  // function saveNote(updatedNote) {
+  //   notesService.saveNote(updatedNote);
+  // }
 
   return (
     <li className="note-card" style={{ backgroundColor: noteBgc }}>
@@ -62,7 +67,10 @@ export function NotePreview({ note, onRemoveNote }) {
       ) : null}
 
       <div className="icons">
-        <div className="btn pin-btn">
+        <div
+          className={`btn pin-btn ${note.isPinned ? "pinned" : ""}`}
+          onClick={() => onTogglePinned(note)}
+        >
           <i className="fa-solid fa-thumbtack"></i>
         </div>
 
