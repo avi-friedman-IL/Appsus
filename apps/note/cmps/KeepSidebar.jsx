@@ -1,27 +1,29 @@
+import { lightBulb } from "../../../assets/img/bulb.png";
 export function KeepSidebar() {
   return (
     <section className="keep-sidebar">
       <div className="keep-sidebar-item notes-btn active">
-        <i className="fa-solid fa-lightbulb"></i>
+        <img src="../../../assets/img/bulb.png" alt="lightbulb" />
         <span>Notes</span>
       </div>
 
       <div className="keep-sidebar-item reminders-btn">
-        <i className="fa-solid fa-bell"></i>
+        <img src="../../../assets/img/bell.png" alt="lightbulb" />
         <span>Reminders</span>
       </div>
 
       <div className="keep-sidebar-item edit-btn">
-        <i className="fa-solid fa-pen"></i>
+        <img src="../../../assets/img/pen.png" alt="lightbulb" />
         <span>Edit</span>
       </div>
 
       <div className="keep-sidebar-item archive-btn">
-        <i className="fa-solid fa-boxes-packing"></i>
+        <img src="../../../assets/img/archive.png" alt="lightbulb" />
         <span>Archive</span>
       </div>
+
       <div className="keep-sidebar-item trash-btn">
-        <i className="fa-solid fa-trash-can"></i>
+        <img src="../../../assets/img/delete.png" alt="lightbulb" />
         <span>Trash</span>
       </div>
     </section>

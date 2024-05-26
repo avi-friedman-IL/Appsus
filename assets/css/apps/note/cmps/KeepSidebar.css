@@ -3,7 +3,7 @@
 }
 
 .keep-sidebar {
-    position: absolute;
+    position: fixed;
     margin-inline-end: 5em;
     top: 4em;
     bottom: 0;
@@ -14,7 +14,7 @@
 .keep-sidebar .keep-sidebar-item {
     display: flex;
     align-items: center;
-    padding-inline-start: 1em;
+    padding-inline-start: .8em;
     height: 3em;
     width: 3em;
     border-radius: 50%;
@@ -22,11 +22,18 @@
 }
 
 .keep-sidebar:hover .keep-sidebar-item {
+    position: relative;
     display: flex;
     border-radius: 0 20px 20px 0;
     width: 15em;
     transition: ease-out 0.1s;
 }
+
+.keep-sidebar img {
+    width: 1.5em;
+    height: 1.5em;
+}
+
 
 .keep-sidebar .keep-sidebar-item i {
     font-size: 1.4em;
@@ -50,96 +57,4 @@
 
 .keep-sidebar:hover .keep-sidebar-item span {
     opacity: 1;
-}
-
-@media(max-width:750px) {
-    * {
-        overflow-x: hidden;
-    }
-
-    /* ADD FORM */
-    .notes-add-input {
-        margin-block-start: 0;
-        height: fit-content;
-    }
-
-    .notes-add-input .add-form {
-        max-width: 90%;
-        /* overflow: hidden; */
-    }
-
-    .notes-add-input .add-form .btn i {
-        padding: 0.2em;
-    }
-
-    .notes-add-input .add-form .btn {
-        font-size: 0.8em;
-        overflow: hidden;
-    }
-
-    /* KEEP SIDEBAR */
-    .keep-sidebar {
-        width: fit-content;
-        margin: 0;
-    }
-
-    .keep-sidebar .keep-sidebar-item {
-        height: 2em;
-        width: 2em;
-        margin: 1em;
-        padding-inline-start: 0.65em;
-        border-radius: 50%;
-    }
-
-    .keep-sidebar:hover .keep-sidebar-item {
-        width: 2em;
-        border-radius: 50%;
-    }
-
-    .keep-sidebar .keep-sidebar-item i {
-        font-size: 1em;
-    }
-
-    .keep-sidebar:hover .keep-sidebar-item i {
-        margin-inline: 0;
-    }
-
-    .keep-sidebar:hover .keep-sidebar-item span {
-        opacity: 0;
-    }
-
-
-
-    /* KEEP INDEX */
-    .keep-index {
-        column-gap: 1em;
-        grid-template-rows: .4fr 5fr;
-    }
-
-    .note-list {
-        columns: 2 10em;
-        gap: 5px;
-        padding: 1em;
-        padding-inline-end: 3em;
-        margin-left: 5em;
-    }
-
-    /* KEEP NOTE PREVIEW */
-    /* .note-card .video {
-        width: 200px;
-        height: 100px;
-    } */
-
-    .note-card:hover .color-container {
-        /* width: 100%; */
-        margin: 0;
-        padding: 0;
-    }
-
-    .note-card .color-item {
-        height: 1em;
-        width: 1em;
-        margin: 2px;
-
-    }
 }

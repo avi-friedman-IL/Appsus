@@ -31,6 +31,12 @@
     outline: none;
 }
 
+.notes-add-input .content-box {
+    display: flex;
+    justify-content: space-around;
+}
+
+
 .notes-add-input .add-form .btn {
     width: 3em;
     height: 3em;

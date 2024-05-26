@@ -1,5 +1,4 @@
 /* Setup */
-
 @import './setup/variables.css';
 @import './setup/typography.css';
 
@@ -35,3 +34,5 @@
 @import './apps/mail/cmps/MailFilter.css';
 @import './apps/mail/cmps/MailFolderList.css';
 @import './apps/mail/cmps/MailDetails.css';
+
+@import './setup/mq.css';

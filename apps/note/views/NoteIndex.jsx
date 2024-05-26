@@ -6,7 +6,12 @@ import { AddForm } from "../cmps/AddForm.jsx";
 
 export function NoteIndex() {
   const [notes, setNotes] = useState([]);
+
   const [filterBy, setFilterBy] = useState(notesService.getDefaultFilter());
+  const [isOnFilter, setIsOnFilter] = useState(false);
+
+  const [isAddFormOpen, setIsAddFormOpen] = useState(false);
+  const [infoTxt, setInfoTxt] = useState("");
 
   useEffect(() => {
     notesService.query(filterBy).then((notes) => setNotes(notes));
@@ -22,6 +27,11 @@ export function NoteIndex() {
     });
   }, []);
 
+  function handleToggle(ev) {
+    ev.preventDefault();
+    setIsAddFormOpen((isAddFormOpen) => !isAddFormOpen);
+  }
+
   function handleRemoveNote(noteId) {
     notesService.removeNote(noteId).then(() => {
       setNotes((prevNotes) => prevNotes.filter((note) => note.id !== noteId));
@@ -34,13 +44,49 @@ export function NoteIndex() {
     });
   }
 
+  function handleSubmit(ev) {
+    ev.preventDefault();
+
+    if (!infoTxt || isOnFilter) return;
+
+    const newNote = {
+      createdAt: Date.now(),
+      type: "NoteTxt",
+      isPinned: false,
+      style: {
+        backgroundColor: "var(--keep-bgc-1)",
+      },
+      info: {
+        title: infoTxt,
+        txt: "",
+        todos: [],
+        url: "",
+      },
+    };
+    handleAddNote(newNote);
+    setInfoTxt("");
+    setIsOpen(false);
+  }
+
+  function reset() {
+    setInfoTxt("");
+    setFilterByToEdit("");
+  }
+
   return (
-    <section className="keep-index">
+    <section className="keep-index" onClick={handleSubmit}>
       <KeepSidebar />
       <AddForm
-        onAddNote={handleAddNote}
+        isAddFormOpen={isAddFormOpen}
+        infoTxt={infoTxt}
+        isOnFilter={isOnFilter}
         filterBy={filterBy}
+        onSetIsOnFilter={setIsOnFilter}
         onFilterBy={onSetFilterBy}
+        onToggle={handleToggle}
+        onSetInfoTxt={setInfoTxt}
+        onReset={reset}
+        onSubmit={handleSubmit}
       />
       {!notes ? (
         <h1>loading...</h1>
