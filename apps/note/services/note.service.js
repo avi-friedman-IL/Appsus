@@ -25,11 +25,12 @@ function query(filterBy = {}) {
         .then(notes => {
             if (filterBy.title) {
                 const regExp = new RegExp(filterBy.title, 'i')
-                notes = notes.filter(note => regExp.test(note.info.title))
-            }
-            if (filterBy.txt) {
-                const regExp = new RegExp(filterBy.txt, 'i')
-                notes = notes.filter(note => regExp.test(note.info.txt))
+                notes = notes.filter(note => {
+                    const titleMatch = regExp.test(note.info.title)
+                    const textMatch = regExp.test(note.info.txt);
+                    const todosMatch = note.info.todos && note.info.todos.some(todo => regExp.test(todo.txt));
+                    return titleMatch || textMatch || todosMatch;
+                })
             }
             return notes
         })
