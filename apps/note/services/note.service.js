@@ -28,7 +28,7 @@ function query(filterBy = {}) {
                 notes = notes.filter(note => {
                     const titleMatch = regExp.test(note.info.title)
                     const textMatch = regExp.test(note.info.txt);
-                    const todosMatch = note.info.todos && note.info.todos.some(todo => regExp.test(todo.text));
+                    const todosMatch = note.info.todos && note.info.todos.some(todo => regExp.test(todo.txt));
                     return titleMatch || textMatch || todosMatch;
                 })
             }
