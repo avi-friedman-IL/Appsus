@@ -61,3 +61,11 @@ form.mail-compose {
 .mail-compose input:focus-visible {
     outline: none;
 }
+
+textarea{
+    height: 30vh;
+}
+
+textarea:focus-visible{
+    outline: none;
+}
