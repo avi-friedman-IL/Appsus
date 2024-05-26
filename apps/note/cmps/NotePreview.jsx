@@ -35,8 +35,8 @@ export function NotePreview({ note, onRemoveNote }) {
         {note.info.url.video ? (
           <iframe
             src={note.info.url.video}
-            width="250"
-            height="150"
+            // width="70"
+            // height="70"
             title="video"
             allowFullScreen
           ></iframe>

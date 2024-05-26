@@ -124,6 +124,12 @@
         margin-left: 5em;
     }
 
+    /* KEEP NOTE PREVIEW */
+    /* .note-card .video {
+        width: 200px;
+        height: 100px;
+    } */
+
     .note-card:hover .color-container {
         /* width: 100%; */
         margin: 0;
