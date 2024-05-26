@@ -9,7 +9,12 @@ header {
 .app-header {
     display: flex;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 0.5em 1em;
+}
+
+.app-header img {
+    width: 2em;
+    cursor: pointer;
 }
 
 nav a {
@@ -24,4 +29,14 @@ nav a.active {
     color: darkblue;
     font-weight: bold;
     text-decoration: overline;
+}
+
+.icons-modal {
+    position: fixed;
+    top: 4em;
+    right: 1em;
+    padding: 1em;
+    border: 1px solid var(--keep-bgc-2);
+    border-radius: 10px;
+    background-color: var(--keep-bgc-1);
 }
