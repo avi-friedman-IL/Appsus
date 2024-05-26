@@ -9,7 +9,9 @@ export function MailList({ mails, onRemove }) {
             <li className={mail.isRead ? 'read' : ''} key={mail.id}><Link to={`/mail/${mail.id}`}>
                 {<MailPreview mail={mail} />}
             </Link>
-                <button className="fa fa-remove-mail remove-mail" onClick={() => onRemove(mail.id)}></button>
+                <div className="mail-list-actions">
+                    <button className="fa fa-remove-mail remove-mail" onClick={() => onRemove(mail.id)}></button>
+                </div>
 
                 <p className="sent-at">
                     {`${utilService.getMonthName(new Date(mail.sentAt)).substring(0, 3)} 
