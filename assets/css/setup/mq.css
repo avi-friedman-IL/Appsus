@@ -54,7 +54,7 @@
     /* KEEP INDEX */
     .keep-index {
         column-gap: 1em;
-        grid-template-rows: .4fr 5fr;
+        grid-template-rows: .3fr 5fr;
     }
 
     .note-list {
