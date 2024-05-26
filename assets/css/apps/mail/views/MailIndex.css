@@ -25,6 +25,7 @@
    grid-auto-flow: column;
    gap: 10px;
    width: 50%;
+   min-width: max-content;
    padding: 1.5em;
    border-radius: 1em;
    border: 0;
