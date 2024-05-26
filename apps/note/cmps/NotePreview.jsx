@@ -25,20 +25,6 @@ export function NotePreview({ note, onRemoveNote }) {
     notesService.saveNote(noteToSave);
   }
 
-  // function getAudioType(url) {
-  //   const extension = url.split(".").pop();
-  //   switch (extension) {
-  //     case "mp3":
-  //       return "audio/mpeg";
-  //     case "ogg":
-  //       return "audio/ogg";
-  //     case "wav":
-  //       return "audio/wav";
-  //     default:
-  //       return "audio/mpeg";
-  //   }
-  // }
-
   return (
     <li className="note-card" style={{ backgroundColor: noteBgc }}>
       {note.info.url.image ? <img src={note.info.url.image} /> : null}
@@ -63,7 +49,7 @@ export function NotePreview({ note, onRemoveNote }) {
 
       {note.info.title ? <p className="title"> {note.info.title} </p> : null}
 
-      {note.info.txt ? <p> {note.info.txt} </p> : null}
+      {note.info.txt ? <p className="txt"> {note.info.txt} </p> : null}
 
       {note.info.todos ? (
         <ul className="todo-list">

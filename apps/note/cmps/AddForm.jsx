@@ -52,6 +52,11 @@ export function AddForm({ onAddNote, filterBy, onFilterBy }) {
     setIsOpen(false);
   }
 
+  function reset() {
+    setInfoTxt("");
+    setFilterByToEdit("");
+  }
+
   return (
     <section className="notes-add-input">
       <form
@@ -104,6 +109,13 @@ export function AddForm({ onAddNote, filterBy, onFilterBy }) {
 
             <button type="button" className="btn list-btn">
               <i className="fa-solid fa-list-ul"></i>
+            </button>
+            <button
+              type="button"
+              className="btn reset-btn"
+              onClick={() => reset()}
+            >
+              <i className="fa-solid fa-arrow-rotate-right"></i>
             </button>
           </div>
         )}
