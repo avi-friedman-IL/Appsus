@@ -14,6 +14,7 @@
 .keep-sidebar .keep-sidebar-item {
     display: flex;
     align-items: center;
+    padding-inline-start: 1em;
     height: 3em;
     width: 3em;
     border-radius: 50%;
@@ -21,6 +22,7 @@
 }
 
 .keep-sidebar:hover .keep-sidebar-item {
+    display: flex;
     border-radius: 0 20px 20px 0;
     width: 15em;
     transition: ease-out 0.1s;
@@ -28,7 +30,6 @@
 
 .keep-sidebar .keep-sidebar-item i {
     font-size: 1.4em;
-    margin-inline: auto;
 }
 
 .keep-sidebar .keep-sidebar-item.active {
@@ -78,6 +79,7 @@
         height: 2em;
         width: 2em;
         margin: 1em;
+        padding-inline-start: 0.65em;
         border-radius: 50%;
     }
 
@@ -88,6 +90,10 @@
 
     .keep-sidebar .keep-sidebar-item i {
         font-size: 1em;
+    }
+
+    .keep-sidebar:hover .keep-sidebar-item i {
+        margin-inline: 0;
     }
 
     .keep-sidebar:hover .keep-sidebar-item span {
