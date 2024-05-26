@@ -2,7 +2,8 @@ export function KeepSidebar() {
   return (
     <section className="keep-sidebar">
       <div className="keep-sidebar-item notes-btn active">
-        <i className="fa-solid fa-lightbulb"></i>
+        {/* <i className="fa-solid fa-lightbulb"></i> */}
+        <i class="fi fi-tr-bulb"></i>
         <span>Notes</span>
       </div>
 
