@@ -6,7 +6,5 @@
 .pinned-notes {
     columns: 6 15em;
     gap: 1em;
-    padding: 0 2em 2em 2em;
-    /* margin-right: 5em; */
-    /* margin-left: 5em; */
+    padding: 2em;
 }
