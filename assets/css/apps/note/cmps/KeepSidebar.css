@@ -58,14 +58,22 @@
     }
 
     /* ADD FORM */
+    .notes-add-input {
+        margin-block-start: 0;
+        height: fit-content;
+    }
+
     .notes-add-input .add-form {
-        max-width: 80%;
-        height: 2em;
-        overflow: hidden;
+        max-width: 90%;
+        /* overflow: hidden; */
+    }
+
+    .notes-add-input .add-form .btn i {
+        padding: 0.2em;
     }
 
     .notes-add-input .add-form .btn {
-        font-size: 0.5em;
+        font-size: 0.8em;
         overflow: hidden;
     }
 
@@ -105,6 +113,7 @@
     /* KEEP INDEX */
     .keep-index {
         column-gap: 1em;
+        grid-template-rows: .4fr 5fr;
     }
 
     .note-list {

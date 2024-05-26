@@ -110,6 +110,7 @@ export function AddForm({ onAddNote, filterBy, onFilterBy }) {
             <button type="button" className="btn list-btn">
               <i className="fa-solid fa-list-ul"></i>
             </button>
+
             <button
               type="button"
               className="btn reset-btn"
