@@ -27,7 +27,9 @@ export function NotePreview({ note, onRemoveNote }) {
 
   return (
     <li className="note-card" style={{ backgroundColor: noteBgc }}>
-      {/* {note.info.url.image ? <img src={note.info.url.image} /> : ""} */}
+      {note.info.url.image ? (
+        <img src={note.info.url.image} alt="Note Image" />
+      ) : null}
 
       <section className="video">
         {note.info.url.video ? (
