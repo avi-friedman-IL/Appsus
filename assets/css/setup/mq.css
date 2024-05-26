@@ -63,7 +63,7 @@
 
     .note-list,
     .pinned-notes {
-        padding: 0 .5em .5em .5em;
+        padding: 0 1em .5em 0;
     }
 
     .note-list {

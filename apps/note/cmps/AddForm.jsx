@@ -85,11 +85,7 @@ export function AddForm({
               <i className="fa-solid fa-list-ul"></i>
             </button>
 
-            <button
-              type="button"
-              className="btn reset-btn"
-              onClick={() => onReset()}
-            >
+            <button type="button" className="btn reset-btn" onClick={onReset}>
               <i className="fa-solid fa-arrow-rotate-right"></i>
             </button>
           </div>

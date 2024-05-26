@@ -70,7 +70,7 @@ export function NoteIndex() {
 
   function reset() {
     setInfoTxt("");
-    setFilterByToEdit("");
+    setFilterBy("");
   }
 
   return (
