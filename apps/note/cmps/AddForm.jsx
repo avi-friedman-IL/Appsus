@@ -3,11 +3,19 @@ const { useState, useEffect, useRef } = React;
 import { utilService } from "../../../services/util.service.js";
 import { notesService } from "../services/note.service.js";
 
-export function AddForm({ onAddNote, filterBy, onFilterBy }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [infoTxt, setInfoTxt] = useState("");
-
-  const [isOnFilter, setIsOnFilter] = useState(false);
+export function AddForm({
+  onAddNote,
+  isAddFormOpen,
+  infoTxt,
+  isOnFilter,
+  filterBy,
+  onSetIsOnFilter,
+  onFilterBy,
+  onToggle,
+  onSetInfoTxt,
+  onReset,
+  onSubmit,
+}) {
   const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy });
   const onSetFilterDebounce = useRef(utilService.debounce(onFilterBy, 500));
 
@@ -19,50 +27,16 @@ export function AddForm({ onAddNote, filterBy, onFilterBy }) {
     setFilterByToEdit((prevFilter) => ({ ...prevFilter, ["title"]: value }));
   }
 
-  function handleToggle(ev) {
-    ev.preventDefault();
-    setIsOpen((isOpen) => !isOpen);
-  }
-
   function handleFilterToggle() {
-    setIsOnFilter((prevIsOnFilter) => !prevIsOnFilter);
-  }
-
-  function handleSubmit(ev) {
-    ev.preventDefault();
-
-    if (!infoTxt || isOnFilter) return;
-
-    const newNote = {
-      createdAt: Date.now(),
-      type: "NoteTxt",
-      isPinned: false,
-      style: {
-        backgroundColor: "var(--keep-bgc-1)",
-      },
-      info: {
-        title: infoTxt,
-        txt: "",
-        todos: [],
-        url: "",
-      },
-    };
-    onAddNote(newNote);
-    setInfoTxt("");
-    setIsOpen(false);
-  }
-
-  function reset() {
-    setInfoTxt("");
-    setFilterByToEdit("");
+    onSetIsOnFilter((prevIsOnFilter) => !prevIsOnFilter);
   }
 
   return (
     <section className="notes-add-input">
       <form
         autoComplete="off"
-        className={`add-form ${isOpen ? "open" : "closed"}`}
-        onSubmit={handleSubmit}
+        className={`add-form ${isAddFormOpen ? "open" : "closed"}`}
+        onSubmit={onSubmit}
       >
         <input
           id="add-note"
@@ -71,13 +45,13 @@ export function AddForm({ onAddNote, filterBy, onFilterBy }) {
           value={!isOnFilter ? infoTxt : filterByToEdit.title}
           onChange={
             !isOnFilter
-              ? (ev) => setInfoTxt(ev.target.value)
+              ? (ev) => onSetInfoTxt(ev.target.value)
               : (ev) => handleFilterTxtChange(ev.target.value)
           }
-          onClick={handleToggle}
+          onClick={onToggle}
         />
 
-        {isOpen && (
+        {isAddFormOpen && (
           <div className="content-box">
             <button
               type="button"
@@ -114,7 +88,7 @@ export function AddForm({ onAddNote, filterBy, onFilterBy }) {
             <button
               type="button"
               className="btn reset-btn"
-              onClick={() => reset()}
+              onClick={() => onReset()}
             >
               <i className="fa-solid fa-arrow-rotate-right"></i>
             </button>
