@@ -75,7 +75,6 @@
     /* KEEP NOTE PREVIEW */
     .note-card:hover {
         transform: scale(1);
-
     }
 
     .note-card .icons {
