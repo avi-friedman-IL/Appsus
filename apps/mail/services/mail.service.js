@@ -24,7 +24,7 @@ function _createEmails() {
                 subject: utilService.makeLorem(5),
                 body: utilService.makeLorem(40),
                 isRead: Math.random() > 0.7,
-                sentAt: 1551133930594,
+                sentAt: new Date('10/04/2021').toLocaleString(),
                 removedAt: null,
                 from: fromTos[utilService.getRandomIntInclusive(0, 1)],
                 to: fromTos[utilService.getRandomIntInclusive(0, 1)]
@@ -57,7 +57,7 @@ function query(filterBy = {}) {
         })
 }
 
-function getEmptyMail(subject = '', body = '', isRead = false, sentAt = 0, removedAt = 0, from = 'momo@momo.com', to = '') {
+function getEmptyMail(subject = '', body = '', isRead = false, sentAt = Date.now(), removedAt = 0, from = 'momo@momo.com', to = '') {
     return { subject, body, isRead, sentAt, removedAt, from, to }
 }
 
