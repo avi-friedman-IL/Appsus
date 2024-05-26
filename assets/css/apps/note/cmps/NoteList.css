@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+.all-lists h2 {
+    margin-block-start: 2em;
+}
+
 .note-list,
 .pinned-notes {
     columns: 6 15em;
