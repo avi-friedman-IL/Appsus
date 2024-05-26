@@ -64,6 +64,7 @@ form.mail-compose {
 
 textarea{
     height: 30vh;
+    resize: none;
 }
 
 textarea:focus-visible{
