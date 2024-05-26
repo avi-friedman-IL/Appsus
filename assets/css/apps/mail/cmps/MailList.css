@@ -59,16 +59,19 @@
 
  .mail-list .remove-mail {
     display: none;
+    position: absolute;
+    right: 9em;
     width: max-content;
     border: 0;
     cursor: pointer;
     background-color: inherit;
+    z-index: 1;
  }
 
  .mail-list li:hover .remove-mail {
     display: block;
  }
 
- .mail-list .sent-at{
-   font-size: 12px;
+ .mail-list .sent-at {
+    font-size: 12px;
  }
