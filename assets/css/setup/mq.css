@@ -5,12 +5,13 @@
 
     /* ADD FORM */
     .notes-add-input {
-        margin-block-start: 0;
+        margin-block-start: 0.5em;
+
         height: fit-content;
     }
 
     .notes-add-input .add-form {
-        max-width: 90%;
+        max-width: 100%;
     }
 
     .notes-add-input .add-form .btn {
@@ -56,14 +57,23 @@
         grid-template-rows: .3fr 5fr;
     }
 
+    .all-lists {
+        padding-block-start: 1em;
+    }
+
+    .note-list,
+    .pinned-notes {
+        padding: 0 .5em .5em .5em;
+    }
+
     .note-list {
         columns: 1 auto;
         gap: 5px;
-        padding: 1em;
         margin: 0;
     }
 
     /* KEEP NOTE PREVIEW */
+
     .note-card .icons {
         justify-content: center;
     }
@@ -77,6 +87,7 @@
         opacity: 1;
         margin: 0;
         padding: 0;
+        padding-inline-start: 0;
     }
 
     .note-card .color-item {
