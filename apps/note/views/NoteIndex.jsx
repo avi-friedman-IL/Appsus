@@ -42,7 +42,12 @@ export function NoteIndex() {
         filterBy={filterBy}
         onFilterBy={onSetFilterBy}
       />
-      {notes && <NoteList notes={notes} onRemoveNote={handleRemoveNote} />}
+      {!notes ? (
+        <h1>loading...</h1>
+      ) : (
+        <NoteList notes={notes} onRemoveNote={handleRemoveNote} />
+      )}
+      {/* {!!notes && <NoteList notes={notes} onRemoveNote={handleRemoveNote} />} */}
     </section>
   );
 }
