@@ -5,7 +5,7 @@ import { notesService } from "../services/note.service.js";
 import { ColorInput } from "./ColorInput.jsx";
 
 export function NotePreview({ note, onRemoveNote }) {
-  const [noteBgc, setNoteBgc] = useState(note.style.backgroundColor);
+  const [noteBgc, setNoteBgc] = useState(note.style.backgroundColor || "#fff");
 
   function handleNoteBgcChange(color) {
     setNoteBgc(color);
@@ -27,7 +27,7 @@ export function NotePreview({ note, onRemoveNote }) {
 
   return (
     <li className="note-card" style={{ backgroundColor: noteBgc }}>
-      {note.info.url.image ? <img src={note.info.url.image} /> : null}
+      {note.info.url.image ? <img src={note.info.url.image} /> : ""}
 
       <section className="video">
         {note.info.url.video ? (
