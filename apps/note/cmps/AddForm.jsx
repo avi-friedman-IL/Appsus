@@ -18,7 +18,6 @@ export function AddForm({
   onReset,
   onSubmit,
 }) {
-  // const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy });
   const onSetFilterDebounce = useRef(utilService.debounce(onFilterBy, 500));
 
   useEffect(() => {
