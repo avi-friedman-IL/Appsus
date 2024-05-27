@@ -1,7 +1,7 @@
 header {
     position: relative;
     top: 0;
-    right: 2em;
+    /* right: 2em; */
     z-index: 1;
 }
 
@@ -15,6 +15,7 @@ header {
 .app-header img {
     height: 2em;
     width: 2em;
+    margin-inline-end: .5em;
     cursor: pointer;
 }
 
