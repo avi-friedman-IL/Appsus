@@ -18,10 +18,10 @@ export function AddForm({
   onReset,
   onSubmit,
 }) {
-  const onSetFilterDebounce = useRef(utilService.debounce(onFilterBy, 500));
+  const setFilterDebounce = useRef(utilService.debounce(onFilterBy, 500));
 
   useEffect(() => {
-    onSetFilterDebounce.current(filterByToEdit);
+    setFilterDebounce.current(filterByToEdit);
   }, [filterByToEdit]);
 
   function handleFilterTxtChange(value) {
@@ -55,6 +55,7 @@ export function AddForm({
         {isAddFormOpen && (
           <div className="content-box">
             <button
+              title="filter"
               type="button"
               className="btn serach-btn"
               onClick={handleFilterToggle}
@@ -62,31 +63,56 @@ export function AddForm({
               <i className="fa-solid fa-magnifying-glass"></i>
             </button>
 
-            <button type="submit" className="btn submit-btn">
+            <button title="add note" type="submit" className="btn submit-btn">
               <i className="fa-solid fa-plus"></i>
             </button>
 
-            <button type="button" className="btn font-btn">
-              <i className="fa-solid fa-font"></i>
+            <button
+              title="add text note"
+              type="button"
+              className="btn text-btn"
+            >
+              <i className="fa-solid fa-pen-to-square"></i>
             </button>
 
-            <button type="button" className="btn img-btn">
+            <button
+              title="add image note"
+              type="button"
+              className="btn img-btn"
+            >
               <i className="fa-solid fa-image"></i>
             </button>
 
-            <button type="button" className="btn video-btn">
+            <button
+              title="add video note"
+              type="button"
+              className="btn video-btn"
+            >
               <i className="fa-brands fa-youtube"></i>
             </button>
 
-            <button type="button" className="btn audio-btn">
+            <button
+              title="add audio note"
+              type="button"
+              className="btn audio-btn"
+            >
               <i className="fa-solid fa-volume-high"></i>
             </button>
 
-            <button type="button" className="btn list-btn">
+            <button
+              title="add todo note"
+              type="button"
+              className="btn list-btn"
+            >
               <i className="fa-solid fa-list-ul"></i>
             </button>
 
-            <button type="button" className="btn reset-btn" onClick={onReset}>
+            <button
+              title="reset"
+              type="button"
+              className="btn reset-btn"
+              onClick={onReset}
+            >
               <i className="fa-solid fa-arrow-rotate-right"></i>
             </button>
           </div>

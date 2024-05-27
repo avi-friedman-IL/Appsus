@@ -11,9 +11,6 @@
 }
 
 .notes-add-input .add-form {
-    /* display: flex; */
-    /* align-items: center; */
-    /* padding-block-start: 2em; */
     border: 1px solid var(--keep-bgc-2);
     box-shadow: 5px 5px 5px var(--keep-bgc-2);
     width: 30em;

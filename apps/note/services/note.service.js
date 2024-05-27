@@ -65,8 +65,8 @@ function saveNote(note) {
 
 function addNote(note) {
     let notes = utilService.loadFromStorage(NOTES_KEY)
+    note.id = utilService.makeId()
     notes = [...notes, note]
-    note['id'] = utilService.makeId()
     utilService.saveToStorage(NOTES_KEY, notes)
     return note
 }
@@ -93,17 +93,17 @@ function _createNotes() {
             {
                 id: 'n101',
                 createdAt: 1112222,
-                type: ['NoteTxt', 'NoteImage'],
-                isPinned: true,
+                type: 'NoteTxt',
+                isPinned: false,
                 style: {
                     backgroundColor: "#e2f6d3",
                     font: '',
                 },
                 info: {
-                    title: 'Cute dog',
+                    title: 'Work',
                     txt: 'Fullstack Me Baby!',
                     url: {
-                        image: 'https://www.dogster.com/wp-content/uploads/2024/02/pug-dog-standing-on-grass-at-the-park_MVolodymyr_Shutterstock.jpg',
+                        image: '',
                         video: '',
                         audio: '',
                     },
@@ -113,7 +113,7 @@ function _createNotes() {
             {
                 id: 'n102',
                 createdAt: 1112223,
-                type: ['NoteAudio'],
+                type: 'NoteAudio',
                 isPinned: false,
                 style: {
                     backgroundColor: '',
@@ -134,7 +134,7 @@ function _createNotes() {
             {
                 id: 'n103',
                 createdAt: 1112224,
-                type: ['NoteTodos', 'NoteVideo'],
+                type: 'NoteTodos',
                 isPinned: false,
                 style: {
                     backgroundColor: '',
@@ -145,7 +145,7 @@ function _createNotes() {
                     txt: '',
                     url: {
                         image: '',
-                        video: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+                        video: '',
                         audio: '',
                     },
                     todos: [
@@ -164,11 +164,53 @@ function _createNotes() {
                     font: '',
                 },
                 info: {
-                    title: 'Bobi and Me',
+                    title: 'Bobi',
                     txt: '',
                     url: {
                         image: 'https://image.petmd.com/files/styles/978x550/public/2022-10/pug-dog-breed.jpeg?w=1080&q=75',
                         video: '',
+                        audio: '',
+                    },
+                    todos: [],
+                },
+
+            },
+            {
+                id: 'n105',
+                createdAt: 1112226,
+                type: 'NoteImg',
+                isPinned: true,
+                style: {
+                    backgroundColor: '#F1948A',
+                    font: '',
+                },
+                info: {
+                    title: 'Bobi and Me',
+                    txt: '',
+                    url: {
+                        image: 'https://www.dogster.com/wp-content/uploads/2024/02/pug-dog-standing-on-grass-at-the-park_MVolodymyr_Shutterstock.jpg',
+                        video: '',
+                        audio: '',
+                    },
+                    todos: [],
+                },
+
+            },
+            {
+                id: 'n106',
+                createdAt: 1112227,
+                type: 'NoteVideo',
+                isPinned: false,
+                style: {
+                    backgroundColor: '#F1948A',
+                    font: '',
+                },
+                info: {
+                    title: 'Bunny',
+                    txt: '',
+                    url: {
+                        image: '',
+                        video: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
                         audio: '',
                     },
                     todos: [],

@@ -22,12 +22,6 @@ export function NoteIndex() {
     setFilterBy(newFilter);
   }
 
-  // useEffect(() => {
-  //   notesService.getNotes().then((notes) => {
-  //     setNotes(notes);
-  //   });
-  // }, []);
-
   function handleToggle(ev) {
     ev.preventDefault();
     setIsAddFormOpen((isAddFormOpen) => !isAddFormOpen);
@@ -66,7 +60,7 @@ export function NoteIndex() {
     };
     handleAddNote(newNote);
     setInfoTxt("");
-    setIsOpen(false);
+    setIsAddFormOpen(false);
   }
 
   function reset() {
