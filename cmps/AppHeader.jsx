@@ -10,6 +10,12 @@ export function AppHeader() {
   return (
     <React.Fragment>
       <header className="app-header">
+        <NavLink to="/">
+          <img
+            className="logo"
+            src="https://www.svgrepo.com/show/10350/logo.svg"
+          />
+        </NavLink>
         {/* <Link to="/">
         <h3>LOGO!</h3>
       </Link>
@@ -20,6 +26,7 @@ export function AppHeader() {
         <NavLink to="/note">Note</NavLink> */}
         <nav>
           <img
+            className="menu"
             src="https://www.svgrepo.com/show/10257/menu.svg"
             onClick={handleToggleModal}
           />

@@ -8,11 +8,17 @@ header {
 .app-header {
     position: relative;
     display: flex;
-    justify-content: end;
+    /* justify-content: end; */
+    justify-content: space-between;
     padding: 1em .6em;
 }
 
-.app-header img {
+.app-header .logo {
+    width: 3em;
+    height: 3em;
+}
+
+.app-header img.menu {
     height: 2em;
     width: 2em;
     margin-inline-end: .5em;
