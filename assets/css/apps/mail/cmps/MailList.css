@@ -12,6 +12,7 @@
  }
 
  .mail-list li {
+    position: relative;
     display: grid;
     grid-auto-flow: column;
     align-items: center;
@@ -25,10 +26,7 @@
  }
 
  .mail-list li:hover {
-   box-shadow: rgb(218, 220, 224) 0px -2px 0px 0px inset, rgb(218, 220, 224) 1px -2px 0px 0px inset, rgba(60, 64, 67, 0.3) 1px -2px 1px 0px, rgba(60, 64, 67, 0.15) 0px 1px 2px 0px;
-
-
-
+    box-shadow: rgb(218, 220, 224) 0px -2px 0px 0px inset, rgb(218, 220, 224) 1px -2px 0px 0px inset, rgba(60, 64, 67, 0.3) 1px -2px 1px 0px, rgba(60, 64, 67, 0.15) 0px 1px 2px 0px;
  }
 
  .mail-list li.read {
@@ -57,13 +55,15 @@
  }
 
  .mail-list .remove-mail {
+    position: absolute;
+    right: 3em;
+    bottom: .62rem;
     display: none;
     width: max-content;
     border: 0;
     cursor: pointer;
     background-color: inherit;
     z-index: 1;
-    margin-inline-end: auto;
  }
 
  .mail-list li:hover .remove-mail {

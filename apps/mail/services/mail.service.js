@@ -24,6 +24,7 @@ function _createEmails() {
                 subject: utilService.makeLorem(5),
                 body: utilService.makeLorem(40),
                 isRead: Math.random() > 0.7,
+                isStarred: Math.random() > 0.7,
                 sentAt: new Date('10/04/2021').toLocaleString(),
                 removedAt: null,
                 from: fromTos[utilService.getRandomIntInclusive(0, 1)],
@@ -50,6 +51,9 @@ function query(filterBy = {}) {
                 }
                 if (filterBy.status === 'Sent') {
                     emails = emails.filter(email => email.from === 'momo@momo.com')
+                }
+                if (filterBy.status === 'Starred') {
+                    emails = emails.filter(email => email.isStarred)
                 }
             }
 

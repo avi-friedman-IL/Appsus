@@ -1,14 +1,13 @@
 header {
     position: sticky;
     top: 0;
-    background: lightcyan;
     border-bottom: 2px solid white;
     z-index: 1;
 }
 
 .app-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     padding: 0.5em 1em;
 }
 

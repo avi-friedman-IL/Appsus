@@ -10,14 +10,15 @@ export function AppHeader() {
 
   return (
     <header className="app-header">
-      <Link to="/">
+      {/* <Link to="/">
         <h3>LOGO!</h3>
       </Link>
       <nav>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/about">About</NavLink>
         <NavLink to="/mail">Mail</NavLink>
-        <NavLink to="/note">Note</NavLink>
+        <NavLink to="/note">Note</NavLink> */}
+      <nav>
         <span onClick={handleToggleModal}>
           <img src="../assets/img/apps_24dp_FILL0_wght400_GRAD0_opsz24.png" />
         </span>

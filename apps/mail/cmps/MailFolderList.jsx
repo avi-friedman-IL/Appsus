@@ -1,6 +1,6 @@
 const { useState, useEffect } = React
 
-export function MailFolderList({ filterBy, onFilter,unread }) {
+export function MailFolderList({ filterBy, onFilter, unread }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
     const [folderSelect, setFolderSelect] = useState(filterByToEdit.status)
@@ -21,8 +21,12 @@ export function MailFolderList({ filterBy, onFilter,unread }) {
             <option onClick={handleClick} value="Index">index</option>
             <span>{unread}</span>
         </article>
-        {/* <option className={folderSelect === 'Starred' ? 'select' : ''} onClick={handleClick} value="Starred">Starred</option> */}
-
+        
+        <article className={folderSelect === 'Starred' ? 'select' : ''}>
+        <p>&#9733;</p>
+            <option onClick={handleClick} value="Starred">Starred</option>
+        </article>
+        
         <article className={folderSelect === 'Sent' ? 'select' : ''}>
             <p className="fa fa-sent-mail"></p>
             <option onClick={handleClick} value="Sent">Sent</option>
