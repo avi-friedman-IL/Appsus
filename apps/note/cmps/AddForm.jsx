@@ -4,11 +4,13 @@ import { utilService } from "../../../services/util.service.js";
 import { notesService } from "../services/note.service.js";
 
 export function AddForm({
-  onAddNote,
+  // onAddNote,
   isAddFormOpen,
   infoTxt,
   isOnFilter,
-  filterBy,
+  filterByToEdit,
+  onSetFilterByToEdit,
+  // filterBy,
   onSetIsOnFilter,
   onFilterBy,
   onToggle,
@@ -16,7 +18,7 @@ export function AddForm({
   onReset,
   onSubmit,
 }) {
-  const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy });
+  // const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy });
   const onSetFilterDebounce = useRef(utilService.debounce(onFilterBy, 500));
 
   useEffect(() => {
@@ -24,7 +26,7 @@ export function AddForm({
   }, [filterByToEdit]);
 
   function handleFilterTxtChange(value) {
-    setFilterByToEdit((prevFilter) => ({ ...prevFilter, ["title"]: value }));
+    onSetFilterByToEdit((prevFilter) => ({ ...prevFilter, ["title"]: value }));
   }
 
   function handleFilterToggle() {

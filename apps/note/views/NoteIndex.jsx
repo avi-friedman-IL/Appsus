@@ -9,6 +9,7 @@ export function NoteIndex() {
 
   const [filterBy, setFilterBy] = useState(notesService.getDefaultFilter());
   const [isOnFilter, setIsOnFilter] = useState(false);
+  const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy });
 
   const [isAddFormOpen, setIsAddFormOpen] = useState(false);
   const [infoTxt, setInfoTxt] = useState("");
@@ -21,11 +22,11 @@ export function NoteIndex() {
     setFilterBy(newFilter);
   }
 
-  useEffect(() => {
-    notesService.getNotes().then((notes) => {
-      setNotes(notes);
-    });
-  }, []);
+  // useEffect(() => {
+  //   notesService.getNotes().then((notes) => {
+  //     setNotes(notes);
+  //   });
+  // }, []);
 
   function handleToggle(ev) {
     ev.preventDefault();
@@ -70,7 +71,7 @@ export function NoteIndex() {
 
   function reset() {
     setInfoTxt("");
-    setFilterBy("");
+    setFilterByToEdit({ ...notesService.getDefaultFilter() });
   }
 
   return (
@@ -80,6 +81,8 @@ export function NoteIndex() {
         isAddFormOpen={isAddFormOpen}
         infoTxt={infoTxt}
         isOnFilter={isOnFilter}
+        filterByToEdit={filterByToEdit}
+        onSetFilterByToEdit={setFilterByToEdit}
         filterBy={filterBy}
         onSetIsOnFilter={setIsOnFilter}
         onFilterBy={onSetFilterBy}
