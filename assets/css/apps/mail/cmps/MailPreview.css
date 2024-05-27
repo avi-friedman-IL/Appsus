@@ -1,6 +1,8 @@
 .mail-preview {
    display: grid;
    grid-auto-flow: column;
+   grid-template-columns: 2em 1fr;
+   justify-content: start;
    align-items: center;
    gap: 20px;
    width: 100%;
@@ -24,4 +26,10 @@
    -webkit-text-stroke: 1px #aeaeb0;
    cursor: pointer;
    z-index: 1;
+}
+
+.starred-and-li{
+   display: grid;
+   grid-auto-flow: column;
+   gap: 10px;
 }

@@ -21,7 +21,7 @@ function _createEmails() {
         for (let i = 0; i < 20; i++) {
             const email = {
                 id: utilService.makeId(),
-                subject: utilService.makeLorem(5),
+                subject: utilService.makeLorem(3),
                 body: utilService.makeLorem(40),
                 isRead: Math.random() > 0.7,
                 isStarred: Math.random() > 0.7,
