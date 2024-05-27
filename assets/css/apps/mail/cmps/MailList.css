@@ -73,3 +73,7 @@
  .mail-list .sent-at {
     font-size: 12px;
  }
+
+ .mail-list li:hover .sent-at{
+   display: none;
+ }
