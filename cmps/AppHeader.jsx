@@ -1,7 +1,7 @@
 const { Link, NavLink } = ReactRouterDOM;
 const { useState } = React;
 export function AppHeader() {
-  const [isOpenModal, setIsOpenModal] = useState(true);
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   function handleToggleModal() {
     setIsOpenModal((isOpenModal) => !isOpenModal);
@@ -33,7 +33,8 @@ function IconsModal({ onToggleModal }) {
     <section className="icons-modal">
       <NavLink to="/">
         <img
-          src="../assets/img/home.png"
+          // src="../assets/img/home.png"
+          src="https://www.svgrepo.com/show/421619/home-menu-web.svg"
           alt="home"
           title="home"
           onClick={onToggleModal}
@@ -42,7 +43,7 @@ function IconsModal({ onToggleModal }) {
 
       <NavLink to="/about">
         <img
-          src="../assets/img/about.png"
+          src="https://www.svgrepo.com/show/475026/about.svg"
           alt="about"
           title="about"
           onClick={onToggleModal}
@@ -51,7 +52,7 @@ function IconsModal({ onToggleModal }) {
 
       <NavLink to="/mail">
         <img
-          src="../assets/img/mail.png"
+          src="https://www.svgrepo.com/show/349378/gmail.svg"
           alt="mail"
           title="mail"
           onClick={onToggleModal}
@@ -60,9 +61,10 @@ function IconsModal({ onToggleModal }) {
 
       <NavLink to="/note">
         <img
-          src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"
+          // src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"
+          src="https://www.svgrepo.com/show/353816/google-keep.svg"
           alt="keep"
-          title="mail"
+          title="keep"
           onClick={onToggleModal}
         />
       </NavLink>
