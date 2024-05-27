@@ -25,7 +25,7 @@ function _createEmails() {
                 body: utilService.makeLorem(40),
                 isRead: Math.random() > 0.7,
                 isStarred: Math.random() > 0.7,
-                sentAt: new Date('10/04/2021').toLocaleString(),
+                sentAt: Date.now(),
                 removedAt: null,
                 from: fromTos[utilService.getRandomIntInclusive(0, 1)],
                 to: fromTos[utilService.getRandomIntInclusive(0, 1)]

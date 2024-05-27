@@ -6,7 +6,8 @@ export function MailStarred({ mail }) {
 
     const [isStarred, setIsStarred] = useState(false)
 
-    function onToggleIsStarred() {
+    function onToggleIsStarred(ev) {
+        ev.preventDefault()
         mail.isStarred = !mail.isStarred
         mailService.save(mail)
         setIsStarred(isStarred => !isStarred)

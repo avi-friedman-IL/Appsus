@@ -1,12 +1,12 @@
 form.mail-compose {
     display: grid;
     position: absolute;
-    bottom: 1em;
-    left: 20vw;
-    right: 40vw;
-    width: 30vw;
+    bottom: 0;
+    right: 3em;
+    height: 60vh;
+    width: 480px;
     border-radius: 8px;
-    z-index: 1;
+    z-index: 2;
     font-family: Arial, Helvetica, sans-serif;
     box-shadow:
         rgba(0, 0, 0, 0.14) 0px 8px 10px 1px,
@@ -51,6 +51,10 @@ form.mail-compose {
     z-index: 2;
 }
 
+.mail-compose .send:hover {
+    background-color: #297be6;
+}
+
 .mail-compose .remove-mail{
     padding-inline-end: 1em;
     border: 0;
@@ -63,7 +67,8 @@ form.mail-compose {
 }
 
 textarea{
-    height: 30vh;
+    height: 38vh;
+    font-family: Arial, Helvetica, sans-serif;
     resize: none;
 }
 

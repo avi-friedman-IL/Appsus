@@ -29,7 +29,7 @@ export function MailCompose({ close }) {
         <h2>New Message</h2>
         <input className="to" onChange={handleChange} name="to" type="email" />
         <input className="subject" onChange={handleChange} name="subject" type="text" />
-        <textarea row="3" cols="2" className="mail-body" onChange={handleChange} name="body" type="text" />
+        <textarea row="3" cols="3" className="mail-body" onChange={handleChange} name="body" type="text" />
         <article>
             <button className="send">Send</button>
             <button className="fa fa-remove-mail remove-mail" onClick={removeMail}></button>

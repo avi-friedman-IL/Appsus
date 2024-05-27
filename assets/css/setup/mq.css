@@ -67,7 +67,6 @@
     .note-list {
         columns: 1 auto;
         gap: 5px;
-        margin: 0;
     }
 
     /* KEEP NOTE PREVIEW */

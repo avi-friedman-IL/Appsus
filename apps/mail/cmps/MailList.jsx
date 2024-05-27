@@ -9,7 +9,6 @@ export function MailList({ mails, onRemove }) {
         {mails.map(mail =>
             <li className={mail.isRead ? 'read' : ''} key={mail.id}>
                 {<MailStarred mail={mail} />}
-                
                 <Link to={`/mail/${mail.id}`}>{<MailPreview mail={mail} />}</Link>
                 
                 <div className="mail-list-actions">
