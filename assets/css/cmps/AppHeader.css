@@ -8,7 +8,7 @@ header {
 .app-header {
     display: flex;
     justify-content: end;
-    padding: 0.5em 1em;
+    padding: 1em 2em;
 }
 
 .app-header img {
