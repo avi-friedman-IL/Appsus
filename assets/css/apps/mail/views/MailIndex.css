@@ -1,6 +1,6 @@
  .mail-index {
    display: grid;
-   grid-template-columns: 20% 1fr;
+   grid-template-columns: 15% 1fr;
    gap: 10px;
    letter-spacing: .50px;
    background-color: var(--mail-index-bgc);
