@@ -1,20 +1,27 @@
 header {
     position: relative;
     top: 0;
-    right: 2em;
+    /* right: 2em; */
     z-index: 1;
 }
 
 .app-header {
     position: relative;
     display: flex;
-    justify-content: end;
+    /* justify-content: end; */
+    justify-content: space-between;
     padding: 1em .6em;
 }
 
-.app-header img {
+.app-header .logo {
+    width: 3em;
+    height: 3em;
+}
+
+.app-header img.menu {
     height: 2em;
     width: 2em;
+    margin-inline-end: .5em;
     cursor: pointer;
 }
 
@@ -35,8 +42,8 @@ nav a.active {
 
 .menu-modal {
     position: absolute;
-    top: 5em;
-    right: 5em;
+    top: 4em;
+    right: 4em;
     padding: 1em;
     border: 1px solid var(--keep-bgc-2);
     border-radius: 10px;

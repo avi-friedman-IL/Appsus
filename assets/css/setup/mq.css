@@ -6,7 +6,6 @@
     /* ADD FORM */
     .notes-add-input {
         margin-block-start: 0.5em;
-
         height: fit-content;
     }
 
@@ -54,7 +53,6 @@
     /* KEEP INDEX */
     .keep-index {
         column-gap: 1em;
-        grid-template-rows: .3fr 5fr;
     }
 
     .all-lists {

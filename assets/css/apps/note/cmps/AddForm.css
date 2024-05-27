@@ -17,7 +17,7 @@
     border: 1px solid var(--keep-bgc-2);
     box-shadow: 5px 5px 5px var(--keep-bgc-2);
     width: 30em;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
 .notes-add-input .add-form input[type='text'] {
