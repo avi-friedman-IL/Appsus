@@ -1,21 +1,24 @@
 header {
-    position: sticky;
+    position: relative;
     top: 0;
-    border-bottom: 2px solid white;
+    right: 2em;
     z-index: 1;
 }
 
 .app-header {
+    position: relative;
     display: flex;
     justify-content: end;
-    padding: 1em 2em;
+    padding: 1em .6em;
 }
 
 .app-header img {
+    height: 2em;
     width: 2em;
     cursor: pointer;
 }
 
+/* 
 nav a {
     margin: .5em;
 }
@@ -28,14 +31,20 @@ nav a.active {
     color: darkblue;
     font-weight: bold;
     text-decoration: overline;
-}
+} */
 
-.icons-modal {
-    position: fixed;
-    top: 4em;
-    right: 1em;
+.menu-modal {
+    position: absolute;
+    top: 5em;
+    right: 5em;
     padding: 1em;
     border: 1px solid var(--keep-bgc-2);
     border-radius: 10px;
     background-color: var(--keep-bgc-1);
+}
+
+.menu-modal img {
+    height: 2em;
+    width: 2em;
+    margin: .5em;
 }
