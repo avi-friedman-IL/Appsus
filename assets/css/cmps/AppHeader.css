@@ -9,11 +9,10 @@ header {
     position: relative;
     display: flex;
     justify-content: end;
-    padding: 1em 2em;
+    padding: 1em .6em;
 }
 
 .app-header img {
-    margin: 20px 0;
     height: 2em;
     width: 2em;
     cursor: pointer;
