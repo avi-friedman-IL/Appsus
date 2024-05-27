@@ -1,5 +1,6 @@
 const { useState, useEffect } = React;
 
+import { utilService } from "../../../services/util.service.js";
 import { notesService } from "../services/note.service.js";
 import { NotePreview } from "../../../apps/note/cmps/NotePreview.jsx";
 
@@ -27,6 +28,15 @@ export function NoteList({ notes, onRemoveNote }) {
     notesService.saveNote(updatedNote);
   }
 
+  function handleDuplicateNote(note) {
+    const duplicatedNote = {
+      ...note,
+      id: utilService.makeId(),
+    };
+    saveNote(duplicatedNote);
+    setUpdatedNotes((prevNotes) => [...prevNotes, duplicatedNote]);
+  }
+
   const pinnedNotes = updatedNotes.filter((note) => note.isPinned);
   const unpinnedNotes = updatedNotes.filter((note) => !note.isPinned);
 
@@ -42,6 +52,7 @@ export function NoteList({ notes, onRemoveNote }) {
               onRemoveNote={onRemoveNote}
               onTogglePinned={handleTogglePinnedNote}
               onSaveNote={saveNote}
+              onDuplicateNote={handleDuplicateNote}
               key={note.id}
             />
           ))}
@@ -59,6 +70,7 @@ export function NoteList({ notes, onRemoveNote }) {
             onRemoveNote={onRemoveNote}
             onTogglePinned={handleTogglePinnedNote}
             onSaveNote={saveNote}
+            onDuplicateNote={handleDuplicateNote}
             key={note.id}
           />
         ))}

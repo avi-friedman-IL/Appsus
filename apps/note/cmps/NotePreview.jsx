@@ -1,6 +1,7 @@
 const { Link } = ReactRouterDOM;
 const { useState, useEffect } = React;
 
+import { utilService } from "../../../services/util.service.js";
 import { notesService } from "../services/note.service.js";
 import { ColorInput } from "./ColorInput.jsx";
 
@@ -9,8 +10,18 @@ export function NotePreview({
   onRemoveNote,
   onTogglePinned,
   onSaveNote,
+  onDuplicateNote,
 }) {
   const [noteBgc, setNoteBgc] = useState(note.style.backgroundColor || "#fff");
+
+  // function handleDuplicateNote() {
+  //   const duplicatedNote = {
+  //     ...note,
+  //     id: utilService.makeId(),
+  //   };
+  //   onSaveNote(duplicatedNote);
+  //   // console.log(duplicatedNote);
+  // }
 
   function handleNoteBgcChange(color) {
     setNoteBgc(color);
@@ -77,6 +88,10 @@ export function NotePreview({
 
         <div className="btn remove-btn" onClick={() => onRemoveNote(note.id)}>
           <i className="fa-regular fa-trash-can"></i>
+        </div>
+
+        <div className="btn clone-btn" onClick={() => onDuplicateNote(note)}>
+          <i className="fa-solid fa-clone"></i>
         </div>
       </div>
       <ColorInput onSetBgc={handleNoteBgcChange} />
