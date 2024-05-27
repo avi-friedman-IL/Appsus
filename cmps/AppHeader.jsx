@@ -20,7 +20,8 @@ export function AppHeader() {
         <NavLink to="/note">Note</NavLink> */}
       <nav>
         <span onClick={handleToggleModal}>
-          <img src="../assets/img/apps_24dp_FILL0_wght400_GRAD0_opsz24.png" />
+          {/* <img src="../assets/img/apps_24dp_FILL0_wght400_GRAD0_opsz24.png" /> */}
+          <img src="https://www.svgrepo.com/show/10257/menu.svg" />
         </span>
         {isOpenModal && <IconsModal onToggleModal={handleToggleModal} />}
       </nav>
