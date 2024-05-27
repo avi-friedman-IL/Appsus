@@ -112,7 +112,7 @@
 }
 
 .note-card .color-item {
-    border: var(--keep-bgc-1) 1px solid;
+    border: var(--keep-bgc-2) 1px solid;
     border-radius: 50%;
     margin: 3px;
     height: 1.5em;
