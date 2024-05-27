@@ -23,12 +23,7 @@ export function NotePreview({
       },
     };
     onSaveNote(updatedNote);
-    // saveNote(updatedNote);
   }
-
-  // function saveNote(updatedNote) {
-  //   notesService.saveNote(updatedNote);
-  // }
 
   return (
     <li className="note-card" style={{ backgroundColor: noteBgc }}>
