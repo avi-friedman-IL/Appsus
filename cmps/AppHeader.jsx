@@ -5,12 +5,12 @@ export function AppHeader() {
 
   function handleToggleModal() {
     setIsOpenModal((isOpenModal) => !isOpenModal);
-    console.log(isOpenModal);
   }
 
   return (
-    <header className="app-header">
-      {/* <Link to="/">
+    <React.Fragment>
+      <header className="app-header">
+        {/* <Link to="/">
         <h3>LOGO!</h3>
       </Link>
       <nav>
@@ -18,22 +18,23 @@ export function AppHeader() {
         <NavLink to="/about">About</NavLink>
         <NavLink to="/mail">Mail</NavLink>
         <NavLink to="/note">Note</NavLink> */}
-      <nav>
-        <span onClick={handleToggleModal}>
-          <img src="https://www.svgrepo.com/show/10257/menu.svg" />
-        </span>
-        {isOpenModal && <IconsModal onToggleModal={handleToggleModal} />}
-      </nav>
-    </header>
+        <nav>
+          <img
+            src="https://www.svgrepo.com/show/10257/menu.svg"
+            onClick={handleToggleModal}
+          />
+        </nav>
+      </header>
+      {isOpenModal && <IconsModal onToggleModal={handleToggleModal} />}
+    </React.Fragment>
   );
 }
 
 function IconsModal({ onToggleModal }) {
   return (
-    <section className="icons-modal">
+    <section className="menu-modal">
       <NavLink to="/">
         <img
-          // src="../assets/img/home.png"
           src="https://www.svgrepo.com/show/421619/home-menu-web.svg"
           alt="home"
           title="home"
@@ -61,7 +62,6 @@ function IconsModal({ onToggleModal }) {
 
       <NavLink to="/note">
         <img
-          // src="https://www.gstatic.com/images/branding/product/1x/keep_2020q4_48dp.png"
           src="https://www.svgrepo.com/show/353816/google-keep.svg"
           alt="keep"
           title="keep"
