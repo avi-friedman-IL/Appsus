@@ -2,6 +2,7 @@ const { useState, useEffect } = React
 const { Link, useSearchParams } = ReactRouterDOM
 
 
+import { UserMsg } from "../../../cmps/UserMsg.jsx"
 import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailFolderList } from "../cmps/MailFolderList.jsx"
 import { MailList } from "../cmps/MailList.jsx"
@@ -53,6 +54,7 @@ export function MailIndex() {
         {<MailFilter filterBy={filterBy} onFilter={onSetFilterBy} />}
         {<MailFolderList filterBy={filterBy} onFilter={onSetFilterBy} unread={isUnread} />}
         {<MailList mails={mails} onRemove={removeMail} />}
+        <UserMsg/>
 
     </section>
 }

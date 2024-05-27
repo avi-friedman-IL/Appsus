@@ -1,13 +1,23 @@
 .user-msg {
-    background-color: lightgray;
-    padding: 1em;
     position: absolute;
-    top: 1em;
-    right: 1em;
+    bottom: 2em;
+    left: 1em;
+    display: grid;
+    grid-auto-flow: column;
+    justify-items: center;
+    gap: 10px;
+    align-items: center;
+    padding: 1em;
+    border-radius: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #202124;
+    color: white;
+    box-shadow:rgba(60, 64, 67, 0.3) 0px 1px 3px 0px, rgba(60, 64, 67, 0.15) 0px 4px 8px 3px;
+    z-index: 1;
 }
 
 .user-msg.success {
-    background-color: lightgreen;
+    /* background-color: lightgreen; */
 }
 
 .user-msg.error {
@@ -15,7 +25,10 @@
 }
 
 
-.user-msg button{
-    float: right;
-    margin: 1em;
+.user-msg button {
+    /* float: right; */
+    border: 0;
+    background-color: inherit;
+    color: white;
+    cursor: pointer;
 }

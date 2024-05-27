@@ -21,6 +21,10 @@
     outline: none;
 }
 
+.mail-filter input:focus{
+    /* background-color: #fff; */
+}
+
 .mail-filter>*{
     padding-inline-start: 1em;
 }

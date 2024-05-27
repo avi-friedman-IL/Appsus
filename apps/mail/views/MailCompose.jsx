@@ -1,4 +1,4 @@
-import { utilService } from "../../../services/util.service.js"
+import { eventBusService,showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 import { mailService } from "../services/mail.service.js"
 
 const { useState, useEffect } = React
@@ -10,6 +10,7 @@ export function MailCompose({ close }) {
     function onSave(ev) {
         ev.preventDefault()
         mailService.save(mail)
+        showSuccessMsg('Message sent')
         close()
     }
 
