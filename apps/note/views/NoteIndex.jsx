@@ -60,7 +60,7 @@ export function NoteIndex() {
     };
     handleAddNote(newNote);
     setInfoTxt("");
-    setIsOpen(false);
+    setIsAddFormOpen(false);
   }
 
   function reset() {

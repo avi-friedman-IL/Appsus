@@ -24,17 +24,15 @@ export function NoteList({ notes, onRemoveNote }) {
     );
   }
 
-  function saveNote(updatedNote) {
-    notesService.saveNote(updatedNote);
-  }
-
   function handleDuplicateNote(note) {
-    const duplicatedNote = {
-      ...note,
-      id: utilService.makeId(),
-    };
+    const duplicatedNote = { ...note, id: "" };
+
     saveNote(duplicatedNote);
     setUpdatedNotes((prevNotes) => [...prevNotes, duplicatedNote]);
+  }
+
+  function saveNote(updatedNote) {
+    notesService.saveNote(updatedNote);
   }
 
   const pinnedNotes = updatedNotes.filter((note) => note.isPinned);

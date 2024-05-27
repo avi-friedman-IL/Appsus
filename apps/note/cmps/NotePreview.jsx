@@ -14,15 +14,6 @@ export function NotePreview({
 }) {
   const [noteBgc, setNoteBgc] = useState(note.style.backgroundColor || "#fff");
 
-  // function handleDuplicateNote() {
-  //   const duplicatedNote = {
-  //     ...note,
-  //     id: utilService.makeId(),
-  //   };
-  //   onSaveNote(duplicatedNote);
-  //   // console.log(duplicatedNote);
-  // }
-
   function handleNoteBgcChange(color) {
     setNoteBgc(color);
 

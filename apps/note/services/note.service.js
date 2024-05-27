@@ -65,8 +65,8 @@ function saveNote(note) {
 
 function addNote(note) {
     let notes = utilService.loadFromStorage(NOTES_KEY)
+    note.id = utilService.makeId()
     notes = [...notes, note]
-    note['id'] = utilService.makeId()
     utilService.saveToStorage(NOTES_KEY, notes)
     return note
 }
