@@ -1,5 +1,7 @@
 const { useState, useEffect } = React
 const { Link, useSearchParams } = ReactRouterDOM
+const { useParams } = ReactRouter
+
 
 
 import { UserMsg } from "../../../cmps/UserMsg.jsx"
@@ -8,6 +10,7 @@ import { MailFolderList } from "../cmps/MailFolderList.jsx"
 import { MailList } from "../cmps/MailList.jsx"
 import { mailService } from "../services/mail.service.js"
 import { MailCompose } from "./MailCompose.jsx"
+import { MailDetails } from "./MailDetails.jsx"
 
 export function MailIndex() {
 
@@ -17,6 +20,7 @@ export function MailIndex() {
     const [isCompose, setIsCompose] = useState(false)
     const [isUnread, setIsUnread] = useState()
 
+    const params = useParams()
 
     function removeMail(mailId) {
         mailService.remove(mailId)
@@ -27,12 +31,17 @@ export function MailIndex() {
 
     useEffect(() => {
         mailService.query()
+            .then(mails => setMails(mails))
+    }, [params.mailId])
+
+    useEffect(() => {
+        mailService.query()
             .then(mails => {
                 const isUnread = mails.filter(mail => !mail.isRead)
                 const countIsUnread = isUnread.length
                 setIsUnread(countIsUnread)
             })
-    }, [isUnread])
+    }, [mails])
 
     useEffect(() => {
         setSearchParams(filterBy)
@@ -53,8 +62,9 @@ export function MailIndex() {
         {isCompose && <MailCompose close={onCompose} />}
         {<MailFilter filterBy={filterBy} onFilter={onSetFilterBy} />}
         {<MailFolderList filterBy={filterBy} onFilter={onSetFilterBy} unread={isUnread} />}
-        {<MailList mails={mails} onRemove={removeMail} />}
-        <UserMsg/>
+        {!params.mailId && <MailList mails={mails} onRemove={removeMail} />}
+        {params.mailId && <MailDetails />}
+        {<UserMsg />}
 
     </section>
 }

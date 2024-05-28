@@ -2,6 +2,7 @@
    display: grid;
    grid-template-columns: 15% 1fr;
    gap: 10px;
+   padding-block-start: 1em;
    letter-spacing: .50px;
    background-color: var(--mail-index-bgc);
    overflow: hidden;
