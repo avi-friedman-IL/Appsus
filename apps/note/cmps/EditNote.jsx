@@ -146,7 +146,7 @@ export function EditNote() {
           />
         </label>
 
-        <label>
+        {/* <label>
           Edit todos:
           <input
             type="text"
@@ -155,7 +155,7 @@ export function EditNote() {
             value={note.info.todos}
             onChange={handleChange}
           />
-        </label>
+        </label> */}
 
         <label>
           Edit Image URL:
