@@ -1,6 +1,8 @@
 
 export function About() {
-    return <section className="about">
+    return <section className="about" style={{ padding: '5em' }}>
         <h1>About Page</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est excepturi harum assumenda praesentium expedita fugit incidunt minus quod. Voluptas adipisci commodi ab amet impedit quidem magnam blanditiis, laborum repellendus reiciendis qui totam eos consequatur veniam temporibus porro. Dolore, quidem. Laborum, inventore eos, quod odit doloribus, esse delectus beatae minus quis quas fuga dolore tempora ea labore soluta? Animi, expedita incidunt ad perspiciatis minus quidem nihil minima est, quam aperiam fugiat, dolores sunt. Tempora temporibus laboriosam ut quidem provident, debitis doloremque minima ipsam architecto dolores ex voluptatem veritatis dignissimos neque dolor omnis non corrupti? Adipisci autem sit voluptatibus tempore iste suscipit.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est excepturi harum assumenda praesentium expedita fugit incidunt minus quod. Voluptas adipisci commodi ab amet impedit quidem magnam blanditiis, laborum repellendus reiciendis qui totam eos consequatur veniam temporibus porro. Dolore, quidem. Laborum, inventore eos, quod odit doloribus, esse delectus beatae minus quis quas fuga dolore tempora ea labore soluta? Animi, expedita incidunt ad perspiciatis minus quidem nihil minima est, quam aperiam fugiat, dolores sunt. Tempora temporibus laboriosam ut quidem provident, debitis doloremque minima ipsam architecto dolores ex voluptatem veritatis dignissimos neque dolor omnis non corrupti? Adipisci autem sit voluptatibus tempore iste suscipit.</p>
     </section>
 }
