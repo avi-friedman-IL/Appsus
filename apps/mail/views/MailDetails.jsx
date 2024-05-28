@@ -15,8 +15,8 @@ export function MailDetails() {
         mailService.get(params.mailId)
             .then(mail => {
                 mail.isRead = true
-                setMail(mail)
                 mailService.save(mail)
+                setMail(mail)
             })
     }, [params.mailId])
 
