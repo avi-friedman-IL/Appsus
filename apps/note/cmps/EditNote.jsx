@@ -142,7 +142,7 @@ export function EditNote() {
         </label>
 
         <label>
-          Edit todos:
+          Edit todos with ' / ' separation:
           <input
             type="text"
             placeholder="edit"
