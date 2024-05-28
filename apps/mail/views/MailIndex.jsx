@@ -19,6 +19,7 @@ export function MailIndex() {
     const [filterBy, setFilterBy] = useState(mailService.getFilterFromSearchParams(searchParams))
     const [isCompose, setIsCompose] = useState(false)
     const [isUnread, setIsUnread] = useState()
+    const [toggleIsRead, setToggleIsRead] = useState(false)
 
     const params = useParams()
 
@@ -28,7 +29,7 @@ export function MailIndex() {
                 setMails(prevMails => prevMails.filter(mail => mail.id !== mailId))
             })
     }
-
+    
     useEffect(() => {
         mailService.query()
             .then(mails => setMails(mails))
@@ -37,11 +38,19 @@ export function MailIndex() {
     useEffect(() => {
         mailService.query()
             .then(mails => {
+                setToggleIsRead(false)
+                setMails(mails)
+            })
+    }, [toggleIsRead])
+
+    useEffect(() => {
+        mailService.query()
+            .then(mails => {
                 const isUnread = mails.filter(mail => !mail.isRead)
                 const countIsUnread = isUnread.length
                 setIsUnread(countIsUnread)
             })
-    }, [mails])
+    }, [isUnread])
 
     useEffect(() => {
         setSearchParams(filterBy)
@@ -57,12 +66,23 @@ export function MailIndex() {
         setIsCompose(isCompose => !isCompose)
     }
 
+    function toggleRead(mailId) {
+        mailService.query()
+            .then(mails => {
+                const mail = mails.find(mail => mail.id === mailId)
+                mail.isRead = !mail.isRead
+                mailService.save(mail)
+                setMails(mails => [...mails])
+                setToggleIsRead(read => !read)
+            })
+    }
+
     return <section className="mail-index">
         <button className="compose-btn" onClick={onCompose}><span className="fa fa-compose-btn-mail"></span>Compose</button>
         {isCompose && <MailCompose close={onCompose} />}
         {<MailFilter filterBy={filterBy} onFilter={onSetFilterBy} />}
         {<MailFolderList filterBy={filterBy} onFilter={onSetFilterBy} unread={isUnread} />}
-        {!params.mailId && <MailList mails={mails} onRemove={removeMail} />}
+        {!params.mailId && <MailList mails={mails} onRemove={removeMail} onToggleRead={toggleRead} />}
         {params.mailId && <MailDetails />}
         {<UserMsg />}
 

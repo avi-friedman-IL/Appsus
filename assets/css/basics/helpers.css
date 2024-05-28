@@ -29,28 +29,36 @@
 .fa.fa-search-mail::before {
     content: '\f002';
 }
+
 .fa.fa-compose-btn-mail::before {
     content: '\f304';
 }
+
 .fa.fa-remove-mail::before {
     content: '\f2ed';
 }
 
+.fa.fa-unread-mail::before {
+    content: '\f0e0';
+}
+
 .fa.fa-index-mail::before {
-   content: '\f0e0';
+    content: '\f0e0';
 }
 
 .fa.fa-sent-mail::before {
-   content: '\f1d8';
+    content: '\f1d8';
 }
 
-.fa.fa-back::before{
+.fa.fa-back::before {
     content: '\f060';
 }
-.fa.fa-prev::before{
+
+.fa.fa-prev::before {
     content: '\f104';
 }
-.fa.fa-next::before{
+
+.fa.fa-next::before {
     content: '\f105';
 }
 

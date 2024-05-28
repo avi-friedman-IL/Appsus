@@ -54,9 +54,10 @@
     font-weight: normal;
  }
 
+
  .mail-list .remove-mail {
     position: absolute;
-    right: 3em;
+    right: 7em;
     bottom: .7rem;
     display: none;
     width: max-content;
@@ -69,6 +70,23 @@
 
  .mail-list li:hover .remove-mail {
     display: block;
+ }
+
+ .mail-list .unread-mail {
+    display: none;
+ }
+
+ .mail-list li:hover .unread-mail {
+   position: absolute;
+   right: 5em;
+   bottom: .7rem;
+   display: block;
+   width: max-content;
+   border: 0;
+   cursor: pointer;
+   background-color: inherit;
+   font-weight: normal;
+   z-index: 1;
  }
 
  .mail-list .sent-at {
