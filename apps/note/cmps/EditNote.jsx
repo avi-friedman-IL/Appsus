@@ -6,10 +6,6 @@ import { notesService } from "../services/note.service.js";
 
 export function EditNote() {
   const [note, setNote] = useState(notesService.getEmptyNote());
-  // const [note, setNote] = useState({
-  //   info: { title: "", txt: "", todos: [], url: "" },
-  //   style: { backgroundColor: "" },
-  // });
 
   const { noteId } = useParams();
   const navigate = useNavigate();
@@ -47,7 +43,7 @@ export function EditNote() {
           ...prevNote,
           info: {
             ...prevNote.info,
-            [name]: value,
+            [name]: value.split("/").map((string) => ({ txt: string })),
           },
         }));
         break;
@@ -74,7 +70,6 @@ export function EditNote() {
               [name]: value,
             },
           },
-          type: [...note.type, "NoteVideo"],
         }));
         break;
       case "audio":
@@ -123,7 +118,7 @@ export function EditNote() {
 
   return (
     <section className="edit-section">
-      <form onSubmit={saveNote}>
+      <form onSubmit={saveNote} autoComplete="off">
         <label>
           Edit title:
           <input
@@ -146,16 +141,16 @@ export function EditNote() {
           />
         </label>
 
-        {/* <label>
+        <label>
           Edit todos:
           <input
             type="text"
             placeholder="edit"
             name="todos"
-            value={note.info.todos}
+            value={note.info.todos.map((todo) => todo.txt).join("/")}
             onChange={handleChange}
           />
-        </label> */}
+        </label>
 
         <label>
           Edit Image URL:

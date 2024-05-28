@@ -1,8 +1,13 @@
 const { Link } = ReactRouterDOM;
-const { useState, useEffect } = React;
+const { useState } = React;
 
-import { utilService } from "../../../services/util.service.js";
-import { notesService } from "../services/note.service.js";
+// import { utilService } from "../../../services/util.service.js";
+// import { notesService } from "../services/note.service.js";
+import { NoteTxt } from "../cmps/NoteTxt.jsx";
+import { NoteImg } from "../cmps/NoteImg.jsx";
+import { NoteVideo } from "../cmps/NoteVideo.jsx";
+import { NoteAudio } from "./NoteAudio.jsx";
+import { NoteTodos } from "../cmps/NoteTodos.jsx";
 import { ColorInput } from "./ColorInput.jsx";
 
 export function NotePreview({
@@ -29,59 +34,40 @@ export function NotePreview({
 
   return (
     <li className="note-card" style={{ backgroundColor: noteBgc }}>
-      {note.info.url.image ? (
-        <img src={note.info.url.image} alt="Note Image" />
-      ) : null}
-
-      <section className="video">
-        {note.info.url.video ? (
-          <iframe
-            src={note.info.url.video}
-            width="480"
-            height="170"
-            title="video"
-            allowFullScreen
-          ></iframe>
-        ) : null}
-      </section>
-
-      {note.info.url.audio ? (
-        <audio controls>
-          <source src={note.info.url.audio} />
-        </audio>
-      ) : null}
-
-      {note.info.title ? <p className="title"> {note.info.title} </p> : null}
-
-      {note.info.txt ? <p className="txt"> {note.info.txt} </p> : null}
-
-      {note.info.todos ? (
-        <ul className="todo-list">
-          {note.info.todos.map((todo, index) => (
-            <li key={index}>{todo.txt}</li>
-          ))}
-        </ul>
-      ) : null}
+      {note.type === "NoteTxt" && <NoteTxt note={note} />}
+      {note.type === "NoteImg" && <NoteImg note={note} />}
+      {note.type === "NoteVideo" && <NoteVideo note={note} />}
+      {note.type === "NoteAudio" && <NoteAudio note={note} />}
+      {note.type === "NoteTodos" && <NoteTodos note={note} />}
 
       <div className="icons">
         <div
           className={`btn pin-btn ${note.isPinned ? "pinned" : ""}`}
+          title={note.isPinned ? "pinned" : "not pinned"}
           onClick={() => onTogglePinned(note)}
         >
           <i className="fa-solid fa-thumbtack"></i>
         </div>
 
         <Link to={`/note/edit/${note.id}`}>
-          <div className="btn edit-btn">
+          <div className="btn edit-btn" title="edit">
             <i className="fa-solid fa-pen"></i>
           </div>
         </Link>
 
-        <div className="btn remove-btn" onClick={() => onRemoveNote(note.id)}>
+        <div
+          className="btn remove-btn"
+          title="remove"
+          onClick={() => onRemoveNote(note.id)}
+        >
           <i className="fa-regular fa-trash-can"></i>
         </div>
 
-        <div className="btn clone-btn" onClick={() => onDuplicateNote(note)}>
+        <div
+          className="btn clone-btn"
+          title="clone"
+          onClick={() => onDuplicateNote(note)}
+        >
           <i className="fa-solid fa-clone"></i>
         </div>
       </div>

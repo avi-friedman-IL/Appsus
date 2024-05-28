@@ -12,7 +12,14 @@ export function NoteIndex() {
   const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy });
 
   const [isAddFormOpen, setIsAddFormOpen] = useState(false);
+  const [isOnImgMode, setIsOnImgMode] = useState(false);
+  const [isOnTxtMode, setIsOnTxtMode] = useState(true);
+  const [isOnVideoMode, setIsOnVideoMode] = useState(false);
+  const [isOnTodosMode, setIsOnTodosMode] = useState(false);
+  const [isOnAudioMode, setIsOnAudioMode] = useState(false);
+
   const [infoTxt, setInfoTxt] = useState("");
+  const [noteType, setNoteType] = useState("");
 
   useEffect(() => {
     notesService.query(filterBy).then((notes) => setNotes(notes));
@@ -22,7 +29,7 @@ export function NoteIndex() {
     setFilterBy(newFilter);
   }
 
-  function handleToggle(ev) {
+  function handleToggleOpenForm(ev) {
     ev.preventDefault();
     setIsAddFormOpen((isAddFormOpen) => !isAddFormOpen);
   }
@@ -39,6 +46,10 @@ export function NoteIndex() {
     });
   }
 
+  function handleNoteType(type) {
+    setNoteType(type);
+  }
+
   function handleSubmit(ev) {
     ev.preventDefault();
 
@@ -46,16 +57,22 @@ export function NoteIndex() {
 
     const newNote = {
       createdAt: Date.now(),
-      type: "NoteTxt",
+      type: noteType,
       isPinned: false,
       style: {
         backgroundColor: "var(--keep-bgc-1)",
       },
       info: {
-        title: infoTxt,
-        txt: "",
-        todos: [],
-        url: "",
+        title: "",
+        txt: isOnTxtMode && infoTxt,
+        url: {
+          image: isOnImgMode && infoTxt,
+          video: isOnVideoMode && infoTxt,
+          audio: isOnAudioMode && infoTxt,
+        },
+        todos: isOnTodosMode
+          ? infoTxt.split("/").map((string) => ({ txt: string }))
+          : [],
       },
     };
     handleAddNote(newNote);
@@ -80,10 +97,22 @@ export function NoteIndex() {
         filterBy={filterBy}
         onSetIsOnFilter={setIsOnFilter}
         onFilterBy={onSetFilterBy}
-        onToggle={handleToggle}
+        onToggleOpenForm={handleToggleOpenForm}
         onSetInfoTxt={setInfoTxt}
         onReset={reset}
         onSubmit={handleSubmit}
+        noteType={noteType}
+        onSetNoteType={handleNoteType}
+        isOnImgMode={isOnImgMode}
+        onSetIsOnImgMode={setIsOnImgMode}
+        isOnTxtMode={isOnTxtMode}
+        onSetIsOnTxtMode={setIsOnTxtMode}
+        isOnVideoMode={isOnVideoMode}
+        onSetIsOnVideoMode={setIsOnVideoMode}
+        isOnTodosMode={isOnTodosMode}
+        onSetIsOnTodosMode={setIsOnTodosMode}
+        isOnAudioMode={isOnAudioMode}
+        onSetIsOnAudioMode={setIsOnAudioMode}
       />
       {!notes ? (
         <h1>loading...</h1>

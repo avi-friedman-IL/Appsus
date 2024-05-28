@@ -1,13 +1,6 @@
-export function NoteVideo({ note }) {
+export function NoteAudio({ note }) {
   return (
-    <div className="note-video">
-      {/* <iframe
-        src={note.info.url.video}
-        width="480"
-        height="270"
-        title="video"
-        allowFullScreen
-      ></iframe> */}
+    <div>
       {note.info.url.image ? (
         <img src={note.info.url.image} alt="Note Image" />
       ) : null}

@@ -4,19 +4,28 @@ import { utilService } from "../../../services/util.service.js";
 import { notesService } from "../services/note.service.js";
 
 export function AddForm({
-  // onAddNote,
   isAddFormOpen,
   infoTxt,
   isOnFilter,
   filterByToEdit,
   onSetFilterByToEdit,
-  // filterBy,
   onSetIsOnFilter,
   onFilterBy,
-  onToggle,
+  onToggleOpenForm,
   onSetInfoTxt,
   onReset,
   onSubmit,
+  onSetNoteType,
+  isOnImgMode,
+  onSetIsOnImgMode,
+  isOnTxtMode,
+  onSetIsOnTxtMode,
+  isOnVideoMode,
+  onSetIsOnVideoMode,
+  isOnTodosMode,
+  onSetIsOnTodosMode,
+  isOnAudioMode,
+  onSetIsOnAudioMode,
 }) {
   const setFilterDebounce = useRef(utilService.debounce(onFilterBy, 500));
 
@@ -32,6 +41,59 @@ export function AddForm({
     onSetIsOnFilter((prevIsOnFilter) => !prevIsOnFilter);
   }
 
+  function handleImgModeToggle() {
+    onSetIsOnImgMode((prevIsOnImgMode) => !prevIsOnImgMode);
+    onSetIsOnTxtMode(false);
+    onSetIsOnVideoMode(false);
+    onSetIsOnTodosMode(false);
+    onSetIsOnAudioMode(false);
+    onSetNoteType("NoteImg");
+  }
+
+  function handleTxtModeToggle() {
+    onSetIsOnTxtMode((prevIsOnTxtMode) => !prevIsOnTxtMode);
+    onSetIsOnImgMode(false);
+    onSetIsOnVideoMode(false);
+    onSetIsOnTodosMode(false);
+    onSetIsOnAudioMode(false);
+    onSetNoteType("NoteTxt");
+  }
+
+  function handleVideoModeToggle() {
+    onSetIsOnVideoMode((prevIsOnVideoMode) => !prevIsOnVideoMode);
+    onSetIsOnImgMode(false);
+    onSetIsOnTxtMode(false);
+    onSetIsOnVideoMode(false);
+    onSetIsOnTodosMode(false);
+    onSetIsOnAudioMode(false);
+    onSetNoteType("NoteVideo");
+  }
+  function handleTodosModeToggle() {
+    onSetIsOnTodosMode((prevIsOnVideoMode) => !prevIsOnVideoMode);
+    onSetIsOnImgMode(false);
+    onSetIsOnTxtMode(false);
+    onSetIsOnAudioMode(false);
+    onSetNoteType("NoteTodos");
+  }
+  function handleAudioModeToggle() {
+    onSetIsOnAudioMode((prevIsOnVideoMode) => !prevIsOnVideoMode);
+    onSetIsOnImgMode(false);
+    onSetIsOnTxtMode(false);
+    onSetIsOnVideoMode(false);
+    onSetIsOnTodosMode(false);
+    onSetNoteType("NoteAudio");
+  }
+
+  function getPlaceholder() {
+    if (isOnFilter) return "Filter notes";
+    if (isOnTxtMode) return "Add a text note";
+    if (isOnImgMode) return "Add image URL";
+    if (isOnVideoMode) return "Add video URL";
+    if (isOnTodosMode) return "Add todos note with ' / ' separation";
+    if (isOnAudioMode) return "Add audio note";
+    return "Add a note";
+  }
+
   return (
     <section className="notes-add-input">
       <form
@@ -42,14 +104,14 @@ export function AddForm({
         <input
           id="add-note"
           type="text"
-          placeholder={isOnFilter ? "Filter notes" : "Add a note"}
+          placeholder={getPlaceholder()}
           value={!isOnFilter ? infoTxt : filterByToEdit.title}
           onChange={
             !isOnFilter
               ? (ev) => onSetInfoTxt(ev.target.value)
               : (ev) => handleFilterTxtChange(ev.target.value)
           }
-          onClick={onToggle}
+          onClick={onToggleOpenForm}
         />
 
         {isAddFormOpen && (
@@ -71,6 +133,7 @@ export function AddForm({
               title="add text note"
               type="button"
               className="btn text-btn"
+              onClick={handleTxtModeToggle}
             >
               <i className="fa-solid fa-pen-to-square"></i>
             </button>
@@ -79,6 +142,7 @@ export function AddForm({
               title="add image note"
               type="button"
               className="btn img-btn"
+              onClick={handleImgModeToggle}
             >
               <i className="fa-solid fa-image"></i>
             </button>
@@ -87,6 +151,7 @@ export function AddForm({
               title="add video note"
               type="button"
               className="btn video-btn"
+              onClick={handleVideoModeToggle}
             >
               <i className="fa-brands fa-youtube"></i>
             </button>
@@ -95,14 +160,16 @@ export function AddForm({
               title="add audio note"
               type="button"
               className="btn audio-btn"
+              onClick={handleAudioModeToggle}
             >
               <i className="fa-solid fa-volume-high"></i>
             </button>
 
             <button
-              title="add todo note"
+              title="add todos note"
               type="button"
               className="btn list-btn"
+              onClick={handleTodosModeToggle}
             >
               <i className="fa-solid fa-list-ul"></i>
             </button>
