@@ -63,7 +63,6 @@ export function AddForm({
     onSetIsOnVideoMode((prevIsOnVideoMode) => !prevIsOnVideoMode);
     onSetIsOnImgMode(false);
     onSetIsOnTxtMode(false);
-    onSetIsOnVideoMode(false);
     onSetIsOnTodosMode(false);
     onSetIsOnAudioMode(false);
     onSetNoteType("NoteVideo");
@@ -72,6 +71,7 @@ export function AddForm({
     onSetIsOnTodosMode((prevIsOnVideoMode) => !prevIsOnVideoMode);
     onSetIsOnImgMode(false);
     onSetIsOnTxtMode(false);
+    onSetIsOnVideoMode(false);
     onSetIsOnAudioMode(false);
     onSetNoteType("NoteTodos");
   }
@@ -91,7 +91,7 @@ export function AddForm({
     if (isOnVideoMode) return "Add video URL";
     if (isOnTodosMode) return "Add todos note with ' / ' separation";
     if (isOnAudioMode) return "Add audio note";
-    return "Add a note";
+    return onSetIsOnTxtMode(true);
   }
 
   return (
