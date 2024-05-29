@@ -33,7 +33,7 @@ header {
 .menu-modal {
     position: fixed;
     top: 4.5em;
-    right: .5em;
+    right: 1em;
     padding: 1em;
     border: 1px solid var(--keep-bgc-2);
     border-radius: 10px;
