@@ -1,0 +1,33 @@
+.star-rating span {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: default;
+    padding: 0;
+}
+
+.star-rating.edit span {
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.star-rating button:hover {
+    background-color: inherit;
+}
+
+.star-rating .star {
+    font-size: 1rem;
+}
+
+.star-rating .on {
+    color: gold;
+}
+
+.star-rating .off {
+    color: #101010;
+}
+
+.star-rating.edit .off {
+    color: #ccc;
+}
+

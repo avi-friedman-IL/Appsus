@@ -13,6 +13,7 @@ export function AddForm({
   onFilterBy,
   onToggleOpenForm,
   onSetInfoTxt,
+  onSetInfoTitle,
   onReset,
   onSubmit,
   onSetNoteType,
@@ -39,10 +40,16 @@ export function AddForm({
 
   function handleFilterToggle() {
     onSetIsOnFilter((prevIsOnFilter) => !prevIsOnFilter);
+    onSetIsOnImgMode(false);
+    onSetIsOnTxtMode(false);
+    onSetIsOnVideoMode(false);
+    onSetIsOnAudioMode(false);
+    onSetIsOnTodosMode(false);
   }
 
   function handleImgModeToggle() {
     onSetIsOnImgMode((prevIsOnImgMode) => !prevIsOnImgMode);
+    onSetIsOnFilter(false);
     onSetIsOnTxtMode(false);
     onSetIsOnVideoMode(false);
     onSetIsOnTodosMode(false);
@@ -52,6 +59,7 @@ export function AddForm({
 
   function handleTxtModeToggle() {
     onSetIsOnTxtMode((prevIsOnTxtMode) => !prevIsOnTxtMode);
+    onSetIsOnFilter(false);
     onSetIsOnImgMode(false);
     onSetIsOnVideoMode(false);
     onSetIsOnTodosMode(false);
@@ -61,6 +69,7 @@ export function AddForm({
 
   function handleVideoModeToggle() {
     onSetIsOnVideoMode((prevIsOnVideoMode) => !prevIsOnVideoMode);
+    onSetIsOnFilter(false);
     onSetIsOnImgMode(false);
     onSetIsOnTxtMode(false);
     onSetIsOnTodosMode(false);
@@ -69,6 +78,7 @@ export function AddForm({
   }
   function handleTodosModeToggle() {
     onSetIsOnTodosMode((prevIsOnVideoMode) => !prevIsOnVideoMode);
+    onSetIsOnFilter(false);
     onSetIsOnImgMode(false);
     onSetIsOnTxtMode(false);
     onSetIsOnVideoMode(false);
@@ -77,6 +87,7 @@ export function AddForm({
   }
   function handleAudioModeToggle() {
     onSetIsOnAudioMode((prevIsOnVideoMode) => !prevIsOnVideoMode);
+    onSetIsOnFilter(false);
     onSetIsOnImgMode(false);
     onSetIsOnTxtMode(false);
     onSetIsOnVideoMode(false);
@@ -94,6 +105,12 @@ export function AddForm({
     return onSetIsOnTxtMode(true);
   }
 
+  function handleKeyDown(ev) {
+    if (ev.key === "Enter") {
+      ev.preventDefault();
+    }
+  }
+
   return (
     <section className="notes-add-input">
       <form
@@ -101,6 +118,15 @@ export function AddForm({
         className={`add-form ${isAddFormOpen ? "open" : "closed"}`}
         onSubmit={onSubmit}
       >
+        {isAddFormOpen && !isOnFilter && (
+          <input
+            id="add-note"
+            type="text"
+            placeholder="title"
+            onChange={(ev) => onSetInfoTitle(ev.target.value)}
+          />
+        )}
+
         <input
           id="add-note"
           type="text"
@@ -111,7 +137,8 @@ export function AddForm({
               ? (ev) => onSetInfoTxt(ev.target.value)
               : (ev) => handleFilterTxtChange(ev.target.value)
           }
-          onClick={onToggleOpenForm}
+          onKeyDown={handleKeyDown}
+          onClick={(ev) => onToggleOpenForm(ev, "open")}
         />
 
         {isAddFormOpen && (
@@ -181,6 +208,13 @@ export function AddForm({
               onClick={onReset}
             >
               <i className="fa-solid fa-arrow-rotate-right"></i>
+            </button>
+
+            <button
+              className="btn close-add-form-btn"
+              onClick={(ev) => onToggleOpenForm(ev, "close")}
+            >
+              close
             </button>
           </div>
         )}
