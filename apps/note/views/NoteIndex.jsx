@@ -19,6 +19,7 @@ export function NoteIndex() {
   const [isOnAudioMode, setIsOnAudioMode] = useState(false);
 
   const [infoTxt, setInfoTxt] = useState("");
+  const [infoTitle, setInfoTitle] = useState("");
   const [noteType, setNoteType] = useState("");
 
   useEffect(() => {
@@ -29,9 +30,10 @@ export function NoteIndex() {
     setFilterBy(newFilter);
   }
 
-  function handleToggleOpenForm(ev) {
+  function handleToggleOpenForm(ev, action) {
     ev.preventDefault();
-    setIsAddFormOpen((isAddFormOpen) => !isAddFormOpen);
+    if (action === "open") setIsAddFormOpen(true);
+    if (action === "close") setIsAddFormOpen(false);
   }
 
   function handleRemoveNote(noteId) {
@@ -62,7 +64,7 @@ export function NoteIndex() {
         backgroundColor: "var(--keep-bgc-1)",
       },
       info: {
-        title: "",
+        title: infoTitle,
         txt: isOnTxtMode && infoTxt,
         url: {
           image: isOnImgMode && infoTxt,
@@ -76,11 +78,13 @@ export function NoteIndex() {
     };
     handleAddNote(newNote);
     setInfoTxt("");
+    setInfoTitle("");
     setIsAddFormOpen(false);
   }
 
   function reset() {
     setInfoTxt("");
+    setInfoTitle("");
     setFilterByToEdit({ ...notesService.getDefaultFilter() });
   }
 
@@ -98,6 +102,7 @@ export function NoteIndex() {
         onFilterBy={onSetFilterBy}
         onToggleOpenForm={handleToggleOpenForm}
         onSetInfoTxt={setInfoTxt}
+        onSetInfoTitle={setInfoTitle}
         onReset={reset}
         onSubmit={handleSubmit}
         noteType={noteType}

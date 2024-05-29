@@ -13,6 +13,7 @@ export function AddForm({
   onFilterBy,
   onToggleOpenForm,
   onSetInfoTxt,
+  onSetInfoTitle,
   onReset,
   onSubmit,
   onSetNoteType,
@@ -117,6 +118,15 @@ export function AddForm({
         className={`add-form ${isAddFormOpen ? "open" : "closed"}`}
         onSubmit={onSubmit}
       >
+        {isAddFormOpen && (
+          <input
+            id="add-note"
+            type="text"
+            placeholder="title"
+            onChange={(ev) => onSetInfoTitle(ev.target.value)}
+          />
+        )}
+
         <input
           id="add-note"
           type="text"
@@ -127,8 +137,8 @@ export function AddForm({
               ? (ev) => onSetInfoTxt(ev.target.value)
               : (ev) => handleFilterTxtChange(ev.target.value)
           }
-          onClick={onToggleOpenForm}
           onKeyDown={handleKeyDown}
+          onClick={(ev) => onToggleOpenForm(ev, "open")}
         />
 
         {isAddFormOpen && (
@@ -198,6 +208,13 @@ export function AddForm({
               onClick={onReset}
             >
               <i className="fa-solid fa-arrow-rotate-right"></i>
+            </button>
+
+            <button
+              className="btn close-add-form-btn"
+              onClick={(ev) => onToggleOpenForm(ev, "close")}
+            >
+              close
             </button>
           </div>
         )}
