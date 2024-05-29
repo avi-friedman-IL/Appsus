@@ -1,15 +1,12 @@
 @media(max-width:800px) {
     * {
-        overflow: hidden;
-    }
-
-    body {
-        height: 100vh;
+        overflow-x: hidden;
     }
 
     .mail-index {
         grid-auto-flow: row;
         gap: 15px;
+        overflow: hidden;
     }
     
     .mail-menu-btn {
@@ -29,7 +26,7 @@
     
     ul.mail-list {
         position: absolute;
-        top: 30vh;
+        top: 25vh;
         left: 0;
         right: 0;
         grid-column: 1/-1;
