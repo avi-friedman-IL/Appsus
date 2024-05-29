@@ -1,11 +1,20 @@
 .mail-folder-list {
+    opacity: 0;
+    /* transform: translate(0); */
+    transform: translateX(-100%);
+    transition: .5s;
+}
+
+.mail-folder-list.open {
+    grid-column: 2;
     padding-inline-start: 1em;
-    position: sticky;
-    top: 36px;
-    left: 0;
-    bottom: 0;
+
     background-color: var(--mail-index-bgc);
     font-family: Arial, Helvetica, sans-serif;
+    opacity: 1;
+    transform: translateX(0);
+    transition: .5s;
+
 }
 
 .mail-folder-list>* {
@@ -17,9 +26,10 @@
 
 .mail-folder-list article {
     display: grid;
-    grid-template-columns: 1em 1fr;
+    grid-template-columns: 1em 1fr 1em;
     grid-auto-flow: column;
     align-items: center;
+    width: 15vw;
 }
 
 .mail-folder-list article p {
