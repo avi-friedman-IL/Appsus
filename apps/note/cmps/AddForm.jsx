@@ -118,7 +118,7 @@ export function AddForm({
         className={`add-form ${isAddFormOpen ? "open" : "closed"}`}
         onSubmit={onSubmit}
       >
-        {isAddFormOpen && (
+        {isAddFormOpen && !isOnFilter && (
           <input
             id="add-note"
             type="text"
