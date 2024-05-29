@@ -57,7 +57,7 @@ export function AddForm({
   }
 
   function handleTxtModeToggle() {
-    onSetIsOnTxtMode((prevIsOnTxtMode) => !prevIsOnTxtMode);
+    onSetIsOnTxtMode(true);
     onSetIsOnFilter(false);
     onSetIsOnImgMode(false);
     onSetIsOnVideoMode(false);
@@ -104,6 +104,12 @@ export function AddForm({
     return onSetIsOnTxtMode(true);
   }
 
+  function handleKeyDown(ev) {
+    if (ev.key === "Enter") {
+      ev.preventDefault();
+    }
+  }
+
   return (
     <section className="notes-add-input">
       <form
@@ -122,6 +128,7 @@ export function AddForm({
               : (ev) => handleFilterTxtChange(ev.target.value)
           }
           onClick={onToggleOpenForm}
+          onKeyDown={handleKeyDown}
         />
 
         {isAddFormOpen && (

@@ -52,12 +52,11 @@ export function NoteIndex() {
 
   function handleSubmit(ev) {
     ev.preventDefault();
-
     if (!infoTxt || isOnFilter) return;
 
     const newNote = {
       createdAt: Date.now(),
-      type: noteType,
+      type: isOnTxtMode ? "NoteTxt" : noteType,
       isPinned: false,
       style: {
         backgroundColor: "var(--keep-bgc-1)",
@@ -86,7 +85,7 @@ export function NoteIndex() {
   }
 
   return (
-    <section className="keep-index" onClick={handleSubmit}>
+    <section className="keep-index">
       <KeepSidebar />
       <AddForm
         isAddFormOpen={isAddFormOpen}
@@ -117,7 +116,11 @@ export function NoteIndex() {
       {!notes ? (
         <h1>loading...</h1>
       ) : (
-        <NoteList notes={notes} onRemoveNote={handleRemoveNote} />
+        <NoteList
+          notes={notes}
+          onRemoveNote={handleRemoveNote}
+          onSubmit={handleSubmit}
+        />
       )}
     </section>
   );
