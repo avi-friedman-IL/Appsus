@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
+.user-msg {
+    display: flex;
+    position: fixed;
+    right: 0;
+    top: 5em;
+    width: fit-content;
+    height: 5em;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+}
+
+.user-msg .close-msg-btn {
+    position: absolute;
+    left: 0.2em;
+    top: 0.2em;
+}

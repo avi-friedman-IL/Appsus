@@ -16,14 +16,7 @@ export function AppHeader() {
             src="https://www.svgrepo.com/show/10350/logo.svg"
           />
         </NavLink>
-        {/* <Link to="/">
-        <h3>LOGO!</h3>
-      </Link>
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/mail">Mail</NavLink>
-        <NavLink to="/note">Note</NavLink> */}
+
         <nav>
           <img
             className="menu"
@@ -72,6 +65,15 @@ function IconsModal({ onToggleModal }) {
           src="https://www.svgrepo.com/show/353816/google-keep.svg"
           alt="keep"
           title="keep"
+          onClick={onToggleModal}
+        />
+      </NavLink>
+
+      <NavLink to="/book">
+        <img
+          src="https://www.svgrepo.com/show/230297/books-book.svg"
+          alt="book"
+          title="book"
           onClick={onToggleModal}
         />
       </NavLink>
