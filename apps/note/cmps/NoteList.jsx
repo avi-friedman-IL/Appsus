@@ -3,11 +3,17 @@ const { useState, useEffect } = React;
 import { notesService } from "../services/note.service.js";
 import { NotePreview } from "../../../apps/note/cmps/NotePreview.jsx";
 
-export function NoteList({ notes, onRemoveNote, onSubmit }) {
-  const [updatedNotes, setUpdatedNotes] = useState(notes);
+export function NoteList({
+  notes,
+  updatedNotes,
+  onRemoveNote,
+  onSubmit,
+  onSetUpdatedNotes,
+}) {
+  // const [updatedNotes, onSetUpdatedNotes] = useState(notes);
 
   useEffect(() => {
-    setUpdatedNotes(notes);
+    onSetUpdatedNotes(notes);
   }, [notes]);
 
   function handleTogglePinnedNote(note) {
@@ -16,7 +22,7 @@ export function NoteList({ notes, onRemoveNote, onSubmit }) {
       isPinned: !note.isPinned,
     };
     saveNote(updatedNote);
-    setUpdatedNotes((prevNotes) =>
+    onSetUpdatedNotes((prevNotes) =>
       prevNotes.map((getNote) =>
         getNote.id === note.id ? updatedNote : getNote
       )
@@ -27,7 +33,7 @@ export function NoteList({ notes, onRemoveNote, onSubmit }) {
     const duplicatedNote = { ...note, id: "" };
 
     saveNote(duplicatedNote);
-    setUpdatedNotes((prevNotes) => [...prevNotes, duplicatedNote]);
+    onSetUpdatedNotes((prevNotes) => [...prevNotes, duplicatedNote]);
   }
 
   function saveNote(updatedNote) {

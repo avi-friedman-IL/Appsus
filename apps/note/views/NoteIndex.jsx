@@ -6,6 +6,7 @@ import { AddForm } from "../cmps/AddForm.jsx";
 
 export function NoteIndex() {
   const [notes, setNotes] = useState([]);
+  const [updatedNotes, setUpdatedNotes] = useState(notes);
 
   const [filterBy, setFilterBy] = useState(notesService.getDefaultFilter());
   const [isOnFilter, setIsOnFilter] = useState(false);
@@ -129,8 +130,10 @@ export function NoteIndex() {
       ) : (
         <NoteList
           notes={notes}
+          updatedNotes={updatedNotes}
           onRemoveNote={handleRemoveNote}
           onSubmit={handleSubmit}
+          onSetUpdatedNotes={setUpdatedNotes}
         />
       )}
     </section>

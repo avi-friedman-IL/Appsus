@@ -82,7 +82,7 @@ export function KeepSidebar({ notes, onSetFilterBy, filterBy }) {
 
       <div className="keep-sidebar-item todos-filter-btn">
         <img src="https://www.svgrepo.com/show/532191/list-check.svg" />
-        <span>To Do Notes</span>
+        <span>ToDos Notes</span>
       </div>
     </section>
   );
