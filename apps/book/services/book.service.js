@@ -1,7 +1,4 @@
-import { utilService } from './util.service.js'
-import { storageService } from './async-storage.service.js'
-
-
+import { utilService } from '../../../services/util.service.js'
 
 export const bookService = {
     query,
@@ -117,11 +114,11 @@ function _createReview(reviewToSave) {
 }
 
 function _saveBooksToStorage(books) {
-    storageService.saveToStorage(STORAGE_KEY, books)
+    utilService.saveToStorage(STORAGE_KEY, books)
 }
 
 function _loadBooksFromStorage() {
-    return storageService.loadFromStorage(STORAGE_KEY)
+    return utilService.loadFromStorage(STORAGE_KEY)
 }
 
 function _createBooks() {
@@ -520,134 +517,3 @@ function _createBooks() {
     return books
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-// import { utilService } from './util.service.js'
-// import { storageService } from './async-storage.service.js'
-
-// const BOOK_KEY = 'bookDB'
-// _createBooks()
-
-// export const bookService = {
-//     query,
-//     get,
-//     remove,
-//     save,
-//     getAllBooks,
-//     getDefaultFilter,
-//     addReview,
-//     getBooksFromApi,
-// }
-
-// function query(filterBy = {}) {
-//     return storageService.query(BOOK_KEY)
-//         .then(books => {
-//             if (filterBy.title) {
-//                 const regExp = new RegExp(filterBy.title, 'i')
-//                 books = books.filter(book => regExp.test(book.title))
-//             }
-
-//             if (filterBy.amount) {
-//                 books = books.filter(book => book.listPrice.amount === filterBy.amount)
-//             }
-//             return books
-//         })
-// }
-
-
-// function get(bookId) {
-//     const books = utilService.loadFromStorage(BOOK_KEY)
-//     const book = books.find((book) => book.id === bookId)
-//     console.log(book)
-//     return bookId
-//     // const books = utilService.loadFromStorage(BOOK_KEY)
-//     // console.log(books)
-//     // const book = books.find((book) => parseInt(book.id) === parseInt(bookId))
-//     // return book
-
-//     // if (!book) {
-//     //     // If book with specified ID is not found, reject the promise
-//     //     return Promise.reject(new Error(`Book with ID ${bookId} not found`));
-//     // }
-//     // return Promise.resolve(book)
-// }
-
-// function remove(bookId) {
-//     return storageService.remove(BOOK_KEY, bookId)
-// }
-
-// function save(book) {
-//     if (book.id) {
-//         return storageService.put(BOOK_KEY, book)
-//     } else {
-//         return storageService.post(BOOK_KEY, book)
-//     }
-// }
-
-// function getAllBooks() {
-//     return utilService.loadFromStorage(BOOK_KEY)
-// }
-
-// function getDefaultFilter(filterBy = { title: '', amount: 0 }) {
-//     return { title: filterBy.title, amount: filterBy.amount }
-// }
-
-// function _createBooks() {
-//     const ctgs = ['Love', 'Fiction', 'Poetry', 'Computers', 'Religion']
-//     const books = []
-//     for (let i = 0; i < 20; i++) {
-//         const book = {
-//             id: utilService.makeId(),
-//             title: utilService.makeLorem(2),
-//             subtitle: utilService.makeLorem(4),
-//             authors: [
-//                 utilService.makeLorem(1)
-//             ],
-//             publishedDate: utilService.getRandomIntInclusive(1950, 2024),
-//             description: utilService.makeLorem(20),
-//             pageCount: utilService.getRandomIntInclusive(20, 600),
-//             categories: [ctgs[utilService.getRandomIntInclusive(0, ctgs.length - 1)]],
-//             thumbnail: `http://coding-academy.org/books-photos/${i + 1}.jpg`,
-//             language: "en",
-//             listPrice: {
-//                 amount: utilService.getRandomIntInclusive(80, 500),
-//                 currencyCode: "EUR",
-//                 isOnSale: Math.random() > 0.7
-//             }
-//         }
-//         books.push(book)
-//     }
-//     utilService.saveToStorage(BOOK_KEY, books)
-// }
-
-// function addReview(bookId, review) {
-//     const response = fetch(`/api/books/${bookId}/reviews`, {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(review)
-//     })
-
-//     if (!response.ok) {
-//         throw new Error('Failed to add review');
-//     }
-
-//     return response.json()
-// }
-
-// function getBooksFromApi() {
-//     return axios.get('https://www.googleapis.com/books/v1/volumes?printType=books&q=effective%20javascript')
-//         .then(prm => console.log(prm.data))
-// }
-// // getBooksFromApi()

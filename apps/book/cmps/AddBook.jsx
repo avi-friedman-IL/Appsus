@@ -1,9 +1,8 @@
 const { useState, useEffect } = React;
 const { useNavigate } = ReactRouterDOM;
 
-import { storageService } from "../services/async-storage.service.js";
-import { utilService } from "../services/util.service.js";
-import { UserMsg } from "../cmps/UserMsg.jsx";
+import { utilService } from "../../../services/util.service.js";
+import { UserMsg } from "../../../services/cmps/UserMsg.jsx";
 
 export function AddBook() {
   const [bookAdd, setBookAdd] = useState(false);
@@ -11,7 +10,7 @@ export function AddBook() {
   const navigate = useNavigate();
 
   const [book, setBook] = useState({
-    id: utilService.makeId(11),
+    id: "",
     title: "title",
     subtitle: utilService.makeLorem(10),
     authors: ["Martin Toy"],
@@ -31,7 +30,7 @@ export function AddBook() {
 
   useEffect(() => {
     if (bookAdd) {
-      setMsg("Book added successfully.");
+      setMsg("Book added successfully. click on 'go back' button");
       setTimeout(() => setBookAdd(false), 3000);
     }
   }, [bookAdd]);
@@ -61,10 +60,10 @@ export function AddBook() {
   function handleSubmit(event) {
     event.preventDefault();
     const updatedBooks = [
-      ...(storageService.loadFromStorage("bookDB") || []),
+      ...(utilService.loadFromStorage("bookDB") || []),
       book,
     ];
-    storageService.saveToStorage("bookDB", updatedBooks);
+    utilService.saveToStorage("bookDB", updatedBooks);
     setBookAdd(true);
   }
 

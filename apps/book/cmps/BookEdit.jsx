@@ -1,6 +1,6 @@
 const { useState, useEffect } = React;
 const { useNavigate, useParams } = ReactRouterDOM;
-import { bookService } from "../services/book.service.js";
+import { bookService } from "../../../apps/book/services/book.service.js";
 
 export function BookEdit() {
   const [bookToEdit, setBookToEdit] = useState(null);
