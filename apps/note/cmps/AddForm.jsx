@@ -58,7 +58,7 @@ export function AddForm({
   }
 
   function handleTxtModeToggle() {
-    onSetIsOnTxtMode(true);
+    onSetIsOnTxtMode((prevIsOnTxtMode) => !prevIsOnTxtMode);
     onSetIsOnFilter(false);
     onSetIsOnImgMode(false);
     onSetIsOnVideoMode(false);
