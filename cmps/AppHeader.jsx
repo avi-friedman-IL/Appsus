@@ -42,15 +42,6 @@ function IconsModal({ onToggleModal }) {
         />
       </NavLink>
 
-      <NavLink to="/about">
-        <img
-          src="https://www.svgrepo.com/show/475026/about.svg"
-          alt="about"
-          title="about"
-          onClick={onToggleModal}
-        />
-      </NavLink>
-
       <NavLink to="/mail">
         <img
           src="https://www.svgrepo.com/show/349378/gmail.svg"
@@ -65,6 +56,15 @@ function IconsModal({ onToggleModal }) {
           src="https://www.svgrepo.com/show/353816/google-keep.svg"
           alt="keep"
           title="keep"
+          onClick={onToggleModal}
+        />
+      </NavLink>
+
+      <NavLink to="/about">
+        <img
+          src="https://www.svgrepo.com/show/475026/about.svg"
+          alt="about"
+          title="about"
           onClick={onToggleModal}
         />
       </NavLink>
