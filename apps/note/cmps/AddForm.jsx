@@ -39,10 +39,16 @@ export function AddForm({
 
   function handleFilterToggle() {
     onSetIsOnFilter((prevIsOnFilter) => !prevIsOnFilter);
+    onSetIsOnImgMode(false);
+    onSetIsOnTxtMode(false);
+    onSetIsOnVideoMode(false);
+    onSetIsOnAudioMode(false);
+    onSetIsOnTodosMode(false);
   }
 
   function handleImgModeToggle() {
     onSetIsOnImgMode((prevIsOnImgMode) => !prevIsOnImgMode);
+    onSetIsOnFilter(false);
     onSetIsOnTxtMode(false);
     onSetIsOnVideoMode(false);
     onSetIsOnTodosMode(false);
@@ -52,6 +58,7 @@ export function AddForm({
 
   function handleTxtModeToggle() {
     onSetIsOnTxtMode((prevIsOnTxtMode) => !prevIsOnTxtMode);
+    onSetIsOnFilter(false);
     onSetIsOnImgMode(false);
     onSetIsOnVideoMode(false);
     onSetIsOnTodosMode(false);
@@ -61,6 +68,7 @@ export function AddForm({
 
   function handleVideoModeToggle() {
     onSetIsOnVideoMode((prevIsOnVideoMode) => !prevIsOnVideoMode);
+    onSetIsOnFilter(false);
     onSetIsOnImgMode(false);
     onSetIsOnTxtMode(false);
     onSetIsOnTodosMode(false);
@@ -69,6 +77,7 @@ export function AddForm({
   }
   function handleTodosModeToggle() {
     onSetIsOnTodosMode((prevIsOnVideoMode) => !prevIsOnVideoMode);
+    onSetIsOnFilter(false);
     onSetIsOnImgMode(false);
     onSetIsOnTxtMode(false);
     onSetIsOnVideoMode(false);
@@ -77,6 +86,7 @@ export function AddForm({
   }
   function handleAudioModeToggle() {
     onSetIsOnAudioMode((prevIsOnVideoMode) => !prevIsOnVideoMode);
+    onSetIsOnFilter(false);
     onSetIsOnImgMode(false);
     onSetIsOnTxtMode(false);
     onSetIsOnVideoMode(false);

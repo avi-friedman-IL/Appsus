@@ -31,18 +31,18 @@
     }
 
     .keep-sidebar .keep-sidebar-item {
-        justify-content: center;
-        height: 2em;
-        width: 2em;
-        margin: 1em;
-        padding-inline-start: 0;
-        border-radius: 50%;
+        /* justify-content: center; */
+        /* height: 2em;
+        width: 2em; */
+        /* margin: 1em; */
+        /* padding-inline-start: 0; */
+        /* border-radius: 50%; */
     }
 
-    .keep-sidebar:hover .keep-sidebar-item {
+    /* .keep-sidebar:hover .keep-sidebar-item {
         width: 2em;
         border-radius: 50%;
-    }
+    } */
 
     .keep-sidebar img {
         width: 1em;
