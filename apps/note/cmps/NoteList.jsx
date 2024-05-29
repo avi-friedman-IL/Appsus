@@ -5,12 +5,12 @@ import { NotePreview } from "../../../apps/note/cmps/NotePreview.jsx";
 
 export function NoteList({
   notes,
-  updatedNotes,
+  // updatedNotes,
   onRemoveNote,
   onSubmit,
-  onSetUpdatedNotes,
+  // onSetUpdatedNotes,
 }) {
-  // const [updatedNotes, onSetUpdatedNotes] = useState(notes);
+  const [updatedNotes, onSetUpdatedNotes] = useState(notes);
 
   useEffect(() => {
     onSetUpdatedNotes(notes);

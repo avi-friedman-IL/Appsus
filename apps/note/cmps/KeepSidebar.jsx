@@ -1,7 +1,31 @@
-export function KeepSidebar({ notes, onSetFilterBy, filterBy }) {
+const { useState } = React;
+
+export function KeepSidebar({
+  onReset,
+  onSetFilterBy,
+  filterBy,
+  activeItem,
+  onSetActiveItem,
+}) {
+  // const [activeItem, setActiveItem] = useState("Notes");
+
+  function handleFilter(type) {
+    const newFilter = {
+      ...filterBy,
+      type,
+    };
+    onSetActiveItem(type);
+    onSetFilterBy(newFilter);
+  }
+
   return (
     <section className="keep-sidebar">
-      <div className="keep-sidebar-item notes-btn active">
+      <div
+        className={`keep-sidebar-item notes-btn ${
+          activeItem === "Notes" ? "active" : ""
+        }`}
+        onClick={onReset}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -12,7 +36,6 @@ export function KeepSidebar({ notes, onSetFilterBy, filterBy }) {
         </svg>
         <span>Notes</span>
       </div>
-
       <div className="keep-sidebar-item reminders-btn">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +60,7 @@ export function KeepSidebar({ notes, onSetFilterBy, filterBy }) {
         <span>Edit</span>
       </div>
 
-      <div className="keep-sidebar-item archive-btn">
+      <div className="keep-sidebar-item archive-btn ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -63,25 +86,54 @@ export function KeepSidebar({ notes, onSetFilterBy, filterBy }) {
       </div>
 
       <div
-        className="keep-sidebar-item txt-filter-btn"
-        onClick={() => onSetFilterBy("NoteTxt")}
+        className={`keep-sidebar-item txt-filter-btn ${
+          activeItem === "NoteTxt" ? "active" : ""
+        }`}
+        onClick={() => handleFilter("NoteTxt")}
       >
-        <img src="https://www.svgrepo.com/show/532231/text-size.svg" />
+        <img
+          src="https://www.svgrepo.com/show/532231/text-size.svg"
+          alt="text notes"
+        />
         <span>Text Notes</span>
       </div>
 
-      <div className="keep-sidebar-item image-filter-btn">
-        <img src="https://www.svgrepo.com/show/487468/image.svg" />
+      <div
+        className={`keep-sidebar-item image-filter-btn ${
+          activeItem === "NoteImg" ? "active" : ""
+        }`}
+        onClick={() => handleFilter("NoteImg")}
+      >
+        <img
+          src="https://www.svgrepo.com/show/487468/image.svg"
+          alt="image notes"
+        />
         <span>Image Notes</span>
       </div>
 
-      <div className="keep-sidebar-item video-filter-btn">
-        <img src="https://www.svgrepo.com/show/522706/video-file.svg" />
+      <div
+        className={`keep-sidebar-item video-filter-btn ${
+          activeItem === "NoteVideo" ? "active" : ""
+        }`}
+        onClick={() => handleFilter("NoteVideo")}
+      >
+        <img
+          src="https://www.svgrepo.com/show/522706/video-file.svg"
+          alt="video notes"
+        />
         <span>Video Notes</span>
       </div>
 
-      <div className="keep-sidebar-item todos-filter-btn">
-        <img src="https://www.svgrepo.com/show/532191/list-check.svg" />
+      <div
+        className={`keep-sidebar-item todos-filter-btn ${
+          activeItem === "NoteTodos" ? "active" : ""
+        }`}
+        onClick={() => handleFilter("NoteTodos")}
+      >
+        <img
+          src="https://www.svgrepo.com/show/532191/list-check.svg"
+          alt="todos notes"
+        />
         <span>ToDos Notes</span>
       </div>
     </section>
