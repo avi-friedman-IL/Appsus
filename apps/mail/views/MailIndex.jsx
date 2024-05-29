@@ -20,6 +20,7 @@ export function MailIndex() {
     const [isCompose, setIsCompose] = useState(false)
     const [isUnread, setIsUnread] = useState()
     const [toggleIsRead, setToggleIsRead] = useState(false)
+    const [isMenuOpen, setIsMenuOpen] = useState(true)
 
     const params = useParams()
 
@@ -77,11 +78,16 @@ export function MailIndex() {
             })
     }
 
-    return <section className="mail-index">
-        <button className="compose-btn" onClick={onCompose}><span className="fa fa-compose-btn-mail"></span>Compose</button>
+    function onToggleMenuOpen() {
+        setIsMenuOpen(open => !open)
+    }
+
+    return <section className={isMenuOpen ? 'mail-index open' : 'mail-index'}>
+        <button className="mail-menu-btn" onClick={onToggleMenuOpen}>☰</button>
+        <button className={isMenuOpen ? 'compose-btn open' : 'compose-btn'} onClick={onCompose}><span className="fa fa-compose-btn-mail"></span>Compose</button>
         {isCompose && <MailCompose close={onCompose} />}
         {<MailFilter filterBy={filterBy} onFilter={onSetFilterBy} />}
-        {<MailFolderList filterBy={filterBy} onFilter={onSetFilterBy} unread={isUnread} />}
+        {<MailFolderList filterBy={filterBy} onFilter={onSetFilterBy} unread={isUnread} isOpen={isMenuOpen} close={onToggleMenuOpen}/>}
         {!params.mailId && <MailList mails={mails} onRemove={removeMail} onToggleRead={toggleRead} />}
         {params.mailId && <MailDetails />}
         {<UserMsg />}

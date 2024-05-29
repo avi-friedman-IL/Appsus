@@ -1,6 +1,6 @@
 const { useState, useEffect } = React
 
-export function MailFolderList({ filterBy, onFilter, unread }) {
+export function MailFolderList({ filterBy, onFilter, unread, isOpen, close }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
     const [folderSelect, setFolderSelect] = useState(filterByToEdit.status)
@@ -13,9 +13,11 @@ export function MailFolderList({ filterBy, onFilter, unread }) {
         const { value } = target
         setFilterByToEdit(prevFilter => ({ ...prevFilter, ['status']: value }))
         setFolderSelect(value)
+        console.log(window.innerWidth)
+        if(window.innerWidth < 750) close()
     }
 
-    return <section className="mail-folder-list">
+    return <section className={isOpen ? 'mail-folder-list open' : 'mail-folder-list'}>
         <article className={folderSelect === 'Index' ? 'select' : ''}>
             <p className="fa fa-index-mail"></p>
             <option onClick={handleClick} value="Index">index</option>

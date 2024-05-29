@@ -1,26 +1,44 @@
  .mail-index {
    display: grid;
-   grid-template-columns: 15% 1fr;
+   grid-template-columns: 5vw 0 1fr;
    gap: 10px;
    padding-block-start: 1em;
    letter-spacing: .50px;
    background-color: var(--mail-index-bgc);
    overflow: hidden;
+   transition: .5s;
+  }
+  
+  .mail-index.open {
+    display: grid;
+    grid-template-columns: 5vw minmax(0, 18%) 1fr;
+    gap: 10px;
+    padding-block-start: 1em;
+    letter-spacing: .50px;
+    background-color: var(--mail-index-bgc);
+    overflow: hidden;
+    transition: .5s;
  }
 
- .folder-and-list {
-   grid-column: 1/-1;
-   display: grid;
-   grid-auto-flow: column;
-   align-items: start;
-   padding: 1em;
+ .mail-menu-btn {
+   grid-column: 1;
+   grid-row: 1/-1;
+   border: 0;
+   background-color: #eaf1fb;
+   cursor: pointer;
  }
 
  .mail-filter {
-   grid-column: 2;
+   grid-column: 3;
  }
 
  .compose-btn {
+   opacity: 0;
+   /* transition: .5s; */
+
+ }
+
+ .compose-btn.open {
    margin-inline-start: 1em;
    display: grid;
    grid-auto-flow: column;
@@ -34,7 +52,8 @@
    background-color: #c2e7ff;
    color: #001d35;
    cursor: pointer;
-
+   opacity: 1;
+   
  }
 
  .compose-btn:hover {

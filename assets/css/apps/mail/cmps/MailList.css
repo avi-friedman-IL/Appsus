@@ -1,10 +1,13 @@
  ul.mail-list {
+    grid-column: 3;
     margin: 0;
     padding: 1em 1em 0 0;
     height: 75vh;
     border-radius: 15px;
     font-family: roboto, Arial, Helvetica, sans-serif;
     overflow-y: scroll;
+    overflow-x: hidden;
+    transition: .5s;
  }
 
  .mail-list .mail-list-header {
@@ -77,16 +80,16 @@
  }
 
  .mail-list li:hover .unread-mail {
-   position: absolute;
-   right: 5em;
-   bottom: .7rem;
-   display: block;
-   width: max-content;
-   border: 0;
-   cursor: pointer;
-   background-color: inherit;
-   font-weight: normal;
-   z-index: 1;
+    position: absolute;
+    right: 5em;
+    bottom: .7rem;
+    display: block;
+    width: max-content;
+    border: 0;
+    cursor: pointer;
+    background-color: inherit;
+    font-weight: normal;
+    z-index: 1;
  }
 
  .mail-list .sent-at {
