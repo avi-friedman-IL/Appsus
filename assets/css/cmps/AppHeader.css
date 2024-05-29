@@ -32,6 +32,8 @@ header {
 
 .menu-modal {
     position: fixed;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
     top: 4.5em;
     right: 1em;
     padding: 1em;
@@ -45,4 +47,8 @@ header {
     height: 2em;
     width: 2em;
     margin: .5em;
+}
+
+.menu-modal img:hover {
+    transform: scale(1.1);
 }

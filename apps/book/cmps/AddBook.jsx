@@ -2,7 +2,7 @@ const { useState, useEffect } = React;
 const { useNavigate } = ReactRouterDOM;
 
 import { utilService } from "../../../services/util.service.js";
-import { UserMsg } from "../../../services/cmps/UserMsg.jsx";
+import { UserMsg } from "../../../cmps/UserMsg.jsx";
 
 export function AddBook() {
   const [bookAdd, setBookAdd] = useState(false);
@@ -35,8 +35,8 @@ export function AddBook() {
     }
   }, [bookAdd]);
 
-  function handleChange(event) {
-    const { name, value } = event.target;
+  function handleChange(ev) {
+    const { name, value } = ev.target;
     setBook((prevBook) => ({
       ...prevBook,
       [name]: value,
@@ -45,8 +45,8 @@ export function AddBook() {
     setBookAdd(true);
   }
 
-  function handleImageUpload(event) {
-    const file = event.target.files[0];
+  function handleImageUpload(ev) {
+    const file = ev.target.files[0];
     const reader = new FileReader();
     reader.onloadend = () => {
       setBook((prevBook) => ({
@@ -57,14 +57,17 @@ export function AddBook() {
     reader.readAsDataURL(file);
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  function handleSubmit(ev) {
+    ev.preventDefault();
     const updatedBooks = [
       ...(utilService.loadFromStorage("bookDB") || []),
       book,
     ];
     utilService.saveToStorage("bookDB", updatedBooks);
-    setBookAdd(true);
+  }
+
+  function handleToggleBookAdd() {
+    setBookAdd((prevBookAdd) => !prevBookAdd);
   }
 
   function goBack() {
@@ -73,13 +76,13 @@ export function AddBook() {
 
   return (
     <section className="add-book-form">
-      {bookAdd && <UserMsg msg={msg} />}
+      {bookAdd && <UserMsg />}
 
       <h1>Add Book</h1>
       <form onSubmit={handleSubmit}>
         <label>Title: </label>
         <input
-          onChange={handleChange}
+          onChange={(ev) => handleChange(ev)}
           value={book.title}
           name="title"
           type="text"
@@ -98,15 +101,12 @@ export function AddBook() {
         <br></br>
 
         <label>Image: </label>
-        <input
-          onChange={handleImageUpload}
-          name="thumbnail"
-          type="file"
-          required
-        />
+        <input onChange={handleImageUpload} name="thumbnail" type="file" />
         <br></br>
 
-        <button type="submit">save</button>
+        <button type="submit" onClick={handleToggleBookAdd}>
+          save
+        </button>
         <button type="button" onClick={goBack}>
           Go Back
         </button>

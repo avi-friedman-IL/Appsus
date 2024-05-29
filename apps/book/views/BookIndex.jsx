@@ -5,7 +5,7 @@ import { bookService } from "../../../apps/book/services/book.service.js";
 
 import { BookFilter } from "../../../apps/book/cmps/BookFilter.jsx";
 import { BookList } from "../../../apps/book/cmps/BookList.jsx";
-import { UserMsg } from "../../../apps/book/cmps/UserMsg.jsx";
+import { UserMsg } from "../../../cmps/UserMsg.jsx";
 
 export function BookIndex() {
   const [books, setBooks] = useState([]);
@@ -53,7 +53,7 @@ export function BookIndex() {
 
   return (
     <section>
-      {bookRemoved && <UserMsg msg={msg} />}
+      {bookRemoved && <UserMsg />}
       <BookFilter filterBy={filterBy} onSetFilter={setFilter} />
       <Link to="/book/add">
         <button>Add Book</button>

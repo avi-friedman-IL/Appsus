@@ -51,6 +51,7 @@ function updateBook(book) {
 
 function addBook(book) {
     let books = _loadBooksFromStorage()
+    book.id = utilService.makeId()
     books = [...books, book]
     _saveBooksToStorage(books)
     return book

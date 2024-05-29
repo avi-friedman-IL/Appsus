@@ -5,13 +5,12 @@
 .user-msg {
     display: flex;
     position: fixed;
-    right: 0;
-    top: 5em;
+    bottom: 0;
     width: fit-content;
-    height: 5em;
+    height: fit-content;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
+    background-color: rgb(191, 225, 225);
 }
 
 .user-msg .close-msg-btn {
