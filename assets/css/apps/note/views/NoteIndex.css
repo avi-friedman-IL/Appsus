@@ -7,6 +7,7 @@
      grid-template-columns: 0.5fr 3fr;
      grid-template-rows: repeat(3, auto);
      column-gap: 3em;
+     margin-block-start: 5em;
  }
 
  .keep-index .notes-add-input {
@@ -31,10 +32,3 @@
      grid-column: 2/3;
      grid-row: 3/4;
  }
-
- /* @media (max-width:740px) {
-     .keep-index .note-list {
-         margin-left: 0;
-
-     }
- } */

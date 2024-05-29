@@ -4,7 +4,7 @@ import { utilService } from "../../../services/util.service.js";
 import { notesService } from "../services/note.service.js";
 import { NotePreview } from "../../../apps/note/cmps/NotePreview.jsx";
 
-export function NoteList({ notes, onRemoveNote }) {
+export function NoteList({ notes, onRemoveNote, onSubmit }) {
   const [updatedNotes, setUpdatedNotes] = useState(notes);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export function NoteList({ notes, onRemoveNote }) {
   const unpinnedNotes = updatedNotes.filter((note) => !note.isPinned);
 
   return (
-    <section className="all-lists">
+    <section className="all-lists" onClick={onSubmit}>
       {pinnedNotes.length > 0 ? <h2>Pinned</h2> : ""}
 
       {pinnedNotes.length > 0 ? (

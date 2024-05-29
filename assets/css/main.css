@@ -37,3 +37,11 @@
 
 @import './setup/mq.css';
 @import './setup/mqMail.css';
+
+/* BOOK */
+@import './apps/book/cmps/BookDetails.css';
+@import './apps/book/cmps/BookList.css';
+@import './apps/book/cmps/BookEdit.css';
+@import './apps/book/cmps/AddBook.css';
+@import './apps/book/cmps/StarRating.css';
+@import './apps/book/cmps/UserMsg.css';

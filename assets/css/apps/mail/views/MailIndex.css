@@ -1,4 +1,5 @@
  .mail-index {
+  margin-block-start: 4em;
    display: grid;
    grid-template-columns: 5vw 0 1fr;
    gap: 10px;

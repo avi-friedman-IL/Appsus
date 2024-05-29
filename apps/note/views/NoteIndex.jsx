@@ -19,6 +19,7 @@ export function NoteIndex() {
   const [isOnAudioMode, setIsOnAudioMode] = useState(false);
 
   const [infoTxt, setInfoTxt] = useState("");
+  const [infoTitle, setInfoTitle] = useState("");
   const [noteType, setNoteType] = useState("");
 
   useEffect(() => {
@@ -29,9 +30,10 @@ export function NoteIndex() {
     setFilterBy(newFilter);
   }
 
-  function handleToggleOpenForm(ev) {
+  function handleToggleOpenForm(ev, action) {
     ev.preventDefault();
-    setIsAddFormOpen((isAddFormOpen) => !isAddFormOpen);
+    if (action === "open") setIsAddFormOpen(true);
+    if (action === "close") setIsAddFormOpen(false);
   }
 
   function handleRemoveNote(noteId) {
@@ -52,18 +54,17 @@ export function NoteIndex() {
 
   function handleSubmit(ev) {
     ev.preventDefault();
-
     if (!infoTxt || isOnFilter) return;
 
     const newNote = {
       createdAt: Date.now(),
-      type: noteType,
+      type: isOnTxtMode ? "NoteTxt" : noteType,
       isPinned: false,
       style: {
         backgroundColor: "var(--keep-bgc-1)",
       },
       info: {
-        title: "",
+        title: infoTitle,
         txt: isOnTxtMode && infoTxt,
         url: {
           image: isOnImgMode && infoTxt,
@@ -77,16 +78,18 @@ export function NoteIndex() {
     };
     handleAddNote(newNote);
     setInfoTxt("");
+    setInfoTitle("");
     setIsAddFormOpen(false);
   }
 
   function reset() {
     setInfoTxt("");
+    setInfoTitle("");
     setFilterByToEdit({ ...notesService.getDefaultFilter() });
   }
 
   return (
-    <section className="keep-index" onClick={handleSubmit}>
+    <section className="keep-index">
       <KeepSidebar />
       <AddForm
         isAddFormOpen={isAddFormOpen}
@@ -99,6 +102,7 @@ export function NoteIndex() {
         onFilterBy={onSetFilterBy}
         onToggleOpenForm={handleToggleOpenForm}
         onSetInfoTxt={setInfoTxt}
+        onSetInfoTitle={setInfoTitle}
         onReset={reset}
         onSubmit={handleSubmit}
         noteType={noteType}
@@ -117,7 +121,11 @@ export function NoteIndex() {
       {!notes ? (
         <h1>loading...</h1>
       ) : (
-        <NoteList notes={notes} onRemoveNote={handleRemoveNote} />
+        <NoteList
+          notes={notes}
+          onRemoveNote={handleRemoveNote}
+          onSubmit={handleSubmit}
+        />
       )}
     </section>
   );

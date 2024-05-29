@@ -1,16 +1,21 @@
 header {
     position: relative;
     top: 0;
-    /* right: 2em; */
+    right: 0;
+    left: 0;
+    background-color: var(--keep-bgc-1);
     z-index: 1;
 }
 
 .app-header {
-    position: relative;
+    position: fixed;
+    align-items: center;
     display: flex;
-    /* justify-content: end; */
     justify-content: space-between;
-    padding: 1em .6em;
+    padding: .5em .6em;
+    box-shadow: 4px 5px 5px var(--keep-bgc-2);
+    z-index: 7;
+
 }
 
 .app-header .logo {
@@ -25,33 +30,25 @@ header {
     cursor: pointer;
 }
 
-/* 
-nav a {
-    margin: .5em;
-}
-
-nav a:active {
-    color: purple;
-}
-
-nav a.active {
-    color: darkblue;
-    font-weight: bold;
-    text-decoration: overline;
-} */
-
 .menu-modal {
-    position: absolute;
-    top: 4em;
-    right: 4em;
+    position: fixed;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    top: 4.5em;
+    right: 1em;
     padding: 1em;
     border: 1px solid var(--keep-bgc-2);
     border-radius: 10px;
     background-color: var(--keep-bgc-1);
+    z-index: 10;
 }
 
 .menu-modal img {
     height: 2em;
     width: 2em;
     margin: .5em;
+}
+
+.menu-modal img:hover {
+    transform: scale(1.1);
 }

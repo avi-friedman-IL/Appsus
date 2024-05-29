@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+}
+
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.book-list .book-card {
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid black;
+    background-color: rgb(247, 227, 244);
+    border-radius: 10px;
+}
+
+.book-list .book-card:hover {
+    background-color: rgb(243, 173, 232);
+}
+
+.book-list .book-card img {
+    margin-block: 1em;
+    width: 100%;
+}
+
+.book-filter {
+    margin-block-start: 5em;
+}
