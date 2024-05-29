@@ -3,6 +3,7 @@
      display: grid;
      justify-content: center;
      align-items: center;
+     margin-block-start: 15em;
  }
 
  .home h1 {
@@ -13,5 +14,5 @@
  }
 
  .home img {
-    width: 30vw;
+     width: 30vw;
  }
