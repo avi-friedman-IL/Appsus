@@ -13,6 +13,7 @@ header {
     display: flex;
     justify-content: space-between;
     padding: .5em .6em;
+    box-shadow: 5px 5px 5px var(--keep-bgc-2);
 }
 
 .app-header .logo {
