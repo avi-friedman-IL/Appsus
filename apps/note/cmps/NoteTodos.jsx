@@ -1,12 +1,6 @@
 export function NoteTodos({ note }) {
   return (
     <div className="note-todos">
-      {/* <p className="title">To Do List:</p>
-      <ul>
-        {note.info.todos.map((todo, index) => (
-          <li key={index}>{`* ${todo.txt}`}</li>
-        ))}
-      </ul> */}
       {note.info.url.image ? (
         <img src={note.info.url.image} alt="Note Image" />
       ) : null}

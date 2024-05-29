@@ -32,12 +32,15 @@ function query(filterBy = {}) {
                     return titleMatch || textMatch || todosMatch;
                 })
             }
+            if (filterBy.type) {
+                notes = notes.filter((note) => note.type === filterBy.type)
+            }
             return notes
         })
 }
 
-function getDefaultFilter(filterBy = { title: '' }) {
-    return { title: filterBy.title }
+function getDefaultFilter(filterBy = { title: '', type: '' }) {
+    return { title: filterBy.title, type: filterBy.type }
 }
 
 

@@ -1,9 +1,7 @@
-import { lightBulb } from "../../../assets/img/bulb.png";
-export function KeepSidebar() {
+export function KeepSidebar({ notes, onSetFilterBy, filterBy }) {
   return (
     <section className="keep-sidebar">
       <div className="keep-sidebar-item notes-btn active">
-        {/* <img src="../../../assets/img/bulb.png" alt="lightbulb" /> */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -16,7 +14,6 @@ export function KeepSidebar() {
       </div>
 
       <div className="keep-sidebar-item reminders-btn">
-        {/* <img src="../../../assets/img/bell.png" alt="lightbulb" /> */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -29,8 +26,6 @@ export function KeepSidebar() {
       </div>
 
       <div className="keep-sidebar-item edit-btn">
-        {/* <img src="../../../assets/img/pen.png" alt="lightbulb" /> */}
-
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -43,7 +38,6 @@ export function KeepSidebar() {
       </div>
 
       <div className="keep-sidebar-item archive-btn">
-        {/* <img src="../../../assets/img/archive.png" alt="lightbulb" /> */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -56,7 +50,6 @@ export function KeepSidebar() {
       </div>
 
       <div className="keep-sidebar-item trash-btn">
-        {/* <img src="../../../assets/img/delete.png" alt="lightbulb" /> */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -67,6 +60,29 @@ export function KeepSidebar() {
           <path d="M9 8h2v9H9zm4 0h2v9h-2z"></path>
         </svg>
         <span>Trash</span>
+      </div>
+
+      <div
+        className="keep-sidebar-item txt-filter-btn"
+        onClick={() => onSetFilterBy("NoteTxt")}
+      >
+        <img src="https://www.svgrepo.com/show/532231/text-size.svg" />
+        <span>Text Notes</span>
+      </div>
+
+      <div className="keep-sidebar-item image-filter-btn">
+        <img src="https://www.svgrepo.com/show/487468/image.svg" />
+        <span>Image Notes</span>
+      </div>
+
+      <div className="keep-sidebar-item video-filter-btn">
+        <img src="https://www.svgrepo.com/show/522706/video-file.svg" />
+        <span>Video Notes</span>
+      </div>
+
+      <div className="keep-sidebar-item todos-filter-btn">
+        <img src="https://www.svgrepo.com/show/532191/list-check.svg" />
+        <span>To Do Notes</span>
       </div>
     </section>
   );

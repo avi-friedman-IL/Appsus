@@ -1,7 +1,6 @@
 const { useState, useEffect } = React;
 const { useParams, useNavigate } = ReactRouter;
 
-import { utilService } from "../../../services/util.service.js";
 import { notesService } from "../services/note.service.js";
 
 export function EditNote() {

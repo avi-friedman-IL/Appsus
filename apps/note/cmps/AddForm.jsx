@@ -1,7 +1,6 @@
-const { useState, useEffect, useRef } = React;
+const { useEffect, useRef } = React;
 
 import { utilService } from "../../../services/util.service.js";
-import { notesService } from "../services/note.service.js";
 
 export function AddForm({
   isAddFormOpen,

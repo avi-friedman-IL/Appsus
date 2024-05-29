@@ -85,12 +85,18 @@ export function NoteIndex() {
   function reset() {
     setInfoTxt("");
     setInfoTitle("");
+    setIsOnFilter(false);
     setFilterByToEdit({ ...notesService.getDefaultFilter() });
   }
 
   return (
     <section className="keep-index">
-      <KeepSidebar />
+      <KeepSidebar
+        notes={notes}
+        onSetFilterBy={setFilterBy}
+        filterBy={filterBy}
+      />
+
       <AddForm
         isAddFormOpen={isAddFormOpen}
         infoTxt={infoTxt}

@@ -7,6 +7,7 @@
     .notes-add-input {
         margin-block-start: 0.5em;
         height: fit-content;
+        max-width: 100%;
     }
 
     .notes-add-input .add-form {
@@ -24,15 +25,12 @@
         padding: 0.2em;
     }
 
-    /* KEEP SIDEBAR */
-    .keep-sidebar {
-        width: fit-content;
-        margin: 0;
+    .notes-add-input .add-form .close-add-form-btn {
+        margin: .5em 0 0 0;
     }
 
-    .keep-sidebar img {
-        width: 1em;
-        height: 1em;
+    .keep-sidebar .todos-filter-btn {
+        overflow-y: hidden;
     }
 
 

@@ -1,7 +1,6 @@
 export function NoteTxt({ note }) {
   return (
     <div className="note-txt">
-      {/* {note.info.txt} */}
       {note.info.url.image ? (
         <img src={note.info.url.image} alt="Note Image" />
       ) : null}

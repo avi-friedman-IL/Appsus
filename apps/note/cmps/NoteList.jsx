@@ -1,6 +1,5 @@
 const { useState, useEffect } = React;
 
-import { utilService } from "../../../services/util.service.js";
 import { notesService } from "../services/note.service.js";
 import { NotePreview } from "../../../apps/note/cmps/NotePreview.jsx";
 

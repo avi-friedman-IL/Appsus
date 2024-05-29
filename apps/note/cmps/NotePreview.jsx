@@ -1,8 +1,6 @@
 const { Link } = ReactRouterDOM;
 const { useState } = React;
 
-// import { utilService } from "../../../services/util.service.js";
-// import { notesService } from "../services/note.service.js";
 import { NoteTxt } from "../cmps/NoteTxt.jsx";
 import { NoteImg } from "../cmps/NoteImg.jsx";
 import { NoteVideo } from "../cmps/NoteVideo.jsx";

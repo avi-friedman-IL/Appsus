@@ -1,9 +1,6 @@
 export function NoteImg({ note }) {
   return (
     <div className="note-img">
-      {/* <img src={note.info.url.image} alt="note" />
-      <p className="title">{note.title}</p>
-    </div> */}
       {note.info.url.image ? (
         <img src={note.info.url.image} alt="Note Image" />
       ) : null}
