@@ -27,6 +27,10 @@ img {
     object-fit: cover;
 }
 
+button:focus-visible{
+    outline: none;
+}
+
 ul li {
     list-style: none;
     color: rgb(65, 63, 63);
