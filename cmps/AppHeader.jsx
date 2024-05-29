@@ -77,6 +77,11 @@ function IconsModal({ onToggleModal }) {
           onClick={onToggleModal}
         />
       </NavLink>
+
+      <img src="https://www.svgrepo.com/show/452092/react.svg" />
+      <img src="https://www.svgrepo.com/show/349419/javascript.svg" />
+      <img src="https://www.svgrepo.com/show/452185/css-3.svg" />
+      <img src="https://www.svgrepo.com/show/375320/html-document.svg" />
     </section>
   );
 }
