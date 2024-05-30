@@ -25,6 +25,11 @@
     padding: 2.5em;
 }
 
+.mail-details .save-mail-to-note{
+    width: max-content;
+    border-radius: 3em;
+}
+
 .mail-details .sub-title {
     display: grid;
     grid-auto-flow: column;

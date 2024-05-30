@@ -47,7 +47,7 @@ export function MailDetails() {
 
     if (!isDraft) return <section className="mail-details">
         <section className="actions">
-            <button onClick={onSaveMailToNotes} className="save-mail-to-note">keep</button>
+            <button onClick={onSaveMailToNotes} className="save-mail-to-note action">save to keep</button>
             <Link to="/mail"><button className="fa fa-back action"></button></Link>
             <div>
                 <Link to={`/mail/${mail.prevMailId}`}><button className="fa fa-prev action"></button></Link>
