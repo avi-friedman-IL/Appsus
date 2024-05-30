@@ -112,6 +112,11 @@
         top: 0;
         bottom: 2em;
     }
+    
+    .mail-list li:hover .read-mail {
+        top: 0;
+        bottom: 2em;
+    }
 
     .mail-list .remove-mail {
         top: 0;
