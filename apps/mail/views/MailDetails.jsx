@@ -41,6 +41,7 @@ export function MailDetails() {
             }
         }
         notesService.saveNote(newNote)
+        navigate('/note')
     }
 
     if (isDraft) return <MailCompose close={onCompose} mailId={params.mailId} />
