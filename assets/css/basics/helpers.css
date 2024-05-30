@@ -41,6 +41,9 @@
 .fa.fa-unread-mail::before {
     content: '\f0e0';
 }
+.fa.fa-read-mail::before {
+    content: '\f2b6';
+}
 
 .fa.fa-index-mail::before {
     content: '\f0e0';

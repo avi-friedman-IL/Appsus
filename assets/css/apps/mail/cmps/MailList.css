@@ -78,8 +78,23 @@
  .mail-list .unread-mail {
     display: none;
  }
+ .mail-list .read-mail {
+    display: none;
+ }
 
  .mail-list li:hover .unread-mail {
+    position: absolute;
+    right: 5em;
+    bottom: .7rem;
+    display: block;
+    width: max-content;
+    border: 0;
+    cursor: pointer;
+    background-color: inherit;
+    font-weight: normal;
+    z-index: 1;
+ }
+ .mail-list li:hover .read-mail {
     position: absolute;
     right: 5em;
     bottom: .7rem;
