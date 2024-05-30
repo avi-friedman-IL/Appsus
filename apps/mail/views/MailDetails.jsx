@@ -3,6 +3,7 @@ const { useParams, useNavigate } = ReactRouter
 
 const { Link } = ReactRouterDOM
 
+import { notesService } from '../../note/services/note.service.js'
 import { mailService } from '../services/mail.service.js'
 import { MailCompose } from './MailCompose.jsx'
 
@@ -17,7 +18,7 @@ export function MailDetails() {
     useEffect(() => {
         mailService.get(params.mailId)
             .then(mail => {
-                if(mail.isDraft) setIsDraft(true)
+                if (mail.isDraft) setIsDraft(true)
                 mail.isRead = true
                 mailService.save(mail)
                 setMail(mail)
@@ -28,10 +29,19 @@ export function MailDetails() {
         setIsCompose(isCompose => !isCompose)
     }
 
-    if(isDraft) return <MailCompose close={onCompose} mailId={params.mailId}/>
+    function onSaveToNotes() {
+        const emptyNote = notesService.getEmptyNote()
+        console.log(emptyNote)
+        const noteToSave = {...emptyNote, info:{title: mail.subject}}
+        console.log(noteToSave);
+        notesService.saveNote(noteToSave)
+    }
 
-    if(!isDraft) return <section className="mail-details">
+    if (isDraft) return <MailCompose close={onCompose} mailId={params.mailId} />
+
+    if (!isDraft) return <section className="mail-details">
         <section className="actions">
+            <button onClick={onSaveToNotes} className="save-to-keep">keep</button>
             <Link to="/mail"><button className="fa fa-back action"></button></Link>
             <div>
                 <Link to={`/mail/${mail.prevMailId}`}><button className="fa fa-prev action"></button></Link>
@@ -46,7 +56,7 @@ export function MailDetails() {
                 <p className="to">to {mail.to}</p>
             </div>
             <p className="date">{
-            new Date(mail.sentAt).toString().split(' ').slice(0,5).join(' ')
+                new Date(mail.sentAt).toString().split(' ').slice(0, 5).join(' ')
             }</p>
         </div>
         <p className="body">{mail.body}</p>

@@ -12,6 +12,10 @@ export function MailFolderList({ filterBy, onFilter, unread, isOpen, close }) {
     useEffect(() => {
         onFilter(filterByToEdit)
     }, [filterByToEdit])
+    
+    useEffect(() => {
+        
+    }, [unread])
 
     function handleClick({ target }) {
         const { value } = target

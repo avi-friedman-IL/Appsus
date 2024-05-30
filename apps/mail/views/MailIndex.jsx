@@ -17,7 +17,6 @@ export function MailIndex() {
     const [mails, setMails] = useState([])
     const [searchParams, setSearchParams] = useSearchParams()
     const [filterBy, setFilterBy] = useState(mailService.getFilterFromSearchParams(searchParams))
-    const [sortBy, setSortBy] = useState(mailService.getFilterFromSearchParams(searchParams))
     const [isCompose, setIsCompose] = useState(false)
     const [isUnread, setIsUnread] = useState()
     const [toggleIsRead, setToggleIsRead] = useState(false)
@@ -69,10 +68,6 @@ export function MailIndex() {
 
     function onSetFilterBy(newFilter) {
         setFilterBy({ ...newFilter })
-    }
-
-    function onSetSortBy(newSort) {
-        setSortBy({ ...newSort })
     }
 
     function onCompose() {
