@@ -4,13 +4,21 @@
 
 .edit-section {
     margin-block-start: 6em;
+    padding-inline-start: 2em;
 }
 
 .edit-section label {
     display: block;
+    margin-block-start: 1em;
+
 }
 
 .edit-section input[type='color'] {
     background-color: transparent;
     border: none;
+}
+
+.edit-section button {
+    display: block;
+    margin-block: 2em;
 }
