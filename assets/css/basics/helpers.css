@@ -34,6 +34,16 @@
     content: '\f304';
 }
 
+.fa.fa-mail-menu-btn::before{
+    content: '\f0e0';
+}
+.fa.fa-chat-menu-btn::before{
+    content: '\f27a';
+}
+.fa.fa-meet-menu-btn::before{
+    content: '\f03d';
+}
+
 .fa.fa-remove-mail::before {
     content: '\f2ed';
 }

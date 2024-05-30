@@ -5,31 +5,56 @@
 
     .mail-index {
         grid-auto-flow: row;
-        gap: 15px;
+        grid-template-columns: 3em 1fr;
+        gap: 10px;
         overflow: hidden;
     }
-    
-    .mail-menu-btn {
-        padding: 1.5em;
-        margin-inline: 3em;
-        z-index: 1;
+
+    .mail-menu-btns {
+        position: relative;
+        overflow: hidden;
+        z-index: 0;
+        background-color: inherit;
     }
-    
-    .mail-filter {
-        margin-inline: .5em;
+
+    .mail-menu-btns .menu-btn {
         padding: 1em;
-        padding-inline-start: 6em;
-        grid-column: 1/-1;
+        z-index: 3;
+    }
+
+    .mail-filter-and-sorting {
+        padding: 0;
+        grid-column: 2/-1;
         grid-row: 1;
         width: 98%;
+        z-index: 1;
+
     }
-    
+
+    .mail-filter {
+        position: absolute;
+        right: 0;
+        left: 3em;
+        border-radius: 0;
+        padding-inline-start: 6em;
+        margin-block-end: 0;
+        width: 100%;
+    }
+
+    .mail-filter-and-sorting .sort-by {
+        position: absolute;
+        top: 19vh;
+        right: 0;
+        left: 0;
+        border-radius: 0;
+    }
+
     ul.mail-list {
         position: absolute;
         top: 25vh;
         left: 0;
         right: 0;
-        grid-column: 1/-1;
+        bottom: 0;
         grid-row: 2;
         padding: 0 0 0 0;
         height: 70vh;
@@ -112,7 +137,7 @@
         top: 0;
         bottom: 2em;
     }
-    
+
     .mail-list li:hover .read-mail {
         top: 0;
         bottom: 2em;
@@ -123,7 +148,7 @@
         bottom: 2em;
     }
 
-    .mail-details{
+    .mail-details {
         display: grid;
     }
 
@@ -134,6 +159,19 @@
     .mail-details .from {
         padding: 0 3em 0 4em;
         font-weight: bold;
+    }
+
+
+    .fa-mail-menu-btn {
+        opacity: 0;
+    }
+
+    .fa-chat-menu-btn {
+        opacity: 0;
+    }
+
+    .fa-meet-menu-btn {
+        opacity: 0;
     }
 
 }

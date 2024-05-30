@@ -1,4 +1,5 @@
-.mail-filter{
+.mail-filter {
+    grid-column: 3;
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 2em 1fr;
@@ -8,9 +9,10 @@
     padding: 1.2em;
     background-color: var(--mail-search-bgc);
     border-radius: 3em;
+    margin-block-end: 1em;
 }
 
-.mail-filter input{
+.mail-filter input {
     padding-inline-start: 1em;
     border: 0;
     border-radius: 3em;
@@ -18,23 +20,30 @@
     background-color: inherit;
 }
 
-.mail-filter input:focus-visible{
+.mail-filter input:focus-visible {
     outline: none;
 }
 
-.mail-filter input:focus{
-    /* background-color: #fff; */
+.mail-filter-and-sorting .sort-by {
+    padding: 1em;
+    width: 100%;
+    border-bottom-left-radius: 0;
+    cursor: pointer;
 }
 
-.mail-filter>*{
+.mail-filter-and-sorting .sort-by>* {
+   font-size: 1em;
+}
+
+.mail-filter>* {
     padding-inline-start: 1em;
 }
 
-.mail-filter select  {
+.mail-filter-and-sorting select {
     border-radius: 3em;
     border: 0;
 }
 
-.mail-filter select:focus-visible  {
+.mail-filter-and-sorting select:focus-visible {
     outline: none;
 }

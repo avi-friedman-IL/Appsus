@@ -15,18 +15,20 @@ export function MailFilter({ filterBy, onFilter }) {
         setFilterByToEdit(prevFilterBy => ({ ...prevFilterBy, [name]: value }))
     }
 
-    return <section className="mail-filter">
-        <span className="fa fa-search-mail"></span>
-        <input onChange={handleChange} value={filterByToEdit.txt} name="txt" type="text" placeholder="Search in mail" />
-        <select className="filter-by-read" onChange={handleChange} name="read" id="">
-            <option value="all">all</option>
-            <option value="unread">unread</option>
-            <option value="read">read</option>
-        </select>
+    return <div className="mail-filter-and-sorting">
+        <section className="mail-filter">
+            <span className="fa fa-search-mail"></span>
+            <input onChange={handleChange} value={filterByToEdit.txt} name="txt" type="text" placeholder="Search in mail" />
+            <select className="filter-by-read" onChange={handleChange} name="read" id="">
+                <option value="all">all</option>
+                <option value="unread">unread</option>
+                <option value="read">read</option>
+            </select>
+
+        </section>
         <select className="sort-by" onChange={handleChange} name="sortBy" id="">
-            <option value="date">date</option>
-            <option value="subject">subject</option>
+            <option value="date">sort by date</option>
+            <option value="subject">sort by subject</option>
         </select>
-        
-    </section>
+        </div>
 }
