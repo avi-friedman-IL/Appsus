@@ -45,7 +45,9 @@ export function MailDetails() {
                 <p className="from">{mail.from}</p>
                 <p className="to">to {mail.to}</p>
             </div>
-            <p className="date">{new Date(mail.sentAt).toString()}</p>
+            <p className="date">{
+            new Date(mail.sentAt).toString().split(' ').slice(0,5).join(' ')
+            }</p>
         </div>
         <p className="body">{mail.body}</p>
     </section>

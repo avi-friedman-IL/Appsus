@@ -18,9 +18,15 @@ export function MailFilter({ filterBy, onFilter }) {
     return <section className="mail-filter">
         <span className="fa fa-search-mail"></span>
         <input onChange={handleChange} value={filterByToEdit.txt} name="txt" type="text" placeholder="Search in mail" />
-        <select className="sortBy" onChange={handleChange} name="sortBy" id="">
-            <option value={filterByToEdit.date}>date</option>
-            <option value={filterByToEdit.read}>read</option>
+        <select className="filter-by-read" onChange={handleChange} name="read" id="">
+            <option value="all">all</option>
+            <option value="unread">unread</option>
+            <option value="read">read</option>
         </select>
+        <select className="sort-by" onChange={handleChange} name="sortBy" id="">
+            <option value="date">date</option>
+            <option value="subject">subject</option>
+        </select>
+        
     </section>
 }

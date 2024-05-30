@@ -46,6 +46,12 @@ function query(filterBy = {}) {
                 const regExp = new RegExp(filterBy.txt, 'i')
                 emails = emails.filter(email => regExp.test(email.from) || regExp.test(email.subject) || regExp.test(email.body))
             }
+
+            if(filterBy.read){
+                if(filterBy.read === 'all') emails = emails
+                if(filterBy.read === 'unread') emails = emails.filter(email => !email.isRead)
+                if(filterBy.read === 'read') emails = emails.filter(email => email.isRead)
+            }
             if (filterBy.status) {
                 if (filterBy.status === 'Index') {
                     emails = emails.filter(email => !email.isDraft)
@@ -65,8 +71,8 @@ function query(filterBy = {}) {
                 if (filterBy.sortBy === 'date') {
                     emails.sort((m1, m2) => m2.sentAt - m1.sentAt)
                 }
-                if (filterBy.sortBy === 'read') {
-                    emails.sort((m1, m2) => m1.isRead - m2.isRead)
+                if (filterBy.sortBy === 'subject') {
+                    emails.sort((m1, m2) => m1.subject.localeCompare(m2.subject))
                 }
             }
 
@@ -81,6 +87,7 @@ function getEmptyMail(subject = '(no subject)', body = '', isRead = false, isDra
 function getFilterFromSearchParams(searchParams) {
     return {
         txt: searchParams.get('txt') || '',
+        read: searchParams.get('read') || '',
         status: searchParams.get('status') || '',
         sortBy: searchParams.get('sortBy') || '',
 

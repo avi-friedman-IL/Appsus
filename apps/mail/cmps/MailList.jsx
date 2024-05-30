@@ -6,6 +6,7 @@ import { MailPreview } from "./MailPreview.jsx";
 import { MailStarred } from "./MailStarred.jsx";
 
 export function MailList({ mails, onRemove, onToggleRead, close }) {
+    
     return <ul className="mail-list">
         {mails.map(mail =>
             <li className={mail.isRead ? 'read' : ''} key={mail.id}>
