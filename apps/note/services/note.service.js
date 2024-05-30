@@ -83,6 +83,8 @@ function updateNote(note) {
 
 function getEmptyNote() {
     return {
+        isPinned: false,
+        type: 'NoteTxt',
         style: { backgroundColor: "" },
         info: { txt: '', title: "", todos: [], url: '' },
     }
