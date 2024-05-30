@@ -30,7 +30,11 @@
     padding-inline-start: 1em;
 }
 
-.mail-filter .sort-by {
+.mail-filter select  {
+    border-radius: 3em;
     border: 0;
 }
 
+.mail-filter select:focus-visible  {
+    outline: none;
+}

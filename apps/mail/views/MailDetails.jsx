@@ -4,9 +4,12 @@ const { useParams, useNavigate } = ReactRouter
 const { Link } = ReactRouterDOM
 
 import { mailService } from '../services/mail.service.js'
+import { MailCompose } from './MailCompose.jsx'
 
 export function MailDetails() {
     const [mail, setMail] = useState([])
+    const [isCompose, setIsCompose] = useState(false)
+    const [isDraft, setIsDraft] = useState()
 
     const params = useParams()
     const navigate = useNavigate()
@@ -14,13 +17,20 @@ export function MailDetails() {
     useEffect(() => {
         mailService.get(params.mailId)
             .then(mail => {
+                if(mail.isDraft) setIsDraft(true)
                 mail.isRead = true
                 mailService.save(mail)
                 setMail(mail)
             })
     }, [params.mailId])
 
-    return <section className="mail-details">
+    function onCompose() {
+        setIsCompose(isCompose => !isCompose)
+    }
+
+    if(isDraft) return <MailCompose close={onCompose} isDraftMail={true} id={params.mailId}/>
+
+    if(!isDraft) return <section className="mail-details">
         <section className="actions">
             <Link to="/mail"><button className="fa fa-back action"></button></Link>
             <div>
