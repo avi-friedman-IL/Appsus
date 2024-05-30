@@ -29,19 +29,25 @@ export function MailDetails() {
         setIsCompose(isCompose => !isCompose)
     }
 
-    function onSaveToNotes() {
-        const emptyNote = notesService.getEmptyNote()
-        console.log(emptyNote)
-        const noteToSave = {...emptyNote, info:{title: mail.subject}}
-        console.log(noteToSave);
-        notesService.saveNote(noteToSave)
+    function onSaveMailToNotes() {
+        const newNote = {
+            
+            createAt: Date.now(),
+            type: 'NoteTxt',
+            isPinned: false,
+            style: { backgroundColor: "#F1948A", font: '' },
+            info: {
+                title: mail.subject, todos: [], txt: mail.body, url: { image: null, video: null }
+            }
+        }
+        notesService.saveNote(newNote)
     }
 
     if (isDraft) return <MailCompose close={onCompose} mailId={params.mailId} />
 
     if (!isDraft) return <section className="mail-details">
         <section className="actions">
-            <button onClick={onSaveToNotes} className="save-to-keep">keep</button>
+            <button onClick={onSaveMailToNotes} className="save-mail-to-note">keep</button>
             <Link to="/mail"><button className="fa fa-back action"></button></Link>
             <div>
                 <Link to={`/mail/${mail.prevMailId}`}><button className="fa fa-prev action"></button></Link>
