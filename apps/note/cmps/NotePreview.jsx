@@ -37,6 +37,7 @@ export function NotePreview({
   }
 
   function handleSaveNoteAsEmail() {
+    if (note.type !== "NoteTxt") return;
     const newMail = {
       id: "",
       subject: note.info.title,
