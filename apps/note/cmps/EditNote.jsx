@@ -118,80 +118,68 @@ export function EditNote() {
   return (
     <section className="edit-section">
       <form onSubmit={saveNote} autoComplete="off">
-        <label>
-          Edit title:
-          <input
-            type="text"
-            placeholder="edit"
-            name="title"
-            value={note.info.title}
-            onChange={handleChange}
-          />
-        </label>
+        <label>Edit title:</label>
+        <input
+          type="text"
+          placeholder="edit"
+          name="title"
+          value={note.info.title}
+          onChange={handleChange}
+        />
 
-        <label>
-          Edit text:
-          <input
-            type="text"
-            placeholder="edit"
-            name="txt"
-            value={note.info.txt}
-            onChange={handleChange}
-          />
-        </label>
+        <label>Edit text:</label>
+        <input
+          type="text"
+          placeholder="edit"
+          name="txt"
+          value={note.info.txt}
+          onChange={handleChange}
+        />
 
-        <label>
-          Edit todos with ' / ' separation:
-          <input
-            type="text"
-            placeholder="edit"
-            name="todos"
-            value={note.info.todos.map((todo) => todo.txt).join("/")}
-            onChange={handleChange}
-          />
-        </label>
+        <label>Edit todos with ' / ' separation:</label>
+        <input
+          type="text"
+          placeholder="edit"
+          name="todos"
+          value={note.info.todos.map((todo) => todo.txt).join("/")}
+          onChange={handleChange}
+        />
 
-        <label>
-          Edit Image URL:
-          <input
-            type="text"
-            placeholder="edit"
-            name="image"
-            value={note.info.url.image}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Edit Video URL:
-          <input
-            type="text"
-            placeholder="edit"
-            name="video"
-            value={note.info.url.video}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Edit Audio URL:
-          <input
-            type="text"
-            placeholder="edit"
-            name="audio"
-            value={note.info.url.audio}
-            onChange={handleChange}
-          />
-        </label>
+        <label>Edit Image URL:</label>
+        <input
+          type="text"
+          placeholder="edit"
+          name="image"
+          value={note.info.url.image}
+          onChange={handleChange}
+        />
 
-        <label>
-          Edit background color:
-          <input
-            type="color"
-            placeholder="edit"
-            name="backgroundColor"
-            value={note.style.backgroundColor}
-            onChange={handleChange}
-          />
-        </label>
+        <label>Edit Video URL:</label>
+        <input
+          type="text"
+          placeholder="edit"
+          name="video"
+          value={note.info.url.video}
+          onChange={handleChange}
+        />
+
+        <label>Edit Audio URL:</label>
+        <input
+          type="text"
+          placeholder="edit"
+          name="audio"
+          value={note.info.url.audio}
+          onChange={handleChange}
+        />
+
+        <label>Edit background color:</label>
+        <input
+          type="color"
+          placeholder="edit"
+          name="backgroundColor"
+          value={note.style.backgroundColor}
+          onChange={handleChange}
+        />
 
         <button type="submit">Save</button>
         <button type="button" onClick={onGoBack}>
@@ -201,29 +189,3 @@ export function EditNote() {
     </section>
   );
 }
-
-//                 id: 'n103',
-//                 createdAt: 1112224,
-//                 type: ['NoteTodos','NoteVideo'],
-//                 isPinned: false,
-//                 style: {
-//                     backgroundColor: '',
-//                     font: '',
-//                 },
-//                 info: {
-//                     title: 'Get my stuff together',
-//                     txt: '',
-//                     url: {
-//                         image: '',
-//                         video: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-//                         audio: '',
-//                     },
-//                     todos: [
-//                         { txt: 'Driving license', doneAt: null },
-//                         { txt: 'Coding power', doneAt: 187111111 },
-//                     ],
-//                 },
-// ...note,
-// type:[ ...note.type, 'NoteVideo']
-//
-//

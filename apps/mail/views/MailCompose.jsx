@@ -5,14 +5,14 @@ const { useState, useEffect } = React
 const { useParams, useNavigate } = ReactRouter
 
 
-export function MailCompose({ close, isDraftMail, id }) {
+export function MailCompose({ close, mailId }) {
 
     const [mail, setMail] = useState()
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (id) {
-            mailService.get(id)
+        if (mailId) {
+            mailService.get(mailId)
                 .then(mail => setMail(mail))
         } else {
             setMail(mailService.getEmptyMail)
@@ -31,11 +31,6 @@ export function MailCompose({ close, isDraftMail, id }) {
     }
 
     function removeMail() {
-        close()
-    }
-
-    function saveToDraft() {
-        mailService.save(mail)
         close()
     }
 

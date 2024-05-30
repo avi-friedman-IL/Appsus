@@ -28,7 +28,7 @@ export function MailDetails() {
         setIsCompose(isCompose => !isCompose)
     }
 
-    if(isDraft) return <MailCompose close={onCompose} isDraftMail={true} id={params.mailId}/>
+    if(isDraft) return <MailCompose close={onCompose} mailId={params.mailId}/>
 
     if(!isDraft) return <section className="mail-details">
         <section className="actions">

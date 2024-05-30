@@ -97,7 +97,7 @@ export function MailIndex() {
     return <section className={isMenuOpen ? 'mail-index open' : 'mail-index'}>
         <button className="mail-menu-btn" onClick={onToggleMenuOpen}>☰</button>
         <button className={isMenuOpen ? 'compose-btn open' : 'compose-btn'} onClick={onCompose}><span className="fa fa-compose-btn-mail"></span>Compose</button>
-        {isCompose && <MailCompose close={onCompose} isDraftMail={false} id={false} />}
+        {isCompose && <MailCompose close={onCompose}  mailId={false} />}
         {<MailFilter filterBy={filterBy} onFilter={onSetFilterBy} />}
         {<MailFolderList filterBy={filterBy} onFilter={onSetFilterBy} unread={isUnread} isOpen={isMenuOpen} close={onToggleMenuOpen} />}
         {!params.mailId && <MailList mails={mails} onRemove={removeMail} onToggleRead={toggleRead} close={onCompose} />}
