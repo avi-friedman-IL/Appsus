@@ -2,19 +2,31 @@ import { eventBusService,showErrorMsg, showSuccessMsg } from "../../../services/
 import { mailService } from "../services/mail.service.js"
 
 const { useState, useEffect } = React
+const { useParams, useNavigate } = ReactRouter
+
 
 export function MailCompose({ close }) {
 
     const [mail, setMail] = useState(mailService.getEmptyMail)
+    const navigate = useNavigate()
 
     function onSave(ev) {
         ev.preventDefault()
+        mail.isDraft = false
+        console.dir(ev.target);
+        if(ev.target.innerText === 'x') mail.isDraft = true
         mailService.save(mail)
         showSuccessMsg('Message sent')
         close()
+        navigate('/mail')
     }
 
     function removeMail() {
+        close()
+    }
+
+    function saveToDraft() {
+        mailService.save(mail)
         close()
     }
 
@@ -26,7 +38,7 @@ export function MailCompose({ close }) {
     }
 
     return <form className="mail-compose" onSubmit={onSave}>
-        <h2>New Messages <span onClick={removeMail}>x</span></h2>
+        <h2>New Messages <span onClick={onSave}>x</span></h2>
         <input className="to" onChange={handleChange} name="to" type="email" placeholder="To"/>
         <input className="subject" onChange={handleChange} name="subject" type="text" placeholder="Subject"/>
         <textarea row="3" cols="3" className="mail-body" onChange={handleChange} name="body" type="text" />

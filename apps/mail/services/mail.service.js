@@ -25,6 +25,7 @@ function _createEmails() {
                 body: utilService.makeLorem(40),
                 isRead: Math.random() > 0.7,
                 isStarred: Math.random() > 0.7,
+                isDraft: false,
                 sentAt: Date.now(),
                 removedAt: null,
                 from: fromTos[utilService.getRandomIntInclusive(0, 1)],
@@ -47,13 +48,25 @@ function query(filterBy = {}) {
             }
             if (filterBy.status) {
                 if (filterBy.status === 'Index') {
-                    emails = emails
+                    emails = emails.filter(email => !email.isDraft)
                 }
                 if (filterBy.status === 'Sent') {
-                    emails = emails.filter(email => email.from === 'momo@momo.com')
+                    emails = emails.filter(email => email.from === 'momo@momo.com' && !email.isDraft)
                 }
                 if (filterBy.status === 'Starred') {
                     emails = emails.filter(email => email.isStarred)
+                }
+                if (filterBy.status === 'Draft') {
+                    emails = emails.filter(email => email.isDraft)
+                }
+            }
+
+            if (filterBy.sortBy) {
+                if (filterBy.sortBy === 'date') {
+                    emails.sort((m1, m2) => m2.sentAt - m1.sentAt)
+                }
+                if (filterBy.sortBy === 'read') {
+                    emails.sort((m1, m2) => m1.isRead - m2.isRead)
                 }
             }
 
@@ -61,14 +74,16 @@ function query(filterBy = {}) {
         })
 }
 
-function getEmptyMail(subject = '', body = '', isRead = false, sentAt = Date.now(), removedAt = 0, from = 'momo@momo.com', to = '') {
-    return { subject, body, isRead, sentAt, removedAt, from, to }
+function getEmptyMail(subject = '(no subject)', body = '', isRead = false, isDraft = false, sentAt = Date.now(), removedAt = 0, from = 'momo@momo.com', to = '') {
+    return { subject, body, isRead, isDraft, sentAt, removedAt, from, to }
 }
 
 function getFilterFromSearchParams(searchParams) {
     return {
         txt: searchParams.get('txt') || '',
         status: searchParams.get('status') || '',
+        sortBy: searchParams.get('sortBy') || '',
+
     }
 }
 

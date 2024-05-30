@@ -1,7 +1,9 @@
+import { MailCompose } from "../views/MailCompose.jsx"
+
 const { useState } = React
 const { Link } = ReactRouterDOM
 
-export function MailPreview({ mail }) {
+export function MailPreview({ mail, close }) {
 
     
     return (

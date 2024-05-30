@@ -29,3 +29,8 @@
 .mail-filter>*{
     padding-inline-start: 1em;
 }
+
+.mail-filter .sort-by {
+    border: 0;
+}
+

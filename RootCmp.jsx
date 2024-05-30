@@ -15,6 +15,7 @@ import { BookIndex } from "./apps/book/views/BookIndex.jsx";
 import { BookDetails } from "./apps/book/cmps/BookDetails.jsx";
 import { BookEdit } from "./apps/book/cmps/BookEdit.jsx";
 import { AddBook } from "./apps/book/cmps/AddBook.jsx";
+import { MailCompose } from "./apps/mail/views/MailCompose.jsx";
 
 export function App() {
   return (

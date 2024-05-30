@@ -8,6 +8,7 @@ export function MailFilter({ filterBy, onFilter }) {
         onFilter(filterByToEdit)
     }, [filterByToEdit])
 
+
     function handleChange({ target }) {
         const { name, type } = target
         const value = target.value
@@ -17,5 +18,9 @@ export function MailFilter({ filterBy, onFilter }) {
     return <section className="mail-filter">
         <span className="fa fa-search-mail"></span>
         <input onChange={handleChange} value={filterByToEdit.txt} name="txt" type="text" placeholder="Search in mail" />
+        <select className="sortBy" onChange={handleChange} name="sortBy" id="">
+            <option value={filterByToEdit.date}>date</option>
+            <option value={filterByToEdit.read}>read</option>
+        </select>
     </section>
 }

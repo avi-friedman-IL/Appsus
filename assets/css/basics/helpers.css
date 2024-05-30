@@ -50,6 +50,10 @@
     content: '\f1d8';
 }
 
+.fa.fa-draft-mail::before {
+    content: '\f15b';
+}
+
 .fa.fa-back::before {
     content: '\f060';
 }

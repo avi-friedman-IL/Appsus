@@ -17,10 +17,12 @@ export function MailIndex() {
     const [mails, setMails] = useState([])
     const [searchParams, setSearchParams] = useSearchParams()
     const [filterBy, setFilterBy] = useState(mailService.getFilterFromSearchParams(searchParams))
+    const [sortBy, setSortBy] = useState(mailService.getFilterFromSearchParams(searchParams))
     const [isCompose, setIsCompose] = useState(false)
     const [isUnread, setIsUnread] = useState()
     const [toggleIsRead, setToggleIsRead] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(true)
+    const [isMailDraft, setIsMailDraft] = useState()
 
     const params = useParams()
 
@@ -30,10 +32,16 @@ export function MailIndex() {
                 setMails(prevMails => prevMails.filter(mail => mail.id !== mailId))
             })
     }
-    
+
     useEffect(() => {
         mailService.query()
-            .then(mails => setMails(mails))
+            .then(mails => {
+                setMails(mails)
+                mails.map(mail => {
+                    if (mail.isDraft) setIsMailDraft(true)
+                    else setIsMailDraft(false)
+                })
+            })
     }, [params.mailId])
 
     useEffect(() => {
@@ -63,6 +71,10 @@ export function MailIndex() {
         setFilterBy({ ...newFilter })
     }
 
+    function onSetSortBy(newSort) {
+        setSortBy({...newSort})
+    }
+
     function onCompose() {
         setIsCompose(isCompose => !isCompose)
     }
@@ -87,8 +99,8 @@ export function MailIndex() {
         <button className={isMenuOpen ? 'compose-btn open' : 'compose-btn'} onClick={onCompose}><span className="fa fa-compose-btn-mail"></span>Compose</button>
         {isCompose && <MailCompose close={onCompose} />}
         {<MailFilter filterBy={filterBy} onFilter={onSetFilterBy} />}
-        {<MailFolderList filterBy={filterBy} onFilter={onSetFilterBy} unread={isUnread} isOpen={isMenuOpen} close={onToggleMenuOpen}/>}
-        {!params.mailId && <MailList mails={mails} onRemove={removeMail} onToggleRead={toggleRead} />}
+        {<MailFolderList filterBy={filterBy} onFilter={onSetFilterBy} unread={isUnread} isOpen={isMenuOpen} close={onToggleMenuOpen} />}
+        {!params.mailId && <MailList mails={mails} onRemove={removeMail} onToggleRead={toggleRead} close={onCompose} />}
         {params.mailId && <MailDetails />}
         {<UserMsg />}
 
