@@ -1,5 +1,9 @@
 const { Link } = ReactRouterDOM;
 const { useState } = React;
+const { useNavigate } = ReactRouter;
+
+import { utilService } from "../../../services/util.service.js";
+import { mailService } from "../../mail/services/mail.service.js";
 
 import { NoteTxt } from "../cmps/NoteTxt.jsx";
 import { NoteImg } from "../cmps/NoteImg.jsx";
@@ -16,6 +20,7 @@ export function NotePreview({
   onDuplicateNote,
 }) {
   const [noteBgc, setNoteBgc] = useState(note.style.backgroundColor || "#fff");
+  const navigate = useNavigate();
 
   function handleNoteBgcChange(color) {
     setNoteBgc(color);
@@ -27,7 +32,25 @@ export function NotePreview({
         backgroundColor: color,
       },
     };
+
     onSaveNote(updatedNote);
+  }
+
+  function handleSaveNoteAsEmail() {
+    const newMail = {
+      id: "",
+      subject: note.info.title,
+      body: note.info.txt,
+      isRead: false,
+      isStarred: Math.random() > 0.7,
+      isDraft: false,
+      sentAt: Date.now(),
+      removedAt: null,
+      from: "you",
+      to: "you",
+    };
+    mailService.save(newMail);
+    navigate("/mail");
   }
 
   return (
@@ -67,6 +90,14 @@ export function NotePreview({
           onClick={() => onDuplicateNote(note)}
         >
           <i className="fa-solid fa-clone"></i>
+        </div>
+
+        <div
+          className="btn send-btn"
+          title="send as mail"
+          onClick={handleSaveNoteAsEmail}
+        >
+          <i className="fa-regular fa-paper-plane"></i>
         </div>
       </div>
       <ColorInput onSetBgc={handleNoteBgcChange} />
