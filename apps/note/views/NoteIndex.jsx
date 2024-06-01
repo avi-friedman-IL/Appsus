@@ -1,8 +1,10 @@
 const { useState, useEffect } = React;
 import { notesService } from "../services/note.service.js";
+import { showSuccessMsg } from "../../../services/event-bus.service.js";
 import { KeepSidebar } from "../cmps/KeepSidebar.jsx";
 import { NoteList } from "../cmps/NoteList.jsx";
 import { AddForm } from "../cmps/AddForm.jsx";
+import { UserMsg } from "../../../cmps/UserMsg.jsx";
 
 export function NoteIndex() {
   const [notes, setNotes] = useState([]);
@@ -42,12 +44,14 @@ export function NoteIndex() {
     notesService.removeNote(noteId).then(() => {
       setNotes((prevNotes) => prevNotes.filter((note) => note.id !== noteId));
     });
+    showSuccessMsg("Note Removed");
   }
 
   function handleAddNote(note) {
     notesService.saveNote(note).then(() => {
       setNotes((prevNotes) => [...prevNotes, note]);
     });
+    showSuccessMsg("Note Added");
   }
 
   function handleNoteType(type) {
@@ -90,6 +94,7 @@ export function NoteIndex() {
     setIsOnFilter(false);
     setActiveItem("Notes");
     setFilterByToEdit({ ...notesService.getDefaultFilter() });
+    showSuccessMsg("Keep has been reset");
   }
 
   return (
@@ -138,6 +143,8 @@ export function NoteIndex() {
           onSubmit={handleSubmit}
         />
       )}
+
+      <UserMsg />
     </section>
   );
 }

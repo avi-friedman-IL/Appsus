@@ -2,6 +2,8 @@ const { useState, useEffect } = React;
 const { useParams, useNavigate } = ReactRouter;
 
 import { notesService } from "../services/note.service.js";
+import { showSuccessMsg } from "../../../services/event-bus.service.js";
+import { UserMsg } from "../../../cmps/UserMsg.jsx";
 
 export function EditNote() {
   const [note, setNote] = useState(notesService.getEmptyNote());
@@ -109,10 +111,13 @@ export function EditNote() {
       .catch((err) => {
         console.log("Error:", err);
       });
+    showSuccessMsg("Note Edit Saved");
   }
 
   function onGoBack() {
-    navigate("/note");
+    setTimeout(() => {
+      navigate("/note");
+    }, 2000);
   }
 
   return (
@@ -186,6 +191,8 @@ export function EditNote() {
           Go Back
         </button>
       </form>
+
+      <UserMsg />
     </section>
   );
 }
