@@ -95,8 +95,8 @@ export function MailIndex() {
             <button className="fa fa-mail-menu-btn"></button>
             <button className="fa fa-chat-menu-btn"></button>
             <button className="fa fa-meet-menu-btn"></button>
-
         </section>
+
         <button className={isMenuOpen ? 'compose-btn open' : 'compose-btn'} onClick={onCompose}><span className="fa fa-compose-btn-mail"></span>Compose</button>
         {isCompose && <MailCompose close={onCompose} mailId={false} />}
         {<MailFilter filterBy={filterBy} onFilter={onSetFilterBy} />}

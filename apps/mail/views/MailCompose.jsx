@@ -36,7 +36,7 @@ export function MailCompose({ close, mailId }) {
 
     function handleChange({ target }) {
         const { type, name } = target
-        let value = target.value
+        let value = target.value 
 
         setMail(prevMail => ({ ...prevMail, [name]: value }))
     }
@@ -46,7 +46,7 @@ export function MailCompose({ close, mailId }) {
         <h2>New Messages <span onClick={onSave}>x</span></h2>
         <input className="to" onChange={handleChange} name="to" type="email" value={mail.to} placeholder="To" />
         <input className="subject" onChange={handleChange} name="subject" type="text" placeholder="Subject" />
-        <textarea row="3" cols="3" className="mail-body" onChange={handleChange} name="body" type="text" value={mail.body} />
+        <textarea id="mail-compose-body" row="3" cols="3" className="mail-body" onChange={handleChange} name="body" type="text" value={mail.body} />
         <article>
             <button className="send">Send</button>
             <button className="fa fa-remove-mail remove-mail" onClick={removeMail}></button>

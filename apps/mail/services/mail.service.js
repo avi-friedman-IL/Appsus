@@ -47,12 +47,13 @@ function query(filterBy = {}) {
                 emails = emails.filter(email => regExp.test(email.from) || regExp.test(email.subject) || regExp.test(email.body))
             }
 
-            if(filterBy.read){
-                if(filterBy.read === 'all') emails = emails
-                if(filterBy.read === 'unread') emails = emails.filter(email => !email.isRead)
-                if(filterBy.read === 'read') emails = emails.filter(email => email.isRead)
+            if (filterBy.read) {
+                if (filterBy.read === 'all') emails = emails
+                if (filterBy.read === 'unread') emails = emails.filter(email => !email.isRead)
+                if (filterBy.read === 'read') emails = emails.filter(email => email.isRead)
             }
             if (filterBy.status) {
+                filterBy.read = ''
                 if (filterBy.status === 'Index') {
                     emails = emails.filter(email => !email.isDraft)
                 }
