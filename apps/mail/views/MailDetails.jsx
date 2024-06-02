@@ -7,9 +7,8 @@ import { notesService } from '../../note/services/note.service.js'
 import { mailService } from '../services/mail.service.js'
 import { MailCompose } from './MailCompose.jsx'
 
-export function MailDetails() {
+export function MailDetails({ close }) {
     const [mail, setMail] = useState([])
-    const [isCompose, setIsCompose] = useState(false)
     const [isDraft, setIsDraft] = useState()
 
     const params = useParams()
@@ -25,13 +24,9 @@ export function MailDetails() {
             })
     }, [params.mailId])
 
-    function onCompose() {
-        setIsCompose(isCompose => !isCompose)
-    }
-
     function onSaveMailToNotes() {
         const newNote = {
-            
+
             createAt: Date.now(),
             type: 'NoteTxt',
             isPinned: false,
@@ -44,7 +39,7 @@ export function MailDetails() {
         navigate('/note')
     }
 
-    if (isDraft) return <MailCompose close={onCompose} mailId={params.mailId} />
+    if (isDraft) return <MailCompose close={close} mailId={params.mailId} />
 
     if (!isDraft) return <section className="mail-details">
         <section className="actions">

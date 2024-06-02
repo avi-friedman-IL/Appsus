@@ -18,7 +18,7 @@ export function MailFolderList({ filterBy, onFilter, unread, isOpen, close }) {
 
     useEffect(() => {
         mailService.query().then(mails => {
-            const mailsNotRead = mails.filter(mail => !mail.isRead)
+            const mailsNotRead = mails.filter(mail => !mail.isRead && !mail.isDraft)
             setMails(mailsNotRead)
         })
     }, [mails])

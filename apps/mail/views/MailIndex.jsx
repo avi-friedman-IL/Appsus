@@ -54,7 +54,7 @@ export function MailIndex() {
     useEffect(() => {
         mailService.query()
             .then(mails => {
-                const isUnread = mails.filter(mail => !mail.isRead)
+                const isUnread = mails.filter(mail => !mail.isRead && !mail.isDraft)
                 const countIsUnread = isUnread.length
                 setIsUnread(countIsUnread)
             })
@@ -92,17 +92,17 @@ export function MailIndex() {
     return <section className={isMenuOpen ? 'mail-index open' : 'mail-index'}>
         <section className="mail-menu-btns" >
             <button className="menu-btn" onClick={onToggleMenuOpen}>☰</button>
-            <button className="fa fa-mail-menu-btn"></button>
+            <button className="fa fa-mail-menu-btn"><span className="mail-unread"></span></button>
             <button className="fa fa-chat-menu-btn"></button>
             <button className="fa fa-meet-menu-btn"></button>
         </section>
 
         <button className={isMenuOpen ? 'compose-btn open' : 'compose-btn'} onClick={onCompose}><span className="fa fa-compose-btn-mail"></span>Compose</button>
-        {isCompose && <MailCompose close={onCompose} mailId={false} />}
+        {isCompose && <MailCompose close={() => onCompose()} mailId={false} />}
         {<MailFilter filterBy={filterBy} onFilter={onSetFilterBy} />}
         {<MailFolderList filterBy={filterBy} onFilter={onSetFilterBy} unread={isUnread} isOpen={isMenuOpen} close={onToggleMenuOpen} />}
         {!params.mailId && <MailList mails={mails} onRemove={removeMail} onToggleRead={toggleRead} close={onCompose} />}
-        {params.mailId && <MailDetails />}
+        {params.mailId && <MailDetails close={onCompose}/>}
         {<UserMsg />}
 
     </section>
