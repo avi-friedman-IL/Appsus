@@ -1,3 +1,5 @@
+import { mailService } from "../services/mail.service.js"
+
 const { useState, useEffect } = React
 const { useParams, useNavigate } = ReactRouter
 
@@ -6,16 +8,20 @@ export function MailFolderList({ filterBy, onFilter, unread, isOpen, close }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
     const [folderSelect, setFolderSelect] = useState(filterByToEdit.status)
+    const [mails, setMails] = useState([])
 
     const navigate = useNavigate()
 
     useEffect(() => {
         onFilter(filterByToEdit)
     }, [filterByToEdit])
-    
+
     useEffect(() => {
-        
-    }, [unread])
+        mailService.query().then(mails => {
+            const mailsNotRead = mails.filter(mail => !mail.isRead && !mail.isDraft)
+            setMails(mailsNotRead)
+        })
+    }, [mails])
 
     function handleClick({ target }) {
         const { value } = target
@@ -30,7 +36,7 @@ export function MailFolderList({ filterBy, onFilter, unread, isOpen, close }) {
         <article className={folderSelect === 'Index' ? 'select' : ''}>
             <p className="fa fa-index-mail"></p>
             <option onClick={handleClick} value="Index">index</option>
-            <span>{unread}</span>
+            <span>{mails.length}</span>
         </article>
 
         <article className={folderSelect === 'Starred' ? 'select' : ''}>
