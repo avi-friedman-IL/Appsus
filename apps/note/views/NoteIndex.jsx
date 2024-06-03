@@ -143,11 +143,7 @@ export function NoteIndex() {
       {!notes ? (
         <h1>loading...</h1>
       ) : (
-        <NoteList
-          notes={notes}
-          onRemoveNote={handleRemoveNote}
-          // onSubmit={handleSubmit}
-        />
+        <NoteList notes={notes} onRemoveNote={handleRemoveNote} />
       )}
 
       <UserMsg />
