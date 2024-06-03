@@ -3,13 +3,7 @@ const { useState, useEffect } = React;
 import { notesService } from "../services/note.service.js";
 import { NotePreview } from "../../../apps/note/cmps/NotePreview.jsx";
 
-export function NoteList({
-  notes,
-  // updatedNotes,
-  onRemoveNote,
-  onSubmit,
-  // onSetUpdatedNotes,
-}) {
+export function NoteList({ notes, onRemoveNote }) {
   const [updatedNotes, onSetUpdatedNotes] = useState(notes);
 
   useEffect(() => {
@@ -44,7 +38,7 @@ export function NoteList({
   const unpinnedNotes = updatedNotes.filter((note) => !note.isPinned);
 
   return (
-    <section className="all-lists" onClick={onSubmit}>
+    <section className="all-lists">
       {pinnedNotes.length > 0 ? <h2>Pinned</h2> : ""}
 
       {pinnedNotes.length > 0 ? (
