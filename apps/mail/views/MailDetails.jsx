@@ -7,7 +7,7 @@ import { notesService } from '../../note/services/note.service.js'
 import { mailService } from '../services/mail.service.js'
 import { MailCompose } from './MailCompose.jsx'
 
-export function MailDetails({ close }) {
+export function MailDetails({close}) {
     const [mail, setMail] = useState([])
     const [isDraft, setIsDraft] = useState()
 
@@ -26,7 +26,6 @@ export function MailDetails({ close }) {
 
     function onSaveMailToNotes() {
         const newNote = {
-
             createAt: Date.now(),
             type: 'NoteTxt',
             isPinned: false,

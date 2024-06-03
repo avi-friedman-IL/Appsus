@@ -70,19 +70,19 @@ export function MailIndex() {
         setFilterBy({ ...newFilter })
     }
 
-    function onCompose() {
-        setIsCompose(isCompose => !isCompose)
-    }
-
     function toggleRead(mailId) {
         mailService.query()
-            .then(mails => {
-                const mail = mails.find(mail => mail.id === mailId)
-                mail.isRead = !mail.isRead
-                mailService.save(mail)
-                setMails(mails => [...mails])
-                setToggleIsRead(read => !read)
-            })
+        .then(mails => {
+            const mail = mails.find(mail => mail.id === mailId)
+            mail.isRead = !mail.isRead
+            mailService.save(mail)
+            setMails(mails => [...mails])
+            setToggleIsRead(read => !read)
+        })
+    }
+    
+    function onCompose() {
+        setIsCompose(compose => !compose)
     }
 
     function onToggleMenuOpen() {
@@ -98,7 +98,7 @@ export function MailIndex() {
         </section>
 
         <button className={isMenuOpen ? 'compose-btn open' : 'compose-btn'} onClick={onCompose}><span className="fa fa-compose-btn-mail"></span>Compose</button>
-        {isCompose && <MailCompose close={() => onCompose()} mailId={false} />}
+        {isCompose && <MailCompose close={onCompose} mailId={false} />}
         {<MailFilter filterBy={filterBy} onFilter={onSetFilterBy} />}
         {<MailFolderList filterBy={filterBy} onFilter={onSetFilterBy} unread={isUnread} isOpen={isMenuOpen} close={onToggleMenuOpen} />}
         {!params.mailId && <MailList mails={mails} onRemove={removeMail} onToggleRead={toggleRead} close={onCompose} />}
