@@ -60,6 +60,7 @@ export function NoteIndex() {
 
   function handleSubmit(ev) {
     ev.preventDefault();
+    ev.stopPropagation();
     if (!infoTxt || isOnFilter) return;
 
     const newNote = {
@@ -97,8 +98,13 @@ export function NoteIndex() {
     showSuccessMsg("Keep has been reset");
   }
 
+  function handleSectionClick(ev) {
+    if (!isAddFormOpen || ev.target.closest(".add-form")) return;
+    handleSubmit(ev);
+  }
+
   return (
-    <section className="keep-index">
+    <section className="keep-index" onClick={handleSectionClick}>
       <KeepSidebar
         onReset={reset}
         onSetFilterBy={setFilterBy}
@@ -137,11 +143,7 @@ export function NoteIndex() {
       {!notes ? (
         <h1>loading...</h1>
       ) : (
-        <NoteList
-          notes={notes}
-          onRemoveNote={handleRemoveNote}
-          onSubmit={handleSubmit}
-        />
+        <NoteList notes={notes} onRemoveNote={handleRemoveNote} />
       )}
 
       <UserMsg />
