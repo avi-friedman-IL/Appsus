@@ -2,8 +2,6 @@ const { useState, useEffect } = React
 const { Link, useSearchParams } = ReactRouterDOM
 const { useParams } = ReactRouter
 
-
-
 import { UserMsg } from "../../../cmps/UserMsg.jsx"
 import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailFolderList } from "../cmps/MailFolderList.jsx"
@@ -18,10 +16,9 @@ export function MailIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
     const [filterBy, setFilterBy] = useState(mailService.getFilterFromSearchParams(searchParams))
     const [isCompose, setIsCompose] = useState(false)
-    const [isUnread, setIsUnread] = useState()
+    const [unreadMails, setUnreadMails] = useState([])
     const [toggleIsRead, setToggleIsRead] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const [isMailDraft, setIsMailDraft] = useState()
 
     const params = useParams()
 
@@ -35,30 +32,17 @@ export function MailIndex() {
     useEffect(() => {
         mailService.query()
             .then(mails => {
-                setMails(mails)
-                mails.map(mail => {
-                    if (mail.isDraft) setIsMailDraft(true)
-                    else setIsMailDraft(false)
-                })
-            })
-    }, [params.mailId])
-
-    useEffect(() => {
-        mailService.query()
-            .then(mails => {
                 setToggleIsRead(false)
                 setMails(mails)
             })
     }, [toggleIsRead])
 
     useEffect(() => {
-        mailService.query()
-            .then(mails => {
-                const isUnread = mails.filter(mail => !mail.isRead && !mail.isDraft)
-                const countIsUnread = isUnread.length
-                setIsUnread(countIsUnread)
-            })
-    }, [isUnread])
+        mailService.query().then(mails => {
+            const mailsNotRead = mails.filter(mail => !mail.isRead && !mail.isDraft)
+            setUnreadMails(mailsNotRead)
+        })
+    }, [unreadMails])
 
     useEffect(() => {
         setSearchParams(filterBy)
@@ -72,15 +56,15 @@ export function MailIndex() {
 
     function toggleRead(mailId) {
         mailService.query()
-        .then(mails => {
-            const mail = mails.find(mail => mail.id === mailId)
-            mail.isRead = !mail.isRead
-            mailService.save(mail)
-            setMails(mails => [...mails])
-            setToggleIsRead(read => !read)
-        })
+            .then(mails => {
+                const mail = mails.find(mail => mail.id === mailId)
+                mail.isRead = !mail.isRead
+                mailService.save(mail)
+                setMails(mails => [...mails])
+                setToggleIsRead(read => !read)
+            })
     }
-    
+
     function onCompose() {
         setIsCompose(compose => !compose)
     }
@@ -88,11 +72,15 @@ export function MailIndex() {
     function onToggleMenuOpen() {
         setIsMenuOpen(open => !open)
     }
-
+    
     return <section className={isMenuOpen ? 'mail-index open' : 'mail-index'}>
         <section className="mail-menu-btns" >
             <button className="menu-btn" onClick={onToggleMenuOpen}>☰</button>
-            <button className="fa fa-mail-menu-btn"><span className="mail-unread"></span></button>
+            <button className="fa fa-mail-menu-btn"
+                onMouseEnter={() => setIsMenuOpen(true)}
+                // onMouseLeave={() => setIsMenuOpen(false)}
+            >
+                <span className="mail-unread">{unreadMails.length}</span></button>
             <button className="fa fa-chat-menu-btn"></button>
             <button className="fa fa-meet-menu-btn"></button>
         </section>
@@ -100,9 +88,9 @@ export function MailIndex() {
         <button className={isMenuOpen ? 'compose-btn open' : 'compose-btn'} onClick={onCompose}><span className="fa fa-compose-btn-mail"></span>Compose</button>
         {isCompose && <MailCompose close={onCompose} mailId={false} />}
         {<MailFilter filterBy={filterBy} onFilter={onSetFilterBy} />}
-        {<MailFolderList filterBy={filterBy} onFilter={onSetFilterBy} unread={isUnread} isOpen={isMenuOpen} close={onToggleMenuOpen} />}
+        {<MailFolderList filterBy={filterBy} onFilter={onSetFilterBy} isOpen={isMenuOpen} close={onToggleMenuOpen} />}
         {!params.mailId && <MailList mails={mails} onRemove={removeMail} onToggleRead={toggleRead} close={onCompose} />}
-        {params.mailId && <MailDetails close={onCompose}/>}
+        {params.mailId && <MailDetails close={onCompose} />}
         {<UserMsg />}
 
     </section>

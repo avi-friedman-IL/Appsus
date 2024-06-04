@@ -4,9 +4,9 @@
     grid-auto-flow: column;
     grid-template-columns: 2em 1fr;
     align-items: center;
-    width: 50%;
+    width: 60%;
     border: 0;
-    padding: 1.2em;
+    padding: 1em;
     background-color: var(--mail-search-bgc);
     border-radius: 3em;
     margin-block-end: 1em;

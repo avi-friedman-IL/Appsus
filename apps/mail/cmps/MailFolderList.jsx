@@ -4,11 +4,12 @@ const { useState, useEffect } = React
 const { useParams, useNavigate } = ReactRouter
 
 
-export function MailFolderList({ filterBy, onFilter, unread, isOpen, close }) {
+export function MailFolderList({ filterBy, onFilter, isOpen, close }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
     const [folderSelect, setFolderSelect] = useState(filterByToEdit.status)
     const [mails, setMails] = useState([])
+    const [isHovered,setIsHovered]= useState()
 
     const navigate = useNavigate()
 

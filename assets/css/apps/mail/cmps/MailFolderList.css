@@ -13,8 +13,7 @@
     font-family: Arial, Helvetica, sans-serif;
     opacity: 1;
     transform: translateX(0);
-    transition: .5s;
-
+    transition: .5s;   
 }
 
 .mail-folder-list>* {

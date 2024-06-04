@@ -12,12 +12,17 @@ export function MailCompose({ close, mailId }) {
     const navigate = useNavigate()
 
     useEffect(() => {
+        var intervalId = null
         if (mailId) {
             mailService.get(mailId)
-                .then(mail => setMail(mail))
+                .then(mail => {
+                    setMail(mail)
+                })
         } else {
             setMail(mailService.getEmptyMail)
         }
+        return () => clearInterval(intervalId)
+
     }, [])
 
     function onSave(ev) {
@@ -43,6 +48,11 @@ export function MailCompose({ close, mailId }) {
         showSuccessMsg('Saved as a draft')
     }
 
+    function onSaveAuto() {
+        mail.isDraft = true
+        mailService.save(mail)
+    }
+
     function handleChange({ target }) {
         const { name } = target
         let value = target.value
@@ -52,7 +62,7 @@ export function MailCompose({ close, mailId }) {
 
     if (!mail) return
     if (isComposeOpen) return <form className="mail-compose" onSubmit={onSave}>
-        <h2>New Messages <span onClick={onSaveToDraft}>x</span></h2>
+        <h2>New Messages <span></span> <span onClick={onSaveToDraft}>x</span></h2>
         <input className="to" onChange={handleChange} name="to" type="email" value={mail.to} placeholder="To" />
         <input className="subject" onChange={handleChange} name="subject" type="text" placeholder="Subject" />
         <textarea id="mail-compose-body" row="3" cols="3" className="mail-body" onChange={handleChange} name="body" type="text" value={mail.body} />

@@ -24,31 +24,34 @@
  .mail-menu-btns {
    grid-column: 1;
    grid-row: 1/3;
-   
+
    display: grid;
    align-content: start;
    border: 0;
    background-color: #eaf1fb;
    cursor: pointer;
-  }
-  
-  .mail-menu-btns>* {
-    padding: 1.3em 0;
-   font-weight: normal;
+   font-weight: 100;
+ }
+
+ .mail-menu-btns>* {
+   padding: 1.3em 0;
    font-size: 1em;
    border: 0;
    border-radius: 20px;
    background-color: inherit;
    cursor: pointer;
-  }
-  
-  
-  .compose-btn {
-    opacity: 0;
-    /* transition: .5s; */
-    
-  }
-  
+ }
+
+ .mail-menu-btns>*:hover {
+   background-color: rgb(149, 165, 180);
+ }
+
+ .compose-btn {
+   opacity: 0;
+   /* transition: .5s; */
+
+ }
+
  .compose-btn.open {
    grid-column: 2;
    margin-inline-start: 1em;
@@ -71,23 +74,24 @@
 
  .compose-btn:hover {
    box-shadow:
-   rgba(0, 0, 0, 0) 0px 1px 2px 0px,
-   rgba(0, 0, 0, 0) 0px 1px 3px 1px;
+     rgba(0, 0, 0, 0) 0px 1px 2px 0px,
+     rgba(0, 0, 0, 0) 0px 1px 3px 1px;
  }
 
  .fa-mail-menu-btn {
    position: relative;
 
-}
+ }
 
-.mail-unread {
-    position: absolute;
-    top: 5px;
-    
-    font-size: 10px;
-    padding: .5em;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(142, 16, 16);
-    color: white;
-    border-radius: 50%;
+ .mail-unread {
+   position: absolute;
+   top: 9px;
+   width: 1.8em;
+   height: 1.8em;
+   padding: .4em 0;
+   font-size: 10px;
+   font-family: Arial, Helvetica, sans-serif;
+   background-color: rgb(142, 16, 16);
+   color: white;
+   border-radius: 50%;
  }
