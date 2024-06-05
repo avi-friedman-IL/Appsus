@@ -7,7 +7,7 @@ import { notesService } from '../../note/services/note.service.js'
 import { mailService } from '../services/mail.service.js'
 import { MailCompose } from './MailCompose.jsx'
 
-export function MailDetails({close}) {
+export function MailDetails({ close }) {
     const [mail, setMail] = useState([])
     const [isDraft, setIsDraft] = useState()
 
@@ -37,12 +37,11 @@ export function MailDetails({close}) {
         notesService.saveNote(newNote)
         navigate('/note')
     }
-
     if (isDraft) return <MailCompose close={close} mailId={params.mailId} />
 
     if (!isDraft) return <section className="mail-details">
         <section className="actions">
-            <Link to="/mail"><button className="fa fa-back action"></button></Link>
+            <Link to={"/mail?txt=&read=&status=Index&sortBy="}><button className="fa fa-back action"></button></Link>
             <button onClick={onSaveMailToNotes} className="save-mail-to-note action">save to keep</button>
             <div>
                 <Link to={`/mail/${mail.prevMailId}`}><button className="fa fa-prev action"></button></Link>

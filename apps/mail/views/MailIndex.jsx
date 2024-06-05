@@ -72,15 +72,14 @@ export function MailIndex() {
     function onToggleMenuOpen() {
         setIsMenuOpen(open => !open)
     }
-    
     return <section className={isMenuOpen ? 'mail-index open' : 'mail-index'}>
+
         <section className="mail-menu-btns" >
             <button className="menu-btn" onClick={onToggleMenuOpen}>☰</button>
             <button className="fa fa-mail-menu-btn"
                 onMouseEnter={() => setIsMenuOpen(true)}
-                // onMouseLeave={() => setIsMenuOpen(false)}
-            >
-                <span className="mail-unread">{unreadMails.length}</span></button>
+            // onMouseLeave={() => setIsMenuOpen(false)}
+            ><span className="mail-unread">{unreadMails.length}</span></button>
             <button className="fa fa-chat-menu-btn"></button>
             <button className="fa fa-meet-menu-btn"></button>
         </section>
