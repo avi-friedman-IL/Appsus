@@ -9,7 +9,6 @@ export function MailFolderList({ filterBy, onFilter, isOpen, close }) {
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
     const [folderSelect, setFolderSelect] = useState(filterByToEdit.status)
     const [mails, setMails] = useState([])
-    const [isHovered,setIsHovered]= useState()
 
     const navigate = useNavigate()
 
@@ -52,7 +51,7 @@ export function MailFolderList({ filterBy, onFilter, isOpen, close }) {
 
         <article className={folderSelect === 'Draft' ? 'select' : ''}>
             <p className="fa fa-draft-mail"></p>
-            <option onClick={handleClick} value="Draft">Draft</option>
+            <option onClick={handleClick} value="Draft">Drafts</option>
         </article>
     </section>
 }

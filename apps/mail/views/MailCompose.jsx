@@ -18,8 +18,9 @@ export function MailCompose({ close, mailId }) {
                 .then(mail => {
                     setMail(mail)
                 })
-        } else {
-            setMail(mailService.getEmptyMail)
+            } else {
+                setMail(mailService.getEmptyMail)
+                console.log(mail);
         }
         return () => clearInterval(intervalId)
 
