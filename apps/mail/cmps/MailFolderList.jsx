@@ -35,7 +35,7 @@ export function MailFolderList({ filterBy, onFilter, isOpen, close }) {
     return <section className={isOpen ? 'mail-folder-list open' : 'mail-folder-list'}>
         <article className={folderSelect === 'Index' ? 'select' : ''}>
             <p className="fa fa-index-mail"></p>
-            <option onClick={handleClick} value="Index">index</option>
+            <option onClick={handleClick} value="Index">inbox</option>
             <span>{mails.length}</span>
         </article>
 
