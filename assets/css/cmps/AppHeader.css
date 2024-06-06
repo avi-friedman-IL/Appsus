@@ -52,3 +52,23 @@ header {
 .menu-modal img:hover {
     transform: scale(1.1);
 }
+
+/* home-page */
+.home-page {
+    display: flex;
+    flex-direction: column;
+    margin-block-start: 15em;
+}
+
+.home-page h1 {
+    text-align: center;
+    font-size: xx-large;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(125, 164, 208);
+}
+
+.home-page img {
+    margin-block-start: 1em;
+    margin-inline: auto;
+    width: 20%;
+}
