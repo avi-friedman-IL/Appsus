@@ -1,8 +1,7 @@
  /* home */
  .home {
-     display: grid;
-     justify-content: center;
-     align-items: center;
+     display: flex;
+     flex-direction: column;
      margin-block-start: 15em;
  }
 
@@ -14,5 +13,7 @@
  }
 
  .home img {
-     width: 27vw;
+     margin-block-start: 1em;
+     margin-inline: auto;
+     width: 20%;
  }
