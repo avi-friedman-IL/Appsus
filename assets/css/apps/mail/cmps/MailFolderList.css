@@ -1,22 +1,22 @@
 .mail-folder-list {
     opacity: 0;
-    /* transform: translate(0); */
     transform: translateX(-100%);
-    transition: .5s;
+    transition: 0.5s;
 }
 
 .mail-folder-list.open {
     grid-column: 2;
-    padding-inline-start: 1em;
+    grid-row: 3/10;
+    width: 100%;
 
     background-color: var(--mail-index-bgc);
     font-family: Arial, Helvetica, sans-serif;
-    opacity: 1;
+    opacity: 0.8;
     transform: translateX(0);
-    transition: .5s;   
+    transition: 0.5s;
 }
 
-.mail-folder-list>* {
+.mail-folder-list > * {
     padding: 10px;
     border-radius: 3em;
     font-size: 14px;
@@ -27,8 +27,8 @@
     display: grid;
     grid-template-columns: 1em 1fr 1em;
     grid-auto-flow: column;
-    align-items: center;
-    width: 15vw;
+    align-items: baseline;
+    width: 100%;
 }
 
 .mail-folder-list article p {
@@ -44,7 +44,7 @@
     padding-inline-start: 1em;
 }
 
-.mail-folder-list>*:hover {
+.mail-folder-list > *:hover {
     background-color: var(--mail-sidebar-hover-bgc);
 }
 

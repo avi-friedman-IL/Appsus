@@ -27,7 +27,6 @@ export function MailFolderList({ filterBy, onFilter, isOpen, close }) {
         const { value } = target
         setFilterByToEdit(prevFilter => ({ ...prevFilter, ['status']: value }))
         setFolderSelect(value)
-        console.log(window.innerWidth)
         if (window.innerWidth < 750) close()
         if (value === 'Index') navigate('/mail')
     }
@@ -40,7 +39,7 @@ export function MailFolderList({ filterBy, onFilter, isOpen, close }) {
         </article>
 
         <article className={folderSelect === 'Starred' ? 'select' : ''}>
-            <p>&#9733;</p>
+            <p>&#9733;</p>  
             <option onClick={handleClick} value="Starred">Starred</option>
         </article>
 

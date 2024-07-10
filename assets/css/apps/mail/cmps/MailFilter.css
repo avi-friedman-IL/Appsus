@@ -1,15 +1,26 @@
-.mail-filter {
+.mail-filter-and-sorting {
     grid-column: 3;
+    grid-row: 1;
+    height: max-content;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 12% 12%;
+    align-items: center;
+    gap: 10px;
+
+    /* margin-top: .5rem; */
+}
+
+
+.mail-filter {
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 2em 1fr;
     align-items: center;
-    width: 60%;
     border: 0;
     padding: 1em;
     background-color: var(--mail-search-bgc);
     border-radius: 3em;
-    margin-block-end: 1em;
 }
 
 .mail-filter input {
@@ -26,16 +37,18 @@
 
 .mail-filter-and-sorting .sort-by {
     padding: 1em;
-    width: 100%;
-    border-bottom-left-radius: 0;
+    cursor: pointer;
+}
+.mail-filter-and-sorting .filter-by-read {
+    padding: 1em;
     cursor: pointer;
 }
 
-.mail-filter-and-sorting .sort-by>* {
-   font-size: 1em;
+.mail-filter-and-sorting .sort-by > * {
+    font-size: 1em;
 }
 
-.mail-filter>* {
+.mail-filter > * {
     padding-inline-start: 1em;
 }
 

@@ -1,115 +1,128 @@
- ul.mail-list {
-    grid-column: 3;
-    margin: 0;
-    padding: 1em 1em 0 0;
-    height: 70vh;
-    font-family: roboto, Arial, Helvetica, sans-serif;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    transition: .5s;
- }
+.mail-list {
+   grid-column: 3;
+   grid-row: 2/4;
 
- .mail-list .mail-list-header {
-    top: 3em;
- }
+   height: 75vh;
+   border-radius: 10px;
+   padding: 1.5em 1.5em 0 0;
+   margin: 0;
 
- .mail-list li {
-    position: relative;
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 2em 1fr 1em 5em;
-    align-items: center;
-    gap: 15px;
-    padding: 0.62rem;
-    line-height: 20px;
-    color: var(--mail-li-color);
-    box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
-    cursor: pointer;
- }
+   font-family: roboto, Arial, Helvetica, sans-serif;
+   overflow-y: scroll;
+   overflow-x: hidden;
+   transition: 0.5s;
+}
 
- .mail-list li:hover {
-    box-shadow: rgb(218, 220, 224) 1px 0px 0px 0px inset, rgb(218, 220, 224) 0px -2px 0px 0px inset, rgba(60, 64, 67, 0.3) 1px 0px 0px 0px, rgba(60, 64, 67, 0.15) 0px -1px 0px 0px;
- }
+.mail-list li {
+   position: relative;
+   display: grid;
+   grid-auto-flow: column;
+   grid-template-columns: 2em 1fr 1em 5em;
+   align-items: center;
+   gap: 15px;
 
- .mail-list li.read {
-    background-color: var(--mail-li-bgc);
-    font-weight: normal;
- }
+   padding: 0.62rem;
+   line-height: 20px;
 
- .mail-list {
-    background-color: white;
- }
+   box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+   opacity: 0.9;
+   cursor: pointer;
+   color: var(--mail-li-color);
+}
 
- .mail-list h2 {
-    font-weight: 600;
- }
+.mail-list li:hover {
+   box-shadow: rgb(218, 220, 224) 1px 0px 0px 0px inset, rgb(218, 220, 224) 0px -2px 0px 0px inset, rgba(60, 64, 67, 0.3) 1px 0px 0px 0px, rgba(60, 64, 67, 0.15) 0px -1px 0px 0px;
+}
 
- .mail-list span {
-    font-weight: 600;
- }
+.mail-list li.read {
+   background-color: var(--mail-li-bgc);
+   font-weight: normal;
+}
 
- .mail-list li.read h2 {
-    font-weight: normal;
- }
+.mail-list {
+   background-color: white;
+}
 
- .mail-list li.read span {
-    font-weight: normal;
- }
+.mail-list h2 {
+   font-weight: 600;
+   opacity: 0.8;
+}
 
+.mail-list span {
+   font-weight: 600;
+   opacity: 0.8;
+}
 
- .mail-list .remove-mail {
-    position: absolute;
-    right: 7em;
-    bottom: .7rem;
-    display: none;
-    width: max-content;
-    border: 0;
-    cursor: pointer;
-    background-color: inherit;
-    font-weight: normal;
-    z-index: 1;
- }
+.mail-list li.read h2 {
+   font-weight: normal;
+}
 
- .mail-list li:hover .remove-mail {
-    display: block;
- }
+.mail-list li.read span {
+   font-weight: normal;
+}
 
- .mail-list .unread-mail {
-    display: none;
- }
- .mail-list .read-mail {
-    display: none;
- }
+.mail-list .remove-mail {
+   display: none;
+   position: absolute;
+   right: 7em;
+   bottom: 0.7rem;
 
- .mail-list li:hover .unread-mail {
-    position: absolute;
-    right: 5em;
-    bottom: .7rem;
-    display: block;
-    width: max-content;
-    border: 0;
-    cursor: pointer;
-    background-color: inherit;
-    font-weight: normal;
-    z-index: 1;
- }
- .mail-list li:hover .read-mail {
-    position: absolute;
-    right: 5em;
-    bottom: .7rem;
-    display: block;
-    width: max-content;
-    border: 0;
-    cursor: pointer;
-    background-color: inherit;
-    font-weight: normal;
-    z-index: 1;
- }
+   width: max-content;
+   border: 0;
 
- .mail-list .sent-at {
-    font-size: 12px;
- }
+   cursor: pointer;
+   font-weight: normal;
+   background-color: inherit;
 
- .mail-list li:hover .sent-at {
-    display: none;
- }
+   z-index: 1;
+}
+
+.mail-list li:hover .remove-mail {
+   display: block;
+}
+
+.mail-list .unread-mail {
+   display: none;
+}
+.mail-list .read-mail {
+   display: none;
+}
+
+.mail-list li:hover .unread-mail {
+   display: block;
+   position: absolute;
+   right: 5em;
+   bottom: 0.7rem;
+
+   width: max-content;
+   border: 0;
+
+   cursor: pointer;
+   font-weight: normal;
+   background-color: inherit;
+
+   z-index: 1;
+}
+.mail-list li:hover .read-mail {
+   display: block;
+   position: absolute;
+   right: 5em;
+   bottom: 0.7rem;
+
+   width: max-content;
+   border: 0;
+
+   cursor: pointer;
+   font-weight: normal;
+   background-color: inherit;
+
+   z-index: 1;
+}
+
+.mail-list .sent-at {
+   font-size: 12px;
+}
+
+.mail-list li:hover .sent-at {
+   display: none;
+}

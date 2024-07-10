@@ -34,13 +34,18 @@
     content: '\f304';
 }
 
-.fa.fa-mail-menu-btn::before{
+.fa.fa-menu-btn::before {
+    content: '\f0c9';
+}
+.fa.fa-mail-menu-btn::before {
     content: '\f0e0';
 }
-.fa.fa-chat-menu-btn::before{
+
+.fa.fa-chat-menu-btn::before {
     content: '\f27a';
 }
-.fa.fa-meet-menu-btn::before{
+
+.fa.fa-meet-menu-btn::before {
     content: '\f03d';
 }
 
@@ -51,6 +56,7 @@
 .fa.fa-unread-mail::before {
     content: '\f0e0';
 }
+
 .fa.fa-read-mail::before {
     content: '\f2b6';
 }

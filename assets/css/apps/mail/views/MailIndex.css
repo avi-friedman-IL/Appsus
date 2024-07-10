@@ -1,107 +1,136 @@
- .mail-index {
-   margin-block-start: 4em;
-   display: grid;
-   grid-template-columns: 5vw 0 1fr;
-   column-gap: 10px;
-   padding-block-start: 1em;
-   letter-spacing: .50px;
-   background-color: var(--mail-index-bgc);
-   overflow: hidden;
-   transition: .5s;
- }
+.mail-index {
+    display: grid;
+    grid-template-columns: 64px 0 1fr;
+    grid-template-rows: max-content;
+    column-gap: 10px;
 
- .mail-index.open {
-   display: grid;
-   grid-template-columns: 5vw minmax(0, 18%) 1fr;
-   column-gap: 10px;
-   padding-block-start: 1em;
-   letter-spacing: .50px;
-   background-color: var(--mail-index-bgc);
-   overflow: hidden;
-   transition: .5s;
- }
+    margin-block-start: 4.5em;
+    padding-block-start: 0.3em;
+    overflow: hidden;
+    letter-spacing: 0.5px;
 
- .menu-btn {
-   margin: 0em 0 2em;
-   padding: 1em;
-   font-size: 1em;
-   border: 0;
-   border-radius: 20px;
-   background-color: inherit;
-   cursor: pointer;
- }
+    background-color: var(--mail-index-bgc);
+    transition: 0.5s;
+}
 
- .mail-menu-btns {
-   grid-column: 1;
-   grid-row: 1/3;
+.mail-index.open {
+    display: grid;
+    grid-template-columns: 64px minmax(0, 20%) 1fr;
+    column-gap: 10px;
+    letter-spacing: 0.5px;
+    overflow: hidden;
 
-   display: grid;
-   align-content: start;
-   justify-items: center;
-   border: 0;
-   background-color: #eaf1fb;
-   cursor: pointer;
-   font-weight: 100;
- }
+    background-color: var(--mail-index-bgc);
+    transition: 0.5s;
+}
 
- .mail-menu-btns>*:not(:first-child) {
-   padding: .5em;
-   margin-top: 2em;
-   font-size: 1em;
-   border: 0;
-   border-radius: 20px;
-   background-color: inherit;
-   cursor: pointer;
-   width: 60%;
- }
+.menu-btn {
+    margin: 0em 0 1em;
+    padding: 1em;
+    font-size: 1em;
+    border: 0;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: inherit;
+}
 
- .mail-menu-btns>*:hover:not(:first-child) {
-   background-color: rgb(187, 196, 205);
- }
+.mail-menu-btns {
+    grid-column: 1;
+    grid-row: 1/4;
 
- .compose-btn {
-   opacity: 0;
- }
+    display: grid;
+    align-content: start;
+    justify-items: center;
+    border: 0;
+    cursor: pointer;
+    font-weight: bold;
 
- .compose-btn.open {
-   grid-column: 2;
-   margin-inline-start: 1em;
-   display: grid;
-   grid-auto-flow: column;
-   gap: 10px;
-   width: 50%;
-   min-width: max-content;
-   height: max-content;
-   padding: 1.5em;
-   border-radius: 1em;
-   border: 0;
-   font-size: 14px;
-   background-color: #c2e7ff;
-   color: #001d35;
-   cursor: pointer;
-   opacity: 1;
+    height: 89vh;
+    background-color: #eaf1fb;
+}
 
- }
+.mail-menu-btns > *:not(:first-child) {
+    width: 60%;
+    padding: 0.5em;
+    font-size: 1.2em;
+    border: 0;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #202124b7;
+    background-color: inherit;
+}
 
- .compose-btn:hover {
-   box-shadow:
-     rgba(0, 0, 0, 0) 0px 1px 2px 0px,
-     rgba(0, 0, 0, 0) 0px 1px 3px 1px;
- }
+.mail-menu-btns > *:hover:not(:first-child) {
+    background-color: #d3e3fd;
+}
 
- .fa-mail-menu-btn {
-   position: relative;
- }
+.mail-index .gmail-img-and-txt{
+    opacity: 0;
+}
 
- .mail-unread {
-   position: absolute;
-   top: 0px;
-   width: 1.8em;
-   height: 1.8em;
-   padding: .4em 0;
-   font-size: 10px;
-   font-family: Arial, Helvetica, sans-serif;
-   background-color: rgb(142, 16, 16);
-   color: white;
-   border-radius: 50%;
- }
+.mail-index.open .gmail-img-and-txt {
+    grid-column: 2;
+    grid-row: 1;
+    height: max-content;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: max-content max-content;
+    align-items: center;
+    gap: 10px;
+
+    font-family: roboto, Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    font-weight: normal;
+    opacity: 0.8;
+}
+
+.gmail-img {
+    width: 50px;
+    background-color: var(--mail-index-bgc);
+}
+
+.compose-btn {
+    opacity: 0;
+}
+
+.compose-btn.open {
+    grid-column: 2;
+    grid-row: 2;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 10px;
+
+    width: 50%;
+    min-width: max-content;
+    height: max-content;
+    padding: 1.5em;
+    border-radius: 1em;
+    border: 0;
+    font-size: 14px;
+    opacity: 1;
+    cursor: pointer;
+    color: #001d35;
+    background-color: #c2e7ff;
+}
+
+.compose-btn:hover {
+    box-shadow: rgba(0, 0, 0, 0) 0px 1px 2px 0px, rgba(0, 0, 0, 0) 0px 1px 3px 1px;
+}
+
+.fa-mail-menu-btn {
+    position: relative;
+}
+
+.mail-unread {
+    position: absolute;
+    top: 0px;
+    width: 1.9em;
+    height: 1.9em;
+    padding: 0.4em 0;
+    font-size: 9px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 50%;
+    color: white;
+    background-color: rgb(142, 16, 16);
+}

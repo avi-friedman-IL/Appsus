@@ -12,7 +12,7 @@ export function MailList({ mails, onRemove, onToggleRead, close }) {
             <li className={mail.isRead ? 'read' : ''} key={mail.id} onClick={() => mail.isRead = true}>
 
                 {<MailStarred mail={mail} />}
-                <Link to={`/mail/${mail.id}`}>{<MailPreview mail={mail} close={close} />}</Link>
+                <Link to={`/mail/${mail.id}`}>{<MailPreview mail={mail} />}</Link>
 
                 <div className="mail-list-actions">
                     <button className={mail.isRead ? 'fa fa-unread-mail unread-mail' : 'fa fa-read-mail read-mail'} onClick={() => onToggleRead(mail.id)}></button>

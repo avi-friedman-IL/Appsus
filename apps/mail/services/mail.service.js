@@ -1,5 +1,5 @@
-import { utilService } from "../../../services/util.service.js"
-import { storageService } from "../../../services/async-storage.service.js"
+import { utilService } from '../../../services/util.service.js'
+import { storageService } from '../../../services/async-storage.service.js'
 
 const MAIL_KEY = 'mailDB'
 _createEmails()
@@ -29,7 +29,7 @@ function _createEmails() {
                 sentAt: Date.now(),
                 removedAt: null,
                 from: fromTos[utilService.getRandomIntInclusive(0, 1)],
-                to: fromTos[utilService.getRandomIntInclusive(0, 1)]
+                to: fromTos[utilService.getRandomIntInclusive(0, 1)],
             }
             emails.push(email)
         }
@@ -40,45 +40,56 @@ function _createEmails() {
 }
 
 function query(filterBy = {}) {
-    return storageService.query(MAIL_KEY)
-        .then(emails => {
-            if (filterBy.txt) {
-                const regExp = new RegExp(filterBy.txt, 'i')
-                emails = emails.filter(email => regExp.test(email.from) || regExp.test(email.subject) || regExp.test(email.body))
+    return storageService.query(MAIL_KEY).then(emails => {
+        if (filterBy.txt) {
+            const regExp = new RegExp(filterBy.txt, 'i')
+            emails = emails.filter(
+                email =>
+                    regExp.test(email.from) || regExp.test(email.subject) || regExp.test(email.body)
+            )
+        }
+        if (filterBy.read) {
+            if (filterBy.read === 'all') emails = emails
+            if (filterBy.read === 'unread') emails = emails.filter(email => !email.isRead)
+            if (filterBy.read === 'read') emails = emails.filter(email => email.isRead)
+        }
+        if (filterBy.status) {
+            filterBy.read = ''
+            if (filterBy.status === 'Index') {
+                emails = emails.filter(email => !email.isDraft)
             }
-            if (filterBy.read) {
-                if (filterBy.read === 'all') emails = emails
-                if (filterBy.read === 'unread') emails = emails.filter(email => !email.isRead)
-                if (filterBy.read === 'read') emails = emails.filter(email => email.isRead)
+            if (filterBy.status === 'Sent') {
+                emails = emails.filter(email => email.from === 'momo@momo.com' && !email.isDraft)
             }
-            if (filterBy.status) {
-                filterBy.read = ''
-                if (filterBy.status === 'Index') {
-                    emails = emails.filter(email => !email.isDraft)
-                }
-                if (filterBy.status === 'Sent') {
-                    emails = emails.filter(email => email.from === 'momo@momo.com' && !email.isDraft)
-                }
-                if (filterBy.status === 'Starred') {
-                    emails = emails.filter(email => email.isStarred)
-                }
-                if (filterBy.status === 'Draft') {
-                    emails = emails.filter(email => email.isDraft)
-                }
+            if (filterBy.status === 'Starred') {
+                emails = emails.filter(email => email.isStarred)
             }
+            if (filterBy.status === 'Draft') {
+                emails = emails.filter(email => email.isDraft)
+            }
+        }
 
-            if (filterBy.sortBy === 'date') {
-                emails.sort((m1, m2) => m2.sentAt - m1.sentAt)
-            }
-            if (filterBy.sortBy === 'subject') {
-                emails.sort((m1, m2) => m1.subject.localeCompare(m2.subject))
-            }
+        if (filterBy.sortBy === 'date') {
+            emails.sort((m1, m2) => m2.sentAt - m1.sentAt)
+        }
+        if (filterBy.sortBy === 'subject') {
+            emails.sort((m1, m2) => m1.subject.localeCompare(m2.subject))
+        }
 
-            return emails
-        })
+        return emails
+    })
 }
 
-function getEmptyMail(subject = '(no subject)', body = '', isRead = false, isDraft = false, sentAt = Date.now(), removedAt = 0, from = 'momo@momo.com', to = '') {
+function getEmptyMail(
+    subject = '',
+    body = '',
+    isRead = false,
+    isDraft = false,
+    sentAt = Date.now(),
+    removedAt = 0,
+    from = 'momo@momo.com',
+    to = ''
+) {
     return { subject, body, isRead, isDraft, sentAt, removedAt, from, to }
 }
 
@@ -88,16 +99,14 @@ function getFilterFromSearchParams(searchParams) {
         read: searchParams.get('read') || '',
         status: searchParams.get('status') || '',
         sortBy: searchParams.get('sortBy') || '',
-
     }
 }
 
 function get(mailId) {
-    return storageService.get(MAIL_KEY, mailId)
-        .then(mail => {
-            mail = _setNextPrevMailId(mail)
-            return mail
-        })
+    return storageService.get(MAIL_KEY, mailId).then(mail => {
+        mail = _setNextPrevMailId(mail)
+        return mail
+    })
 }
 
 function remove(mailId) {
@@ -113,8 +122,8 @@ function save(mail) {
 }
 
 function _setNextPrevMailId(mail) {
-    return storageService.query(MAIL_KEY).then((mails) => {
-        const mailIdx = mails.findIndex((currMail) => currMail.id === mail.id)
+    return storageService.query(MAIL_KEY).then(mails => {
+        const mailIdx = mails.findIndex(currMail => currMail.id === mail.id)
         const nextMail = mails[mailIdx + 1] ? mails[mailIdx + 1] : mails[0]
         const prevMail = mails[mailIdx - 1] ? mails[mailIdx - 1] : mails[mails.length - 1]
         mail.nextMailId = nextMail.id
