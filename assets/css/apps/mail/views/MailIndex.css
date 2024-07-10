@@ -15,7 +15,7 @@
 
 .mail-index.open {
     display: grid;
-    grid-template-columns: 64px minmax(0, 20%) 1fr;
+    grid-template-columns: 64px minmax(0, 17%) 1fr;
     column-gap: 10px;
     letter-spacing: 0.5px;
     overflow: hidden;
