@@ -39,9 +39,16 @@
 @import './setup/mqMail.css';
 
 /* BOOK */
+@import './apps/book/cmps/AddBookIndex.css';
+@import './apps/book/cmps/AddBookList.css';
+@import './apps/book/cmps/AddReview.css';
 @import './apps/book/cmps/BookDetails.css';
-@import './apps/book/cmps/BookList.css';
 @import './apps/book/cmps/BookEdit.css';
-@import './apps/book/cmps/AddBook.css';
+@import './apps/book/cmps/BookIndex.css';
+@import './apps/book/cmps/BookList.css';
+@import './apps/book/cmps/BookPreview.css';
+@import './apps/book/cmps/LongText.css';
+@import './apps/book/cmps/PreviewReview.css';
+@import './apps/book/cmps/ReviewList.css';
 @import './apps/book/cmps/StarRating.css';
-@import './apps/book/cmps/UserMsg.css';
+

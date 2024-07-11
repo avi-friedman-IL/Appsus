@@ -85,6 +85,58 @@
     content: '\f105';
 }
 
+/* book  */
+@font-face {
+    font-family: fa;
+    src: url(fonts/fa/fa-solid-900.ttf);
+}
+
+.fa {
+	font-family: fa;
+}
+
+.fa.fa-facebook::before {
+	content: '\f39e';
+}
+
+.fa.fa-twitter::before {
+	content: '\f099';
+}
+
+.fa.fa-dribbble::before {
+	content: '\f17d';
+}
+
+.fa.fa-behance::before {
+	content: '\f1b4';
+}
+
+.fa.fa-details::before {
+	content: '\f05a';
+}
+
+.fa.fa-edit::before {
+	content: '\f044';
+}
+
+.fa.fa-next::before {
+	content: '\f054';
+}
+
+.fa.fa-prev::before {
+	content: '\f053';
+}
+
+.fa.fa-close::before {
+	content: '\f00d';
+}
+
+
+
 .btn {
     cursor: pointer;
+}
+
+img.book-img{
+    width: 60%;
 }

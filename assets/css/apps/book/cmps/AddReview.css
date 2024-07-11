@@ -1,0 +1,17 @@
+section.add-review {
+    margin: 50px auto;
+    width: max-content;
+    padding: 2em;
+    background-image: var(--clr1);
+    margin-block-end: auto;
+}
+
+section.add-review form {
+    display: grid;
+    gap: 10px;
+    align-items: center;
+    justify-items: center;
+
+    margin: 0;
+    font-size: 1em;
+}

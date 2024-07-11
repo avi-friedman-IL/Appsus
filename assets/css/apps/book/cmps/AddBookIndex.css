@@ -1,0 +1,12 @@
+div.add-book {
+    margin: 50px auto;
+}
+
+div.add-book input{
+    width: 25vw;
+    padding: 1em;
+    border-radius: 3em;
+    border: 0;
+    background: #787777;
+    color: white;
+}

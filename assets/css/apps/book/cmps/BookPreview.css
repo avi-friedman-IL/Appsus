@@ -1,0 +1,11 @@
+.book-preview  {
+    margin-block-start: 2em;
+
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    gap: 15px;
+    padding: 1em;
+
+    text-align: center;
+}

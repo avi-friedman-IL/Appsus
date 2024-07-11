@@ -1,15 +1,11 @@
-import { ReviewPreview } from "../../../apps/book/cmps/ReviewPreview.jsx";
+import { PreviewReview } from "./PreviewReview.jsx";
 
 export function ReviewList({ reviews, onRemoveReview }) {
-  return (
-    <div>
-      {reviews.map((review) => (
-        <ReviewPreview
-          key={review.id}
-          review={review}
-          onRemoveReview={onRemoveReview}
-        />
-      ))}
-    </div>
-  );
+    return <ul className="reviews">
+        {reviews.map(review =>
+            <li key={review.id}>
+                <PreviewReview review={review} onRemoveReview={onRemoveReview} />
+            </li>
+        )}
+    </ul>
 }

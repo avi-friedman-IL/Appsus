@@ -1,14 +1,23 @@
-import { LongTxt } from "../../../apps/book/cmps/LongTxt.jsx";
-
 export function BookPreview({ book }) {
-  return (
-    <article key={book.id}>
-      <h3>{book.title}</h3>
-      <h4>{book.subtitle}</h4>
-      <img src={book.thumbnail} alt=""></img>
-      <LongTxt txt={book.description} />
-      <br></br>
-      <span>{`${book.listPrice.amount} ${book.listPrice.currencyCode}`}</span>
+    function getColor() {
+        if (!book.listPrice) return 'black'
+        if (book.listPrice.amount > 300) return 'red'
+        if (book.listPrice.amount < 150) return 'green'
+    }
+
+    function getClassName() {
+        const year = new Date().getFullYear()
+        if (!book.publishedDate) return ''
+        if (year - book.publishedDate <= 1) return 'new'
+        if (year - book.publishedDate > 10) return 'vintage'
+    }
+
+    const { listPrice } = book
+
+    return <article className="book-preview">
+        <p className={getClassName()}>{getClassName()}</p>
+        <h3>{book.title.substring(0, 10)}</h3>
+        <img className="book-img" src={book.thumbnail} alt="" />
+        <p style={{ color: getColor() }}>{listPrice && listPrice.amount}<span>{listPrice && listPrice.currencyCode}</span></p>
     </article>
-  );
 }

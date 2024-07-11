@@ -1,0 +1,16 @@
+.add-book-list li {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 25vw;
+    padding: 1em;
+    font-weight: 500;
+}
+
+.add-book-list button {
+    padding: 1em;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+}

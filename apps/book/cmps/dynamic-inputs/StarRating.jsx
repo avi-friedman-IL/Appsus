@@ -1,17 +1,16 @@
-
-export function StarRating({ handleChange, rating }) {
+export function StarRating({ rating, handlerChange }) {
 
     function onSetRating(rate) {
         if (!isEditable) return
-        const target = { name: 'rating', value: rate };
-        handleChange({ target });
+        const target = { name: 'rating', value: +rate }
+        handlerChange({ target })
     }
 
-    const isEditable = typeof handleChange === 'function'
+    const isEditable = typeof handlerChange === 'function'
     const editClass = isEditable ? 'edit' : ''
 
     return (
-        <div className={`star-rating ${editClass}`} >
+        <div className={`star-rating ${editClass}`}>
             {[...Array(5)].map((_, idx) => (
                 <span
                     key={idx}
@@ -21,6 +20,5 @@ export function StarRating({ handleChange, rating }) {
                     &#9733;
                 </span>
             ))}
-        </div>
-    )
+        </div>)
 }
